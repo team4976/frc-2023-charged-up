@@ -1,4 +1,4 @@
-package frc.robot;
+package frc.robot.constant;
 
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;

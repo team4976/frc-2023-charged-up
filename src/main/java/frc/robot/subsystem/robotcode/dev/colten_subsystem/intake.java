@@ -1,5 +1,5 @@
 package frc.robot.subsystem.robotcode.dev.colten_subsystem;
-import static frc.robot.robotConstants_Colten.*;
+import static frc.robot.constant.robotConstants_Colten.*;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
