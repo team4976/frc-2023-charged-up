@@ -19,7 +19,10 @@ import edu.wpi.first.wpilibj2.command.Command;
  * project.
  */
 public class Robot extends TimedRobot {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6273f697c4de67ea29b12093fac08ce46cd34307
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
 
@@ -74,6 +77,12 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+<<<<<<< HEAD
+=======
+
+    m_autonomousCommand.schedule();
+    
+>>>>>>> 6273f697c4de67ea29b12093fac08ce46cd34307
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     m_autonomousCommand.schedule();
