@@ -7,6 +7,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.roy_testbot.intakecone;
+import frc.robot.commands.roy_testbot.intakecube;
+import frc.robot.subsystems.Roy_testBot.intake;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -15,6 +20,8 @@ import edu.wpi.first.wpilibj2.command.Command;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  intake Intake = new intake ();
+
 
   // The robot's subsystems and commands are defined here...
 
@@ -34,7 +41,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-   
+   new CommandXboxController(0)
+   .b(new intakecone(Intake))
   }
 
   /**
@@ -43,7 +51,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return null;
+return new intakecube(Intake)
   }
 
 }
