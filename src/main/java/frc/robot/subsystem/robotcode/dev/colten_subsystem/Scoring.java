@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Scoring extends SubsystemBase{
 
     public void rotateArmFwd(){
-        m_armTalon.set(ControlMode.PercentOutput, 1);
+        m_armTalon.set(ControlMode.PercentOutput, forwardS);
     }
 
     public void rotateArmBwd(){
-        m_armTalon.set(ControlMode.PercentOutput, -1);
+        m_armTalon.set(ControlMode.PercentOutput, backwardS);
     }
 
     public void grabPiece(){

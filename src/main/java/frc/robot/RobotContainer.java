@@ -9,14 +9,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-<<<<<<< HEAD
 import frc.robot.command.robotcode.dev.anthony_command.*;
 import frc.robot.subsystem.robotcode.dev.ant_subsystem.*;
-=======
-import frc.robot.commands.roy_testbot.intakecone;
-import frc.robot.commands.roy_testbot.intakecube;
-import frc.robot.subsystems.Roy_testBot.intake;
->>>>>>> 903b3fb (jacob)
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,7 +19,6 @@ import frc.robot.subsystems.Roy_testBot.intake;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  intake Intake = new intake ();
 
 
   // The robot's subsystems and commands are defined here... 
@@ -62,20 +55,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-<<<<<<< HEAD
 
-    new JoystickButton(_primaryController, XboxController.Button.kB.value)
-    .onTrue(getAutonomousCommand());
+    
     
   
-    CommandXboxController _primaryController = new CommandXboxController(0);
-    _primaryController.a().onFalse(getAutonomousCommand());
-    _primaryController.b().onTrue(getAutonomousCommand());
-   
-=======
-   new CommandXboxController(0)
-   .b(new intakecone(Intake))
->>>>>>> 903b3fb (jacob)
+
   }
 
   /**
@@ -83,8 +67,5 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-return new intakecube(Intake)
-  }
 
 }

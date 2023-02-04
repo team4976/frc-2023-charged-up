@@ -67,9 +67,4 @@ public class RobotContainer_Colten {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-
-    //return new setArcadeDrive_Colten(_robotDrive);
-  }
-
 }

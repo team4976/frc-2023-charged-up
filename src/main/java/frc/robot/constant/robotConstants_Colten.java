@@ -10,10 +10,20 @@ import edu.wpi.first.wpilibj.Solenoid;
 
 public class robotConstants_Colten {
 
-    //Speeds
+    //Intake speeds
     public static final double forwardI = 1;
     public static final double backwardI = -1;
- 
+    
+    //Scoring speeds
+    public static final double forwardS = 1;
+    public static final double backwardS = -1;
+
+    //Handoff speeds
+    public static final double forwardH = 1;
+    public static final double backwardH = -1;
+
+    public static final double stop = 0;
+    
     //Drive Train Motor
     public static final TalonSRX m_DriveLeftTalon = new TalonSRX(30);
     public static final VictorSPX m_DriveLeftFolowerOne = new VictorSPX(31);
@@ -24,11 +34,11 @@ public class robotConstants_Colten {
     public static final VictorSPX m_DriveRightFollowerTwo = new VictorSPX(42);
 
     //Intake
-    public static final TalonFX m_IntakeRightFalcon = new TalonFX(33); // controls top and middle
-    public static final TalonFX m_IntakeLeftFalcon = new TalonFX(43); // controls bottom
+    public static final TalonFX m_IntakeTopFalcon = new TalonFX(33); //controls top roller
+    public static final TalonFX m_IntakeBottomFalcon = new TalonFX(43); //controls bottom roller
 
-    public static final Solenoid S_IntakeRight = new Solenoid(0,PneumaticsModuleType.CTREPCM,0);
-    public static final Solenoid S_IntakeLeft = new Solenoid(1,PneumaticsModuleType.CTREPCM,0);
+    public static final Solenoid S_IntakeMain = new Solenoid(0,PneumaticsModuleType.CTREPCM,0);
+    public static final Solenoid S_IntakeCube = new Solenoid(1,PneumaticsModuleType.CTREPCM,0);
 
     //Arm
     public static final TalonSRX m_armTalon = new TalonSRX(50);

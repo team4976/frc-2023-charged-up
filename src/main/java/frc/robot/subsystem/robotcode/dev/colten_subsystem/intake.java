@@ -7,24 +7,31 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class intake extends SubsystemBase{
 
     public void intakeCube(){
-        S_IntakeLeft.set(false); // retracted
-        m_IntakeRightFalcon.set(ControlMode.PercentOutput, forwardI);
-        //top and middle motor spin clockwise
+        S_IntakeMain.set(true);
+        S_IntakeCube.set(false); // retracted
+        m_IntakeTopFalcon.set(ControlMode.PercentOutput, forwardI);
+        //top motor spin clockwise
+        m_IntakeBottomFalcon.set(ControlMode.PercentOutput, backwardI);
+        //botom motor spin counter clockwise
     }
 
     public void intakeCone(){
-        S_IntakeLeft.set(true);
-        m_IntakeLeftFalcon.set(ControlMode.PercentOutput, -1);
+        S_IntakeMain.set(true);
+        S_IntakeCube.set(true);
+        m_IntakeBottomFalcon.set(ControlMode.PercentOutput, forwardI);
         //botom motor spin counter clockwise
 
-        m_IntakeRightFalcon.set(ControlMode.PercentOutput, forwardI);
-        //top and middle motor spin clockwise
+        m_IntakeTopFalcon.set(ControlMode.PercentOutput, forwardI);
+        //top motor spin clockwise
     }
 
     public void retract(){
-        S_IntakeLeft.set(false);
-        S_IntakeRight.set(false);
-
+        S_IntakeMain.set(false);
+        S_IntakeCube.set(false);
+        m_IntakeTopFalcon.set(ControlMode.PercentOutput, stop);
+        //top motor stop
+        m_IntakeBottomFalcon.set(ControlMode.PercentOutput, stop);
+        //botom motor stop
     }
 
 }
