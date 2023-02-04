@@ -54,14 +54,6 @@ public class RobotContainer_ant {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-
-    new JoystickButton(_primaryController, XboxController.Button.kB.value)
-    .onTrue(getAutonomousCommand());
-    
-  
-    CommandXboxController _primaryController = new CommandXboxController(0);
-    _primaryController.a().onFalse(getAutonomousCommand());
-    _primaryController.b().onTrue(getAutonomousCommand());
    
   }
 
@@ -70,8 +62,5 @@ public class RobotContainer_ant {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    return null;
-  }
 
 }
