@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot;
+package frc.robot.robot_container;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -18,7 +18,7 @@ import frc.robot.subsystem.robotcode.dev.ant_subsystem.*;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
-public class RobotContainer {
+public class RobotContainer_ant {
 
   // The robot's subsystems and commands are defined here... 
   public final XboxController _primaryController = new XboxController(0);
@@ -30,7 +30,7 @@ public class RobotContainer {
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
+  public RobotContainer_ant() {
 
     // Configure the button bindings
     configureButtonBindings();
