@@ -2,21 +2,18 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot;
+package frc.robot.robot_container;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-<<<<<<< HEAD
-import frc.robot.command.robotcode.dev.anthony_command.*;
-import frc.robot.subsystem.robotcode.dev.ant_subsystem.*;
-=======
-import frc.robot.commands.roy_testbot.intakecone;
-import frc.robot.commands.roy_testbot.intakecube;
-import frc.robot.subsystems.Roy_testBot.intake;
->>>>>>> 903b3fb (jacob)
+import frc.robot.command.robotcode.dev.colten_command.setArcadeDrive_Colten;
+import frc.robot.command.robotcode.dev.colten_command.intakeCone_Colten;
+import frc.robot.command.robotcode.dev.colten_command.intakeCube_Colten;
+import frc.robot.subsystem.robotcode.dev.colten_subsystem.intake;
+import frc.robot.subsystem.robotcode.dev.colten_subsystem.robotDrive;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -24,34 +21,29 @@ import frc.robot.subsystems.Roy_testBot.intake;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
-public class RobotContainer {
-  intake Intake = new intake ();
+public class RobotContainer_Colten {
+  public static final robotDrive _robotDrive = new robotDrive();
 
-
-  // The robot's subsystems and commands are defined here... 
+  // The robot's subsystems and commands are defined here...
   public final XboxController _primaryController = new XboxController(0);
 
-  public static final Drive_train robotDrive = new Drive_train();
-
-
- 
-
-
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
+  public RobotContainer_Colten() {
+
+   final intake _intake = new intake();
 
     // Configure the button bindings
     configureButtonBindings();
 
-    robotDrive.setDefaultCommand(
-            new TeleopDrive_Anthony(
-                _primaryController::getLeftX,
-                _primaryController::getRightTriggerAxis,
-                _primaryController::getLeftTriggerAxis
+    _robotDrive.setDefaultCommand(
+      new setArcadeDrive_Colten(
+        _primaryController::getLeftX, 
+        _primaryController::getLeftTriggerAxis,
+        _primaryController::getRightTriggerAxis
+        )
+    );
 
-               
-            )
-        );
+
 
   }
 
@@ -62,20 +54,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-<<<<<<< HEAD
-
-    new JoystickButton(_primaryController, XboxController.Button.kB.value)
-    .onTrue(getAutonomousCommand());
-    
-  
-    CommandXboxController _primaryController = new CommandXboxController(0);
-    _primaryController.a().onFalse(getAutonomousCommand());
-    _primaryController.b().onTrue(getAutonomousCommand());
    
-=======
-   new CommandXboxController(0)
-   .b(new intakecone(Intake))
->>>>>>> 903b3fb (jacob)
+    CommandXboxController _primarycontroller = new CommandXboxController(0);
+    _primarycontroller.a().onTrue(new intakeCone_Colten(null));
+    _primarycontroller.b().onTrue(new intakeCube_Colten(null));
+    // help me
+
   }
 
   /**
@@ -84,7 +68,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-return new intakecube(Intake)
+
+    //return new setArcadeDrive_Colten(_robotDrive);
   }
 
 }
