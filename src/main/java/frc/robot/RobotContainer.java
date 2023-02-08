@@ -9,8 +9,13 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+<<<<<<< Updated upstream
 import frc.robot.command.robotcode.dev.anthony_command.*;
 import frc.robot.subsystem.robotcode.dev.ant_subsystem.*;
+=======
+import frc.robot.robotcode.commands.Christian_commands.setArcadeDrive;
+import frc.robot.robotcode.subsystems.Christian_subsystem.robotDrive;
+>>>>>>> Stashed changes
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -23,8 +28,12 @@ public class RobotContainer {
 
   // The robot's subsystems and commands are defined here... 
   public final XboxController _primaryController = new XboxController(0);
+<<<<<<< Updated upstream
 
   public static final Drive_train robotDrive = new Drive_train();
+=======
+  public static final robotDrive _robotDrive = new robotDrive();
+>>>>>>> Stashed changes
 
 
  
@@ -36,12 +45,20 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
+<<<<<<< Updated upstream
     robotDrive.setDefaultCommand(
             new TeleopDrive_Anthony(
                 _primaryController::getLeftX,
                 _primaryController::getRightTriggerAxis,
                 _primaryController::getLeftTriggerAxis
 
+=======
+    _robotDrive.setDefaultCommand(
+            new setArcadeDrive(
+                _primaryController::getLeftX,
+                _primaryController::getRightTriggerAxis,
+                _primaryController::getLeftTriggerAxis
+>>>>>>> Stashed changes
                
             )
         );

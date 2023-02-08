@@ -7,12 +7,22 @@ package frc.robot;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
+<<<<<<< Updated upstream
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 <<<<<<< HEAD
 =======
 import edu.wpi.first.wpilibj2.command.Command;
 >>>>>>> 903b3fb (jacob)
+=======
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+>>>>>>> Stashed changes
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -20,6 +30,10 @@ import edu.wpi.first.wpilibj2.command.Command;
  * project.
  */
 public class Robot extends TimedRobot {
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   private Command m_autonomousCommand;
   private RobotContainer m_RobotContainer;
   private static final String kDefaultAuto = "Default";
@@ -39,6 +53,13 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+<<<<<<< Updated upstream
+=======
+
+    
+    robotConstants._robotConstants.init();
+    robotConstants._robotConstants.m_DriveTalonLeft.DestroyObject();
+>>>>>>> Stashed changes
   }
 
   /**
@@ -63,17 +84,27 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+<<<<<<< Updated upstream
     m_autoSelected = m_chooser.getSelected();
 
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
 
     if (m_autonomousCommand != null;)
+=======
+   // m_autonomousCommand = m_chooser.getSelected();
+
+    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+    System.out.println("Auto selected: " + m_autonomousCommand);
+
+    if (m_autonomousCommand != null)
+>>>>>>> Stashed changes
     m_autonomousCommand.schedule();
   }
 
   /** This function is called periodically during autonomous. */
   @Override
+<<<<<<< Updated upstream
   public void autonomousPeriodic() {
     switch (m_autoSelected) {
       case kCustomAuto:
@@ -84,6 +115,13 @@ public class Robot extends TimedRobot {
         // Put default auto code here
         break;
     }
+=======
+  public void teleopPeriodic() {
+    // Drive with tank drive.
+    // That means that the Y axis of the left stick moves the left side
+    // of the robot forward and backward, and the Y axis of the right stick
+    // moves the right side of the robot forward and backward.
+>>>>>>> Stashed changes
   }
 
   /** This function is called once when teleop is enabled. */
