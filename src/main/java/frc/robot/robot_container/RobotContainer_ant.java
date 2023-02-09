@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.robotcode.dev.anthony_command.*;
-import frc.robot.robotcode.subsystems.ant_subsystem.*;
+import frc.robot.command.robotcode.dev.anthony_command.*;
+import frc.robot.subsystem.robotcode.dev.ant_subsystem.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
