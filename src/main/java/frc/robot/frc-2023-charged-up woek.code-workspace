@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "frc-2023-charged-up",
+			"path": "../../../../.."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"java.server.launchMode": "Standard",
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"bin/": true,
+			"**/.classpath": true,
+			"**/.project": true,
+			"**/.settings": true,
+			"**/.factorypath": true,
+			"**/*~": true
+		}
+	}
+}

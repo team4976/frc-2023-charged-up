@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.subsystem.robotcode.dev.ant_subsystem.*;
+import frc.robot.subsystem.robotcode.dev.troy_subsystem.RobotIntake_Tro;
+import frc.robot.subsystem.robotcode.dev.troy_subsystem.Scoring;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -20,22 +21,34 @@ import frc.robot.subsystem.robotcode.dev.ant_subsystem.*;
  * the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
-public class RobotContainer_ant {
+public class RobotContainer {
 
   // The robot's subsystems and commands are defined here...
   public final XboxController _primaryController = new XboxController(0);
 
-  public static final Drive_train robotDrive = new Drive_train();
+  public static final RobotIntake_Tro robot_intake = new RobotIntake_Tro();
+  public static final Scoring Scoring = new Scoring();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
-  public RobotContainer_ant() {
+  public RobotContainer() {
 
     // Configure the button bindings
     configureButtonBindings();
 
-   
+    /*
+     * robotDrive.setDefaultCommand(
+     * new TeleopDrive_Anthony(
+     * _primaryController::getLeftX,
+     * _primaryController::getRightTriggerAxis,
+     * _primaryController::getLeftTriggerAxis
+     * 
+     * 
+     * )
+     * );
+     */
+
   }
 
   /**
@@ -52,9 +65,18 @@ public class RobotContainer_ant {
         .onTrue(getAutonomousCommand());
 
     CommandXboxController _primaryController = new CommandXboxController(0);
-    _primaryController.a().onFalse(getAutonomousCommand());
-    _primaryController.b().onTrue(getAutonomousCommand());
+    // _primaryController.a().ontrue(new INTAKE_CUBE(robot_intake));
+    // _primaryController.b().onTrue(new INTAKE_CONE(robot_intake));
+    // _primaryController.x().onTrue(new retraction(robot_intake));
+    // _primaryController.y().onTrue(new TogglePlacement(robot_intake));
 
+    // new POVButton(_secondaryController, 270).Trigger.onTrue(new
+    // PresetLeft(scoring));
+    // new POVButton(_secondaryController, 90).Trigger.onTrue(new
+    // PresetRight(scoring));
+    // new POVButton(_secondaryController, 180).Trigger.onTrue(new
+    // PresetDown(scoring));
+    // new POVButton(_secondaryController, 0).Trigger.onTrue(new PresetUp(scoring));
   }
 
   /**
