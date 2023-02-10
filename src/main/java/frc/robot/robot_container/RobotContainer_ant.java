@@ -9,7 +9,12 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+<<<<<<< HEAD
 import frc.robot.subsystem.robotcode.dev.ant_subsystem.*;
+=======
+import frc.robot.command.robotcode.dev.anthony_command.*;
+import frc.robot.robotcode.subsystems.ant_subsystem.*;
+>>>>>>> a94f1af846d4597c05d38ebd5f3d970582a13521
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -47,6 +52,7 @@ public class RobotContainer_ant {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+<<<<<<< HEAD
 
     new JoystickButton(_primaryController, XboxController.Button.kB.value)
         .onTrue(getAutonomousCommand());
@@ -55,6 +61,9 @@ public class RobotContainer_ant {
     _primaryController.a().onFalse(getAutonomousCommand());
     _primaryController.b().onTrue(getAutonomousCommand());
 
+=======
+   
+>>>>>>> a94f1af846d4597c05d38ebd5f3d970582a13521
   }
 
   /**
@@ -62,8 +71,5 @@ public class RobotContainer_ant {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    return null;
-  }
 
 }
