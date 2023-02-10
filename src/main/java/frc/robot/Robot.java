@@ -7,12 +7,21 @@ package frc.robot;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-<<<<<<< HEAD
-=======
+
 import edu.wpi.first.wpilibj2.command.Command;
->>>>>>> 903b3fb (jacob)
+import frc.robot.constants.robotConstants;
+import frc.robot.robot_container.RobotContainer_Christian;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -20,15 +29,17 @@ import edu.wpi.first.wpilibj2.command.Command;
  * project.
  */
 public class Robot extends TimedRobot {
+
   private Command m_autonomousCommand;
-  private RobotContainer m_RobotContainer;
+  private RobotContainer_Christian m_RobotContainer;
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
 
-  public RobotContainer m_robotContainer;
+  public RobotContainer_Christian m_robotContainer;
+
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -39,6 +50,13 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+
+
+    
+    robotConstants.instance.init();
+    robotConstants.instance.m_DriveTalonLeft.DestroyObject();
+
+
   }
 
   /**
@@ -63,14 +81,26 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+
     m_autoSelected = m_chooser.getSelected();
 
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
 
-    if (m_autonomousCommand != null;)
+
+    if (m_autonomousCommand != null)
+
+    if (m_autonomousCommand != null)
+   // m_autonomousCommand = m_chooser.getSelected();
+
+    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+    System.out.println("Auto selected: " + m_autonomousCommand);
+
+    if (m_autonomousCommand != null)
+
     m_autonomousCommand.schedule();
   }
+
 
   /** This function is called periodically during autonomous. */
   @Override
@@ -82,8 +112,15 @@ public class Robot extends TimedRobot {
       case kDefaultAuto:
       default:
         // Put default auto code here
-        break;
+        break;}
     }
+
+  public void teleopPeriodic() {
+    // Drive with tank drive.
+    // That means that the Y axis of the left stick moves the left side
+    // of the robot forward and backward, and the Y axis of the right stick
+    // moves the right side of the robot forward and backward.
+
   }
 
   /** This function is called once when teleop is enabled. */
@@ -91,8 +128,6 @@ public class Robot extends TimedRobot {
   public void teleopInit() {}
 
   /** This function is called periodically during operator control. */
-  @Override8
-  public void teleopPeriodic() {}
 
   /** This function is called once when the robot is disabled. */
   @Override
