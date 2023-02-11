@@ -1,20 +1,20 @@
-package frc.robot.robotcode.commands.colten_command;
+package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.robotcode.subsystems.colten_subsystem.Scoring;
+import frc.robot.robotcode.subsystems.Scoring;
 
-public class rotateArmFwd extends CommandBase {
+public class releasePiece extends CommandBase {
     
     private Scoring Scoring;
 
-    public rotateArmFwd(Scoring score) {
+    public releasePiece(Scoring score) {
         this.Scoring = score;
         addRequirements(score);
     }
     
     @Override
     public void initialize() {
-        Scoring.rotateArmFwd();
+        Scoring.releasePiece();
         super.initialize();
     }
 

@@ -1,5 +1,5 @@
-package frc.robot.robotcode.subsystems.colten_subsystem;
-import static frc.robot.constant.robotConstants_Colten.*;
+package frc.robot.robotcode.subsystems;
+import static frc.robot.robotConstants.*;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
@@ -8,19 +8,19 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Scoring extends SubsystemBase{
 
     public void rotateArmFwd(){
-        m_armTalon.set(ControlMode.PercentOutput, forwardS);
+        m_ArmRotator.set(ControlMode.PercentOutput, forwardS);
     }
 
     public void rotateArmBwd(){
-        m_armTalon.set(ControlMode.PercentOutput, backwardS);
+        m_ArmRotator.set(ControlMode.PercentOutput, backwardS);
     }
 
     public void grabPiece(){
-        S_ArmPincer.set(true);
+        s_ArmPincer.set(true);
 
     }
 
     public void releasePiece(){
-        S_ArmPincer.set(false);
+        s_ArmPincer.set(false);
     }
 }

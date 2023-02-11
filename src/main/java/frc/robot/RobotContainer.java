@@ -8,8 +8,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.robotcode.subsystems.Christian_subsystem;
+import frc.robot.robotcode.commands.intakeCone_Colten;
+import frc.robot.robotcode.commands.intakeCube_Colten;
+import frc.robot.robotcode.commands.setArcadeDrive;
+import frc.robot.robotcode.subsystems.intake;
+import frc.robot.robotcode.subsystems.robotDrive;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -17,31 +21,28 @@ import frc.robot.robotcode.subsystems.Christian_subsystem;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
-public class RobotContainer_Christian {
-
-
-  // The robot's subsystems and commands are defined here... 
-  public final XboxController _primaryController = new XboxController(0);
+public class RobotContainer {
   public static final robotDrive _robotDrive = new robotDrive();
 
-
- 
-
+  // The robot's subsystems and commands are defined here...
+  //public final XboxController _primaryController = new XboxController(0);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer_Christian() {
+  public RobotContainer() {
+
+   final intake _intake = new intake();
 
     // Configure the button bindings
     configureButtonBindings();
-
     _robotDrive.setDefaultCommand(
-            new setArcadeDrive(
-                _primaryController::getLeftX,
-                _primaryController::getRightTriggerAxis,
-                _primaryController::getLeftTriggerAxis
-               
-            )
-        );
+      new setArcadeDrive(
+        robotConstants.instance._primaryController::getLeftX, 
+        robotConstants.instance._primaryController::getLeftTriggerAxis,
+        robotConstants.instance._primaryController::getRightTriggerAxis
+        )
+    );
+
+
 
   }
 
@@ -52,10 +53,12 @@ public class RobotContainer_Christian {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-
+   
+    // _primarycontroller.b().onTrue(new intakeCube_Colten(null));
+    robotConstants.instance.buttonBinding("a", new intakeCube_Colten(null));
+    robotConstants.instance.buttonBinding("b", new intakeCone_Colten(null));
     
-    
-  
+    // help me
 
   }
 
@@ -64,5 +67,4 @@ public class RobotContainer_Christian {
    *
    * @return the command to run in autonomous
    */
-
 }

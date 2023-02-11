@@ -1,20 +1,20 @@
-package frc.robot.robotcode.commands.colten_command;
+package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.robotcode.subsystems.colten_subsystem.Scoring;
+import frc.robot.robotcode.subsystems.Scoring;
 
-public class releasePiece extends CommandBase {
+public class grabPiece extends CommandBase {
     
     private Scoring Scoring;
 
-    public releasePiece(Scoring score) {
+    public grabPiece(Scoring score) {
         this.Scoring = score;
         addRequirements(score);
     }
     
     @Override
     public void initialize() {
-        Scoring.releasePiece();
+        Scoring.grabPiece();
         super.initialize();
     }
 

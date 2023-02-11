@@ -1,4 +1,4 @@
-package frc.robot.constant;
+package frc.robot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,10 +9,15 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.XboxController.Axis;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
-public final class robotConstants_Christian {
-  public static robotConstants_Christian instance = new robotConstants_Christian();
+public final class robotConstants {
+  public static robotConstants instance = new robotConstants();
+  public final CommandXboxController _primaryController = new CommandXboxController(0);
+  public final CommandXboxController _secondaryController = new CommandXboxController(1);
 
 
     // DriveTrain
@@ -45,11 +50,37 @@ public final class robotConstants_Christian {
 
     public static final TalonSRX m_ArmRotator = new TalonSRX(50);
 
+    //motor output
+    public static final double forwardI = 1;//intake
+    public static final double backwardI = 1;
+
+    public static final double forwardS = 1;//scoring
+    public static final double backwardS = 1;
+
+    public static final double forwardH = 1;//handoff
+    public static final double backwardH = 1;
+
+    public static final double stop = 0;
+
+
     public Map<String,Trigger> buttonsMap = new HashMap<String,Trigger> ();
+    public Map<String, Axis> axisMap = new HashMap<String, Axis> ();
     
 
     public void init () {
+      buttonsMap.put("a", _primaryController.a());
+
+
+
+      buttonsMap.put("O-a", _secondaryController.a()); //O prefix is for operator's controller
       
         
     }
+
+  public void buttonBinding (String button, Command output) {
+    buttonsMap.get(button).onTrue(output);
+  }
+
+
+
 }

@@ -1,13 +1,13 @@
-package frc.robot.robotcode.commands.Christian_commands;
+package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.constant.robotConstants_Christian;
-import frc.robot.robotcode.subsystems.Christian_subsystem.robotDrive;
+import frc.robot.robotConstants;
+import frc.robot.robotcode.subsystems.robotDrive;
 
 
 public class AutoDrivePos extends CommandBase {
     robotDrive _robotDrive;
-    robotConstants_Christian _robotConstants;
+    robotConstants _robotConstants;
     double position;
     int duration;
     long startTime;

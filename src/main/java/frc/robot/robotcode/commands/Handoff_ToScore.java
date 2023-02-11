@@ -1,8 +1,8 @@
-package frc.robot.robotcode.commands.colten_command;
+package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.robotcode.subsystems.colten_subsystem.Scoring;
-import frc.robot.robotcode.subsystems.colten_subsystem.hand_off;
+import frc.robot.robotcode.subsystems.Scoring;
+import frc.robot.robotcode.subsystems.hand_off;
 
 public class Handoff_ToScore extends CommandBase {
     
