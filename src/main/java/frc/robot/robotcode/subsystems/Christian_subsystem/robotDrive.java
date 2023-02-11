@@ -1,9 +1,10 @@
 package frc.robot.robotcode.subsystems.Christian_subsystem;
 
+import static frc.robot.constant.robotConstants_Christian.*;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import static frc.robot.robotConstants.*;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -11,9 +12,9 @@ public class robotDrive extends SubsystemBase {
 
 
     public robotDrive(){
-        m_DriveVictorLeftForward.follow(m_DriveTalonLeft);
+        m_DriveVictorLeftFwd.follow(m_DriveTalonLeft);
         m_DriveVictorLeftBack.follow(m_DriveTalonLeft);
-        m_DriveVictorRightForward.follow(m_DriveTalonRight);
+        m_DriveVictorRightFwd.follow(m_DriveTalonRight);
         m_DriveVictorRightBack.follow(m_DriveTalonRight);
         m_DriveTalonRight.setInverted(true);
     }
