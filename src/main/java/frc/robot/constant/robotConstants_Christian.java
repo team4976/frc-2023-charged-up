@@ -1,11 +1,15 @@
 package frc.robot.constant;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public final class robotConstants_Christian {
   public static robotConstants_Christian instance = new robotConstants_Christian();
@@ -41,7 +45,11 @@ public final class robotConstants_Christian {
 
     public static final TalonSRX m_ArmRotator = new TalonSRX(50);
 
+    public Map<String,Trigger> buttonsMap = new HashMap<String,Trigger> ();
+    
+
     public void init () {
+      
         
     }
 }
