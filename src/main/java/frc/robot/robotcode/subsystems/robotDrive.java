@@ -3,8 +3,6 @@ package frc.robot.robotcode.subsystems;
 import static frc.robot.robotConstants.*;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -17,6 +15,13 @@ public class robotDrive extends SubsystemBase {
         m_DriveVictorRightFwd.follow(m_DriveTalonRight);
         m_DriveVictorRightBack.follow(m_DriveTalonRight);
         m_DriveTalonRight.setInverted(true);
+    }
+
+    public static void setHighGear () {
+        s_gearbox.set(true);
+    }
+    public static void endHighGear () {
+        s_gearbox.set(false);
     }
 
     public void setArcadeDrive(double foward, double rotation){

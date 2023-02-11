@@ -6,8 +6,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.robotcode.commands.intakeCone_Colten;
 import frc.robot.robotcode.commands.intakeCube_Colten;
 import frc.robot.robotcode.commands.setArcadeDrive;
@@ -23,6 +21,7 @@ import frc.robot.robotcode.subsystems.robotDrive;
  */
 public class RobotContainer {
   public static final robotDrive _robotDrive = new robotDrive();
+  public static final intake _intake = new intake();
 
   // The robot's subsystems and commands are defined here...
   //public final XboxController _primaryController = new XboxController(0);
@@ -30,7 +29,6 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
-   final intake _intake = new intake();
 
     // Configure the button bindings
     configureButtonBindings();
@@ -54,11 +52,13 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
    
-    // _primarycontroller.b().onTrue(new intakeCube_Colten(null));
-    robotConstants.instance.buttonBinding("a", new intakeCube_Colten(null));
-    robotConstants.instance.buttonBinding("b", new intakeCone_Colten(null));
+
+    //Driver Controller
+    robotConstants.instance.buttonBinding("a", new intakeCube_Colten(_intake));
+    robotConstants.instance.buttonBinding("b", new intakeCone_Colten(_intake));
     
-    // help me
+
+    
 
   }
 

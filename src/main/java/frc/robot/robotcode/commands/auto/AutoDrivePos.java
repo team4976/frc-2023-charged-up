@@ -1,4 +1,4 @@
-package frc.robot.robotcode.commands;
+package frc.robot.robotcode.commands.auto;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
@@ -35,13 +35,13 @@ public class AutoDrivePos extends CommandBase {
     @Override
     public boolean isFinished() {
 
-        double leftError = Math.abs(position - _robotConstants.m_DriveTalonLeft.getSelectedSensorPosition());
-        double rightError = Math.abs(position - _robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
+        double leftError = Math.abs(position - robotConstants.m_DriveTalonLeft.getSelectedSensorPosition());
+        double rightError = Math.abs(position - robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
 
         boolean inDeadband = Math.max(leftError, rightError) < 200;
 
-        boolean hasStopped = Math.abs(_robotConstants.m_DriveTalonLeft.getSelectedSensorVelocity()) < 1 
-        && Math.abs(_robotConstants.m_DriveTalonRight.getSelectedSensorVelocity()) < 1; 
+        boolean hasStopped = Math.abs(robotConstants.m_DriveTalonLeft.getSelectedSensorVelocity()) < 1 
+        && Math.abs(robotConstants.m_DriveTalonRight.getSelectedSensorVelocity()) < 1; 
 
 
 
