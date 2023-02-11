@@ -62,6 +62,10 @@ public final class robotConstants {
 
     public static final double stop = 0;
 
+    //public booleans
+    public static boolean peiceSelection = true;//differentiation between coneIn and cubeIn
+
+
 
     public Map<String,Trigger> buttonsMap = new HashMap<String,Trigger> ();
     public Map<String, Axis> axisMap = new HashMap<String, Axis> ();

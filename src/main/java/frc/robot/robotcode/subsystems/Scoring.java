@@ -15,6 +15,14 @@ public class Scoring extends SubsystemBase{
         m_ArmRotator.set(ControlMode.PercentOutput, backwardS);
     }
 
+    public void ExtendFourBar(){
+        s_FourBarArm.set(true);
+    }
+
+    public void RetractFourBar(){
+        s_FourBarArm.set(false);
+    }
+
     public void grabPiece(){
         s_ArmPincer.set(true);
 

@@ -26,12 +26,17 @@ public class intake extends SubsystemBase{
     }
 
     public void retract(){
-        s_MainIntake.set(false);
-        s_CubeIntake.set(false);
         m_IntakeFalconTopRoller.set(ControlMode.PercentOutput, stop);
         //top motor stop
         m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, stop);
         //botom motor stop
+        s_MainIntake.set(false);
+        s_CubeIntake.set(false);
+    }
+
+    public void reverseIntake(){
+        m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, forwardI);
+        m_IntakeFalconTopRoller.set(ControlMode.PercentOutput, backwardI);
     }
 
 }
