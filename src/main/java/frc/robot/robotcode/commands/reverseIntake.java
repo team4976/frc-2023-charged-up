@@ -1,17 +1,20 @@
 package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.robotcode.subsystems.hand_off;
+import frc.robot.robotcode.subsystems.intake;
 
-public class Handoff_ToScore extends CommandBase {
+public class reverseIntake extends CommandBase {
     
-    public Handoff_ToScore(hand_off handoff) {
-        addRequirements(handoff);
+    private intake intake;
+
+    public reverseIntake(intake intake) {
+        this.intake = intake;
+        addRequirements(intake);
     }
     
     @Override
     public void initialize() {
-        Handoff.Handoff_ToScore();
+        intake.reverseIntake();
         super.initialize();
     }
 

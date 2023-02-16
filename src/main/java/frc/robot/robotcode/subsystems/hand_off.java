@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class hand_off extends SubsystemBase{
     
 
-    public static void Handoff_ToScore(){
+    public void Handoff_ToScore(){
         m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, forwardH);
         //botom motor spin counter clockwise
 
