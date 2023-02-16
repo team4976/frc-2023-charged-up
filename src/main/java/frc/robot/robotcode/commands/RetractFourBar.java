@@ -1,13 +1,13 @@
 package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.robotcode.subsystems.Scoring;
+import frc.robot.robotcode.subsystems.scoring;
 
-public class RetractFourBar extends CommandBase{
+public class retractFourBar extends CommandBase{
     
-    private Scoring Scoring;
+    private scoring Scoring;
 
-    public RetractFourBar(Scoring score) {
+    public retractFourBar(scoring score) {
         this.Scoring = score;
         addRequirements(score);
     }

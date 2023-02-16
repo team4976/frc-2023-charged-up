@@ -1,13 +1,13 @@
 package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.robotcode.subsystems.Scoring;
+import frc.robot.robotcode.subsystems.scoring;
 
 public class grabPiece extends CommandBase {
     
-    private Scoring Scoring;
+    private scoring Scoring;
 
-    public grabPiece(Scoring score) {
+    public grabPiece(scoring score) {
         this.Scoring = score;
         addRequirements(score);
     }

@@ -9,7 +9,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 /**
@@ -37,9 +37,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     robotConstants.instance.init();
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
+    m_robotContainer = new RobotContainer();
+    // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
+    // m_chooser.addOption("My Auto", kCustomAuto);
+    // SmartDashboard.putData("Auto choices", m_chooser);
   }
 
   /**
@@ -66,10 +67,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
+    // m_autoSelected = m_chooser.getSelected();
 
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
+    // // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+    // System.out.println("Auto selected: " + m_autoSelected);
+    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     if (m_autonomousCommand != null)
     m_autonomousCommand.schedule();
@@ -78,15 +80,15 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
-    }
+    // switch (m_autoSelected) {
+    //   case kCustomAuto:
+    //     // Put custom auto code here
+    //     break;
+    //   case kDefaultAuto:
+    //   default:
+    //     // Put default auto code here
+    //     break;
+    // }
   }
 
   /** This function is called once when teleop is enabled. */

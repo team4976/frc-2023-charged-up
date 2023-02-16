@@ -5,14 +5,14 @@ import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.robotDrive;
 
 
-public class AutoDrivePos extends CommandBase {
+public class autoDrivePos extends CommandBase {
     robotDrive _robotDrive;
     robotConstants _robotConstants;
     double position;
     int duration;
     long startTime;
     int rotation;
-    public AutoDrivePos(robotDrive _robotDrive, double position){
+    public autoDrivePos(robotDrive _robotDrive, double position){
         this._robotDrive=_robotDrive;
         addRequirements(_robotDrive);
         this.position=position;

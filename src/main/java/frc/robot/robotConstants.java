@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public final class robotConstants {
   public static robotConstants instance = new robotConstants();
-  public final CommandXboxController _primaryController = new CommandXboxController(0);
-  public final CommandXboxController _secondaryController = new CommandXboxController(1);
+  public CommandXboxController _primaryController;
+  public CommandXboxController _secondaryController;
 
 
     // DriveTrain
@@ -72,8 +72,13 @@ public final class robotConstants {
     
 
     public void init () {
-      buttonsMap.put("a", _primaryController.a());
-      buttonsMap.put("b", _primaryController.b());
+      _primaryController = new CommandXboxController(0);
+      _secondaryController = new CommandXboxController(1);
+
+      buttonsMap.put("Intake", _primaryController.a());
+      buttonsMap.put("Retract Intake", _primaryController.b());
+      buttonsMap.put("Reverse Intake", _primaryController.y());
+      buttonsMap.put("Score", _primaryController.x());
 
 
 

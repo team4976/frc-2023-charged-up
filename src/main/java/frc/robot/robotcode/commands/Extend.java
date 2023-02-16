@@ -6,25 +6,25 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotcode.subsystems.intake;
 import frc.robot.robotConstants;
 
-public class Extend extends CommandBase{
+public class extend extends CommandBase{
     
-    private intake intake;
+    private intake _intake;
 
-    public Extend(intake intake) {
-        this.intake = intake;
-        addRequirements(intake);
+    public extend(intake intake) {
+        _intake = intake;
+        addRequirements(_intake);
     }
     
     @Override
     public void initialize() {
 
         if(robotConstants.peiceSelection == false){
-            intake.intakeCube();
+            _intake.intakeCube();
             super.initialize();
         }
 
         else{
-            intake.intakeCone();
+            _intake.intakeCone();
             super.initialize();
         }
         
