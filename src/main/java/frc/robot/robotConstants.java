@@ -26,6 +26,7 @@ public final class robotConstants {
 
     public static final VictorSPX m_DriveVictorRightFwd = new VictorSPX(42);
     public static final VictorSPX m_DriveVictorLeftFwd = new VictorSPX(31);
+
     public static final VictorSPX m_DriveVictorRightBack = new VictorSPX(41);
     public static final VictorSPX m_DriveVictorLeftBack = new VictorSPX(32);
 

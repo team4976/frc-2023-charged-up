@@ -15,6 +15,9 @@ public class robotDrive extends SubsystemBase {
         m_DriveVictorRightFwd.follow(m_DriveTalonRight);
         m_DriveVictorRightBack.follow(m_DriveTalonRight);
         m_DriveTalonRight.setInverted(true);
+        m_DriveVictorRightBack.setInverted(true);
+        m_DriveVictorRightFwd.setInverted(true);
+
     }
 
     public static void setHighGear () {
