@@ -11,7 +11,7 @@ public class intake extends SubsystemBase{
         s_CubeIntake.set(false); // retracted
         m_IntakeFalconTopRoller.set(ControlMode.PercentOutput, forwardI);
         //top motor spin clockwise
-        m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, backwardI);
+        m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, forwardI);
         //botom motor spin counter clockwise
     }
 
@@ -35,7 +35,7 @@ public class intake extends SubsystemBase{
     }
 
     public void reverseIntake(){
-        m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, forwardI);
+        m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, backwardI);
         m_IntakeFalconTopRoller.set(ControlMode.PercentOutput, backwardI);
     }
 

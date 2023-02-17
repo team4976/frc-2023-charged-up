@@ -13,13 +13,18 @@ public class intakeCube_Colten extends CommandBase {
     }
     
     @Override
-    public void initialize() {
+    public void execute() {
         intake.intakeCube();
         super.initialize();
     }
 
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
+    }
+
+    @Override
+    public void end (boolean interrupted) {
+        intake.retract();
     }
 }

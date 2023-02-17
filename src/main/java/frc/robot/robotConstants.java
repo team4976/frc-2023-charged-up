@@ -29,37 +29,37 @@ public final class robotConstants {
     public static final VictorSPX m_DriveVictorRightBack = new VictorSPX(41);
     public static final VictorSPX m_DriveVictorLeftBack = new VictorSPX(32);
 
-    public static final Solenoid s_gearbox = new Solenoid(0, PneumaticsModuleType.CTREPCM, 2);
+    public static final Solenoid s_gearbox = new Solenoid(3, PneumaticsModuleType.CTREPCM, 2);
 
     // MainIntake
 
     public static final TalonFX m_IntakeFalcoBottomRoller = new TalonFX(43);
 
-    public static final Solenoid s_MainIntake = new Solenoid(0, PneumaticsModuleType.CTREPCM, 3);
+    public static final Solenoid s_MainIntake = new Solenoid(3, PneumaticsModuleType.CTREPCM, 0);
 
     // CubeIntake
 
     public static final TalonFX m_IntakeFalconTopRoller = new TalonFX(33);
 
-    public static final Solenoid s_CubeIntake = new Solenoid(1, PneumaticsModuleType.CTREPCM, 3);
+    public static final Solenoid s_CubeIntake = new Solenoid(3, PneumaticsModuleType.CTREPCM, 1);
 
     // Arm
 
-    public static final Solenoid s_FourBarArm = new Solenoid(4, PneumaticsModuleType.CTREPCM, 3);
+    public static final Solenoid s_FourBarArm = new Solenoid(3, PneumaticsModuleType.CTREPCM, 4);
 
     public static final Solenoid s_ArmPincer = new Solenoid(3, PneumaticsModuleType.CTREPCM, 3);
 
     public static final TalonSRX m_ArmRotator = new TalonSRX(50);
 
     //motor output
-    public static final double forwardI = 1;//intake
-    public static final double backwardI = 1;
+    public static final double forwardI = -0.3;//intake
+    public static final double backwardI = 0.3;
 
-    public static final double forwardS = 1;//scoring
-    public static final double backwardS = 1;
+    public static final double forwardS = 0.1;//scoring
+    public static final double backwardS = -0.1;
 
-    public static final double forwardH = 1;//handoff
-    public static final double backwardH = 1;
+    public static final double forwardH = 0.3;//handoff
+    public static final double backwardH = -0.3; 
 
     public static final double stop = 0;
 

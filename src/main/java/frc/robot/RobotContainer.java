@@ -7,9 +7,16 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.robotcode.commands.coneIn;
+import frc.robot.robotcode.commands.cubeIn;
 import frc.robot.robotcode.commands.extend;
+import frc.robot.robotcode.commands.extendFourBar;
 import frc.robot.robotcode.commands.retract;
+import frc.robot.robotcode.commands.retractFourBar;
 import frc.robot.robotcode.commands.reverseIntake;
+import frc.robot.robotcode.commands.rotateArmBwd;
+import frc.robot.robotcode.commands.rotateArmFwd;
 import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.commands.setArcadeDrive;
 import frc.robot.robotcode.commands.auto.testAuto;
@@ -66,28 +73,32 @@ public class RobotContainer {
   private void configureButtonBindings() {
    
     // _primarycontroller.b().onTrue(new intakeCube_Colten(null));
-    robotConstants.instance.buttonBinding("Intake", new extend(_intake));
-    robotConstants.instance.buttonBinding("Retract Intake", new retract(_intake));
-    robotConstants.instance.buttonBinding("Reverse Intake", new reverseIntake(_intake));
-    robotConstants.instance.buttonBinding("Score", new scorePiece(_score));
+    // robotConstants.instance.buttonBinding("Intake", new extend(_intake));
+    // robotConstants.instance.buttonBinding("Retract Intake", new retract(_intake));
+    // robotConstants.instance.buttonBinding("Reverse Intake", new reverseIntake(_intake));
+    // robotConstants.instance.buttonBinding("Score", new scorePiece(_score));
     
     
 
     // ONLY FOR TESTING
     // ONLY FOR TESTING
-    // CommandXboxController _primarycontroller = new CommandXboxController(0);
-    // CommandXboxController _secondarycontroller = new CommandXboxController(1);
+    CommandXboxController _primarycontroller = new CommandXboxController(0);
+    CommandXboxController _secondarycontroller = new CommandXboxController(1);
 
-    // _primarycontroller.y().onTrue(new reverseIntake(_intake));
-    // _primarycontroller.b().onTrue(new retract(_intake));
-    // _primarycontroller.a().onTrue(new Extend(_intake));
+    _primarycontroller.y().whileTrue(new reverseIntake(_intake));
+    //_primarycontroller.b().onTrue(new retract(_intake));
+    _primarycontroller.a().whileTrue(new extend(_intake));
     // _primarycontroller.x().onTrue(new Handoff_ToScore(_handoff));
-    // _primarycontroller.pov(0).onTrue(new rotateArmFwd(_score));
-    // _primarycontroller.pov(180).onTrue(new rotateArmBwd(_score));
+    _primarycontroller.pov(0).whileTrue(new rotateArmFwd(_score));
+    _primarycontroller.pov(180).whileTrue(new rotateArmBwd(_score));
     
+     _primarycontroller.b().whileTrue(new cubeIn(_intake));
+     _primarycontroller.x().whileTrue(new coneIn(_intake));
+     _primarycontroller.pov(270).whileTrue(new retract(_intake));
+
     
-    // _secondarycontroller.leftTrigger().onTrue(new ExtendFourBar(_score));
-    // _secondarycontroller.rightTrigger().onTrue(new RetractFourBar(_score));
+    _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
+    _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
     // _secondarycontroller.b().onTrue(new cubeIn(_intake));
     // _secondarycontroller.a().onTrue(new coneIn(_intake));
     // ONLY FOR TESTING

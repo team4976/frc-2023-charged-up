@@ -4,6 +4,7 @@ import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotcode.subsystems.robotDrive;
+import static frc.robot.RobotContainer._robotDrive;
 
 public class setArcadeDrive extends CommandBase {
 
@@ -11,7 +12,7 @@ public class setArcadeDrive extends CommandBase {
     private final DoubleSupplier _reverse;
     private final DoubleSupplier _rotation;
 
-    private final robotDrive _robotDrive = new robotDrive();
+    //private final robotDrive _robotDrive = new robotDrive();
 
     public setArcadeDrive(
         DoubleSupplier rotation,
@@ -21,7 +22,7 @@ public class setArcadeDrive extends CommandBase {
         _rotation = rotation;
         _reverse = reverse;
         _forward = forward;
-
+        
 
         addRequirements(_robotDrive);
     }

@@ -12,14 +12,24 @@ public class rotateArmFwd extends CommandBase {
         addRequirements(score);
     }
     
-    @Override
+  /*   @Override
     public void initialize() {
         Scoring.rotateArmFwd();
         super.initialize();
-    }
+    } */
 
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
     }
+    @Override
+    public void execute(){
+        Scoring.rotateArmFwd();
+    }
+     
+   @Override
+   public void end(boolean interrupt){
+   Scoring.stopRotating();
+   } 
+   
 }

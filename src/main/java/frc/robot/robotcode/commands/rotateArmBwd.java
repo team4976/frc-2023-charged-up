@@ -11,15 +11,23 @@ public class rotateArmBwd extends CommandBase {
         _scoring = score;
         addRequirements(_scoring);
     }
-    
-    @Override
+  /*   @Override
     public void initialize() {
-        _scoring.rotateArmBwd();
+        Scoring.rotateArmFwd();
         super.initialize();
-    }
+    } */
 
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
     }
+    @Override
+    public void execute(){
+        _scoring.rotateArmBwd();
+    }
+     
+   @Override
+   public void end(boolean interrupt){
+   _scoring.stopRotating();
+   } 
 }

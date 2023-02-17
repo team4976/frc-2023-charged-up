@@ -14,6 +14,9 @@ public class scoring extends SubsystemBase{
     public void rotateArmBwd(){
         m_ArmRotator.set(ControlMode.PercentOutput, backwardS);
     }
+    public void stopRotating () {
+        m_ArmRotator.set(ControlMode.PercentOutput, 0);
+    }
 
     public void ExtendFourBar(){
         s_FourBarArm.set(true);
