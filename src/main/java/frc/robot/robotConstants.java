@@ -76,6 +76,7 @@ public final class robotConstants {
       _primaryController = new CommandXboxController(0);
       _secondaryController = new CommandXboxController(1);
 
+      /*
       buttonsMap.put("Intake", _primaryController.a());
       buttonsMap.put("Retract Intake", _primaryController.b());
       buttonsMap.put("Reverse Intake", _primaryController.y());
@@ -84,7 +85,7 @@ public final class robotConstants {
 
 
       buttonsMap.put("O-a", _secondaryController.a()); //O prefix is for operator's controller
-      
+      */
         
     }
 

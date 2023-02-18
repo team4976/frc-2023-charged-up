@@ -20,10 +20,10 @@ public class robotDrive extends SubsystemBase {
 
     }
 
-    public static void setHighGear () {
+    public void setHighGear () {
         s_gearbox.set(true);
     }
-    public static void endHighGear () {
+    public void endHighGear () {
         s_gearbox.set(false);
     }
 
@@ -53,5 +53,4 @@ public class robotDrive extends SubsystemBase {
         m_DriveTalonLeft.configMotionAcceleration(2000);
         m_DriveTalonLeft.set(ControlMode.MotionMagic, rotation);
     }
-    
 }

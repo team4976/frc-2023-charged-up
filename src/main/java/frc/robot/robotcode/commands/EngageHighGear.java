@@ -5,13 +5,25 @@ import frc.robot.robotcode.subsystems.robotDrive;
 
 
 public class engageHighGear extends CommandBase {
-    
+
+    private robotDrive RobotDrive;
+
+    public engageHighGear(robotDrive robotDrive){
+        this.RobotDrive = robotDrive;
+        addRequirements(robotDrive);
+    }
+
+    @Override
+    public boolean isFinished(){
+        return false;
+    }
+
     public void initialize () {
-        robotDrive.setHighGear();
+        RobotDrive.setHighGear();
     }
 
     public void end (boolean interupted){
-        robotDrive.endHighGear();
+        RobotDrive.endHighGear();
     }
     
 }

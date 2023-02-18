@@ -10,8 +10,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.robotcode.commands.coneIn;
 import frc.robot.robotcode.commands.cubeIn;
+import frc.robot.robotcode.commands.engageHighGear;
 import frc.robot.robotcode.commands.extend;
 import frc.robot.robotcode.commands.extendFourBar;
+import frc.robot.robotcode.commands.grabPiece;
+import frc.robot.robotcode.commands.releasePiece;
 import frc.robot.robotcode.commands.retract;
 import frc.robot.robotcode.commands.retractFourBar;
 import frc.robot.robotcode.commands.reverseIntake;
@@ -91,18 +94,21 @@ public class RobotContainer {
     // _primarycontroller.x().onTrue(new Handoff_ToScore(_handoff));
     _primarycontroller.pov(0).whileTrue(new rotateArmFwd(_score));
     _primarycontroller.pov(180).whileTrue(new rotateArmBwd(_score));
+    _primarycontroller.rightBumper().whileTrue(new engageHighGear(_robotDrive));
     
+    //TESTING COMMANDS NOT TO BE USED FOR COMP
      _primarycontroller.b().whileTrue(new cubeIn(_intake));
      _primarycontroller.x().whileTrue(new coneIn(_intake));
      _primarycontroller.pov(270).whileTrue(new retract(_intake));
 
+    _secondarycontroller.b().whileTrue(new grabPiece(_score));
+    _secondarycontroller.a().whileTrue(new releasePiece(_score));
+    //TESTING COMMANDS NOT TO BE USED FOR COMP
     
     _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
     _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
     // _secondarycontroller.b().onTrue(new cubeIn(_intake));
     // _secondarycontroller.a().onTrue(new coneIn(_intake));
-    // ONLY FOR TESTING
-    // ONLY FOR TESTING
 
   }
 
