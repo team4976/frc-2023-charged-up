@@ -89,26 +89,27 @@ public class RobotContainer {
     CommandXboxController _secondarycontroller = new CommandXboxController(1);
 
     _primarycontroller.y().whileTrue(new reverseIntake(_intake));
-    //_primarycontroller.b().onTrue(new retract(_intake));
+    _primarycontroller.b().whileTrue(new retract(_intake));
     _primarycontroller.a().whileTrue(new extend(_intake));
     // _primarycontroller.x().onTrue(new Handoff_ToScore(_handoff));
-    _primarycontroller.pov(0).whileTrue(new rotateArmFwd(_score));
-    _primarycontroller.pov(180).whileTrue(new rotateArmBwd(_score));
     _primarycontroller.rightBumper().whileTrue(new engageHighGear(_robotDrive));
     
     //TESTING COMMANDS NOT TO BE USED FOR COMP
-     _primarycontroller.b().whileTrue(new cubeIn(_intake));
-     _primarycontroller.x().whileTrue(new coneIn(_intake));
-     _primarycontroller.pov(270).whileTrue(new retract(_intake));
-
-    _secondarycontroller.b().whileTrue(new grabPiece(_score));
-    _secondarycontroller.a().whileTrue(new releasePiece(_score));
-    //TESTING COMMANDS NOT TO BE USED FOR COMP
     
+    //  _primarycontroller.b().whileTrue(new cubeIn(_intake));
+    //  _primarycontroller.x().whileTrue(new coneIn(_intake));
+    //  _primarycontroller.pov(270).whileTrue(new retract(_intake));
+
+    _secondarycontroller.x().whileTrue(new grabPiece(_score));
+    _secondarycontroller.y().whileTrue(new releasePiece(_score));
+    //TESTING COMMANDS NOT TO BE USED FOR COMP
+    _secondarycontroller.pov(180).whileTrue(new rotateArmFwd(_score));
+    _secondarycontroller.pov(0).whileTrue(new rotateArmBwd(_score));
     _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
     _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
-    // _secondarycontroller.b().onTrue(new cubeIn(_intake));
-    // _secondarycontroller.a().onTrue(new coneIn(_intake));
+    _secondarycontroller.b().whileTrue(new cubeIn(_intake));
+    _secondarycontroller.a().whileTrue(new coneIn(_intake));
+  
 
   }
 

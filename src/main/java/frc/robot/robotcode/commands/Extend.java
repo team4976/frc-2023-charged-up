@@ -18,7 +18,7 @@ public class extend extends CommandBase{
     @Override
     public void execute() {
 
-        if(robotConstants.peiceSelection == false){
+        if(robotConstants.peiceSelection == true){
             _intake.intakeCube();
             super.initialize();
         }

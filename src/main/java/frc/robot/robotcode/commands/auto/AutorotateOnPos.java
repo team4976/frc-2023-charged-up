@@ -4,12 +4,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.robotDrive;
 
-public class AutorotateOnPos extends CommandBase {
+public class autoRotateOnPos extends CommandBase {
 
     robotDrive _robotDrive;
     double rotation;
 
-    public AutorotateOnPos (robotDrive _robotDrive, double rotation) {
+    public autoRotateOnPos (robotDrive _robotDrive, double rotation) {
         this._robotDrive=_robotDrive;
         this.rotation=rotation;
         addRequirements(_robotDrive);

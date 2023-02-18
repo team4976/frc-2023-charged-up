@@ -8,7 +8,7 @@ public class testAuto extends SequentialCommandGroup {
     public testAuto (robotDrive _robotDrive)  {
         addCommands(
             new autoDrivePos(_robotDrive, 0),
-            new AutorotateOnPos(_robotDrive, 0),
+            new autoRotateOnPos(_robotDrive, 0),
             new delay(3),
             new autoDrivePos(_robotDrive, 0)
         );
