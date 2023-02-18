@@ -76,7 +76,8 @@ NetworkTableEntry tx = table.getEntry("tx");
 
         }
 
-         public void aim(){
+
+         public void aim(robotDrive _robotDrive){
             table.getEntry("pipeline").setValue(3);
             if(isVaildTagret()){
                 
@@ -86,6 +87,7 @@ NetworkTableEntry tx = table.getEntry("tx");
                     double horizontalAdjust = controller2.calculate(x,0);
          
                     _robotDrive.setArcadeDrive(0, -horizontalAdjust);
+                    System.out.println("Cube");
                 }
                 else if(robotConstants.heightSelection){
                     table.getEntry("pipeline").setValue(0);
@@ -93,6 +95,7 @@ NetworkTableEntry tx = table.getEntry("tx");
                     double horizontalAdjust = controller2.calculate(x,0);
          
                     _robotDrive.setArcadeDrive(0, -horizontalAdjust);
+                    System.out.println("High cone");
                 }
                 else if(robotConstants.heightSelection == false){
                     table.getEntry("pipeline").setValue(1);
@@ -100,12 +103,13 @@ NetworkTableEntry tx = table.getEntry("tx");
                     double horizontalAdjust = controller2.calculate(x,0);
          
                     _robotDrive.setArcadeDrive(0, -horizontalAdjust);
+                    System.out.println("Low cone");
                 }
                 
                 
              }
              else{
-                 System.out.println("ahhhhhhhhhhh");
+                 System.out.println("Not target");
              }
     }
 }

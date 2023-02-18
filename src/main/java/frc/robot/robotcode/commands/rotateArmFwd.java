@@ -2,6 +2,7 @@ package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotcode.subsystems.scoring;
+import frc.robot.robotConstants;
 
 public class rotateArmFwd extends CommandBase {
     
@@ -25,6 +26,7 @@ public class rotateArmFwd extends CommandBase {
     @Override
     public void execute(){
         Scoring.rotateArmFwd();
+        System.out.println(robotConstants.m_ArmRotator.getSelectedSensorPosition());
     }
      
    @Override

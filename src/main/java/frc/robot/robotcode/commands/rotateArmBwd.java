@@ -1,6 +1,7 @@
 package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.scoring;
 
 public class rotateArmBwd extends CommandBase {
@@ -21,9 +22,11 @@ public class rotateArmBwd extends CommandBase {
     public boolean isFinished() {
         return false;
     }
+    
     @Override
     public void execute(){
         _scoring.rotateArmBwd();
+        System.out.println(robotConstants.m_ArmRotator.getSelectedSensorPosition());
     }
      
    @Override
