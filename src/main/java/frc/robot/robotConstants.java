@@ -56,8 +56,8 @@ public final class robotConstants {
     public static final double forwardI = -0.3;//intake
     public static final double backwardI = 0.3;
 
-    public static final double forwardS = 0.25;//scoring
-    public static final double backwardS = -0.25;
+    public static final double forwardS = 0.1;//scoring
+    public static final double backwardS = -0.1;
 
     public static final double forwardH = 0.3;//handoff
     public static final double backwardH = -0.3; 
