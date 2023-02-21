@@ -14,14 +14,14 @@ public class intakeCone extends CommandBase {
     }
     
     @Override
-    public void execute() {
+    public void initialize() {
         intake.intakeCone(robotConstants.conePosition);
         super.initialize();
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 
     @Override

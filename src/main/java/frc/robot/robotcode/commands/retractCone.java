@@ -14,14 +14,14 @@ public class retractCone extends CommandBase {
     }
     
     @Override
-    public void execute() {
+    public void initialize() {
         intake.retractCone(robotConstants.coneRetractedPosition);
         super.initialize();
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 
     @Override

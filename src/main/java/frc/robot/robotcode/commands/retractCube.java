@@ -14,14 +14,14 @@ public class retractCube extends CommandBase {
     }
     
     @Override
-    public void execute() {
+    public void initialize() {
         intake.retractCube(robotConstants.cubeRetractedPosition);
         super.initialize();
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 
     @Override

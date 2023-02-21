@@ -14,14 +14,14 @@ public class intakeCube extends CommandBase {
     }
     
     @Override
-    public void execute() {
+    public void initialize() {
         intake.intakeCube(robotConstants.cubePosition);
         super.initialize();
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 
     @Override
