@@ -36,13 +36,12 @@ public final class robotConstants {
 
     public static final TalonFX m_IntakeFalcoBottomRoller = new TalonFX(43);
 
-    public static final Solenoid s_MainIntake = new Solenoid(3, PneumaticsModuleType.CTREPCM, 0);
+    public static final TalonFX m_IntakeTalonMain = new TalonFX(44);
 
     // CubeIntake
 
     public static final TalonFX m_IntakeFalconTopRoller = new TalonFX(33);
 
-    public static final Solenoid s_CubeIntake = new Solenoid(3, PneumaticsModuleType.CTREPCM, 1);
 
     // Arm
 
@@ -72,6 +71,15 @@ public final class robotConstants {
     //public static double position = 0.0;
     public static double positionHigh = 10000.0;
     public static double positionHome = 4000;
+
+    //intake positions
+    public static double cubePosition = 1000;
+    public static double conePosition = 1500;
+
+    public static double cubeRetractedPosition = 0;
+    public static double coneRetractedPosition = 500;
+
+
 
 
     public Map<String,Trigger> buttonsMap = new HashMap<String,Trigger> ();

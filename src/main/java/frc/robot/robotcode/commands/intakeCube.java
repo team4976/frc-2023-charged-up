@@ -1,20 +1,21 @@
 package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.intake;
 
-public class intakeCube_Colten extends CommandBase {
+public class intakeCube extends CommandBase {
     
     private intake intake;
 
-    public intakeCube_Colten(intake intake) {
+    public intakeCube(intake intake) {
         this.intake = intake;
         addRequirements(intake);
     }
     
     @Override
     public void execute() {
-        intake.intakeCube();
+        intake.intakeCube(robotConstants.cubePosition);
         super.initialize();
     }
 
@@ -25,6 +26,6 @@ public class intakeCube_Colten extends CommandBase {
 
     @Override
     public void end (boolean interrupted) {
-        intake.retract();
+        intake.intakeStop();
     }
 }

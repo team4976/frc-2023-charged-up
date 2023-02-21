@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     robotConstants.m_ArmRotator.setSelectedSensorPosition(0);
+    robotConstants.m_IntakeTalonMain.setSelectedSensorPosition(0);
     robotConstants.instance.init();
     m_robotContainer = new RobotContainer();
     // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
@@ -55,6 +56,7 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
     robotConstants.m_ArmRotator.getSelectedSensorPosition();
+    System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition());
   }
 
   /**

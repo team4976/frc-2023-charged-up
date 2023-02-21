@@ -110,9 +110,9 @@ public class RobotContainer {
     _primarycontroller.leftBumper().whileTrue(new aim(_limelight, _robotDrive));
 
     //testing intake
-    _primarycontroller.pov(180).onTrue(new retractCube(_intake));
-    _primarycontroller.pov(90).onTrue(new retractCone(_intake));
     _primarycontroller.pov(0).onTrue(new intakeCube(_intake));
+    _primarycontroller.pov(90).onTrue(new retractCone(_intake));
+    _primarycontroller.pov(180).onTrue(new retractCube(_intake));
     _primarycontroller.pov(270).onTrue(new intakeCone(_intake));
 
 
