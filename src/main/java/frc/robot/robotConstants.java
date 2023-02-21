@@ -56,8 +56,8 @@ public final class robotConstants {
     public static final double forwardI = -0.3;//intake
     public static final double backwardI = 0.3;
 
-    public static final double forwardS = 0.1;//scoring
-    public static final double backwardS = -0.1;
+    public static final double forwardS = 0.2;//scoring
+    public static final double backwardS = -0.2;
 
     public static final double forwardH = 0.3;//handoff
     public static final double backwardH = -0.3; 
@@ -66,7 +66,12 @@ public final class robotConstants {
 
     //public booleans
     public static boolean peiceSelection = true;//differentiation between coneIn and cubeIn
+    public static boolean heightSelection = false; // false = low true = high
 
+    //Public position values
+    //public static double position = 0.0;
+    public static double positionHigh = 10000.0;
+    public static double positionHome = 4000;
 
 
     public Map<String,Trigger> buttonsMap = new HashMap<String,Trigger> ();

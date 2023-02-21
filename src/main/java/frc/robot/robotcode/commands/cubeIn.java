@@ -15,7 +15,7 @@ public class cubeIn extends CommandBase{
     
     @Override
     public void initialize() {
-        robotConstants.peiceSelection = false;
+        robotConstants.peiceSelection = true;
     }
 
     @Override

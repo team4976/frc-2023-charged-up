@@ -14,12 +14,12 @@ public class scorePiece extends CommandBase {
     }
 
     public void initialize () {
-        robotConstants.s_ArmPincer.set(true);
+        robotConstants.s_ArmPincer.set(false);
     }
 
     public void end (boolean interupted) {
         super.end(interupted);
-        robotConstants.s_ArmPincer.set(false);
+        robotConstants.s_ArmPincer.set(true);
     }
     
 }

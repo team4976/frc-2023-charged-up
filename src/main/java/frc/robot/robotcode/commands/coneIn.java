@@ -15,7 +15,7 @@ public class coneIn extends CommandBase{
     
     @Override
     public void initialize() {
-        robotConstants.peiceSelection = true;
+        robotConstants.peiceSelection = false;
     }
 
     @Override

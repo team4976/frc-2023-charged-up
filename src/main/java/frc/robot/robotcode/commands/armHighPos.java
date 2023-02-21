@@ -4,24 +4,25 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class releasePiece extends CommandBase {
+public class armHighPos extends CommandBase {
     
     private scoring Scoring;
 
-    public releasePiece(scoring score) {
+    public armHighPos(scoring score) {
         this.Scoring = score;
         addRequirements(score);
     }
     
     @Override
     public void initialize() {
-        Scoring.releasePiece();
         super.initialize();
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        Scoring.setArmPos(robotConstants.positionHigh);
     }
 
     @Override
     public boolean isFinished() {
+        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         return true;
     }
-    
 }
