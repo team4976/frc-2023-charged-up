@@ -8,6 +8,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -29,7 +30,7 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-
+  AHRS navX = new AHRS(SPI.Port.kMXP);
   public RobotContainer m_robotContainer;
 
   /**
@@ -58,7 +59,15 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
     robotConstants.m_ArmRotator.getSelectedSensorPosition();
-    System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition());
+    //System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition());
+
+    // test 
+    System.out.println(navX.getAngle()+"Angle");
+    System.out.println(navX.getPitch()+"Pitch");
+    System.out.println(navX.getRoll()+"Roll");
+    System.out.println();
+    System.out.println();
+    System.out.println();
   }
 
   /**
