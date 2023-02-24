@@ -8,7 +8,7 @@ public class handoff_ToScore extends CommandBase {
     private hand_off _hand_off;
     
     public handoff_ToScore(hand_off handoff) {
-        _hand_off = handoff;
+        this._hand_off = handoff;
         addRequirements(_hand_off);
     }
     

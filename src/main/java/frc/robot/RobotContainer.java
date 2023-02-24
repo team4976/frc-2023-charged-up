@@ -22,7 +22,9 @@ import frc.robot.robotcode.commands.grabPiece;
 import frc.robot.robotcode.commands.handoff_ToScore;
 import frc.robot.robotcode.commands.intakeCone;
 import frc.robot.robotcode.commands.intakeCube;
+import frc.robot.robotcode.commands.intakeextend;
 import frc.robot.robotcode.commands.releasePiece;
+import frc.robot.robotcode.commands.retract;
 import frc.robot.robotcode.commands.retractCone;
 import frc.robot.robotcode.commands.retractCube;
 import frc.robot.robotcode.commands.retractFourBar;
@@ -99,8 +101,8 @@ public class RobotContainer {
     CommandXboxController _secondarycontroller = new CommandXboxController(1);
 
     _primarycontroller.y().whileTrue(new reverseIntake(_intake));
-    // _primarycontroller.b().whileTrue(new retract(_intake));
-    // _primarycontroller.a().whileTrue(new extend(_intake));
+    _primarycontroller.b().whileTrue(new retract(_intake));
+    _primarycontroller.a().whileTrue(new intakeextend(_intake));
     _primarycontroller.pov(0).whileTrue(new rotateArmBwd(_score));
     _primarycontroller.pov(180).whileTrue(new rotateArmFwd(_score));
     _primarycontroller.rightBumper().whileTrue(new engageHighGear(_robotDrive));
@@ -109,12 +111,12 @@ public class RobotContainer {
     //limelight
     _primarycontroller.leftBumper().whileTrue(new aim(_limelight, _robotDrive));
 
-    //testing intake
-    _primarycontroller.pov(0).onTrue(new intakeCube(_intake));
-    _primarycontroller.pov(90).onTrue(new retractCone(_intake));
-    _primarycontroller.pov(180).onTrue(new retractCube(_intake));
-    _primarycontroller.pov(270).onTrue(new intakeCone(_intake));
-
+    // //testing intake
+    // _primarycontroller.pov(0).onTrue(new intakeCube(_intake));
+    // _primarycontroller.pov(90).onTrue(new retractCone(_intake));
+    // _primarycontroller.pov(180).onTrue(new retractCube(_intake));
+    // _primarycontroller.pov(270).onTrue(new intakeCone(_intake));
+  
 
 
 
@@ -128,12 +130,12 @@ public class RobotContainer {
     _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
     _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
     _secondarycontroller.b().onTrue(new cubeIn(_intake));
-    _secondarycontroller.a().onTrue(new coneIn(_intake));
+    _secondarycontroller.a().onTrue(new coneIn( _intake));
     //_secondarycontroller.rightBumper().whileTrue(new armHome(_score));
-    _secondarycontroller.y().whileTrue(new handoff_ToScore(_handoff));
+    _secondarycontroller.y().whileTrue(new retract(_intake));
 
-    _secondarycontroller.pov(90).onTrue(new armHighPos(_score));
-    _secondarycontroller.pov(270).onTrue(new armHomePos(_score));
+    _secondarycontroller.pov(0).onTrue(new armHighPos(_score));
+    _secondarycontroller.pov(180).onTrue(new armHomePos(_score));
 
   }
 

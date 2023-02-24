@@ -1,6 +1,7 @@
 package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.intake;
 
 public class reverseIntake extends CommandBase {
@@ -14,7 +15,7 @@ public class reverseIntake extends CommandBase {
     
     @Override
     public void initialize() {
-        intake.reverseIntake();
+        intake.reverseIntake(robotConstants.conePosition);
         super.initialize();
     }
 

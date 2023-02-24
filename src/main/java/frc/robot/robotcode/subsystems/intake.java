@@ -1,18 +1,43 @@
 package frc.robot.robotcode.subsystems;
-import static frc.robot.robotConstants.*;
+import static frc.robot.robotConstants.backwardI;
+import static frc.robot.robotConstants.forwardI;
+import static frc.robot.robotConstants.m_ArmRotator;
+import static frc.robot.robotConstants.m_IntakeTop;
+import static frc.robot.robotConstants.m_IntakeBottom;
+import static frc.robot.robotConstants.m_IntakeTalonMain;
+import static frc.robot.robotConstants.stop;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.robotConstants;
 
 public class intake extends SubsystemBase{
+
+    public intake(){
+        m_IntakeTalonMain.setInverted(false);
+        m_IntakeTalonMain.setSensorPhase(true);
+        m_IntakeTalonMain.configPeakOutputForward(0.2);
+        m_IntakeTalonMain.configPeakOutputReverse(-0.2);
+    }
+
+
+    public void intakeextend(){
+    }
+
+    public void retract(){
+    }
+
+
+
 
     public void intakeCube(double position){
         m_IntakeTalonMain.configMotionCruiseVelocity(2000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
-        m_IntakeFalconTopRoller.set(ControlMode.PercentOutput, forwardI);
+        //m_IntakeTop.set(ControlMode.PercentOutput, forwardI);
         //top motor spin clockwise
-        m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, forwardI);
+        m_IntakeBottom.set(ControlMode.PercentOutput, forwardI);
         //botom motor spin counter clockwise
     }
 
@@ -20,10 +45,10 @@ public class intake extends SubsystemBase{
         m_IntakeTalonMain.configMotionCruiseVelocity(2000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
-        m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, forwardI);
+        m_IntakeBottom.set(ControlMode.PercentOutput, backwardI);
         //botom motor spin counter clockwise
 
-        m_IntakeFalconTopRoller.set(ControlMode.PercentOutput, forwardI);
+        m_IntakeTop.set(ControlMode.PercentOutput, backwardI);
         //top motor spin clockwise
     }
 
@@ -39,22 +64,25 @@ public class intake extends SubsystemBase{
 
     }
     public void intakeStop () {
-        m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, stop);
-        m_IntakeFalconTopRoller.set(ControlMode.PercentOutput, stop);
+        m_IntakeBottom.set(ControlMode.PercentOutput, stop);
+        m_IntakeTop.set(ControlMode.PercentOutput, stop);
     }
 
-    // public void retract(){
-    //     m_IntakeFalconTopRoller.set(ControlMode.PercentOutput, stop);
-    //     //top motor stop
-    //     m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, stop);
-    //     //botom motor stop
-    //     s_MainIntake.set(false);
-    //     s_CubeIntake.set(false);
-    // }
+    public void reverseIntake(double position){
+        if(robotConstants.peiceSelection){
+        m_IntakeBottom.set(ControlMode.PercentOutput, backwardI);
+        m_IntakeTop.set(ControlMode.PercentOutput, forwardI);
+        }
+        else {
+        m_IntakeTalonMain.configMotionCruiseVelocity(2000);
+        m_IntakeTalonMain.configMotionAcceleration(2000);
+        m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
+        m_IntakeBottom.set(ControlMode.PercentOutput, forwardI);
+        //botom motor spin counter clockwise
 
-    public void reverseIntake(){
-        m_IntakeFalcoBottomRoller.set(ControlMode.PercentOutput, backwardI);
-        m_IntakeFalconTopRoller.set(ControlMode.PercentOutput, backwardI);
+        m_IntakeTop.set(ControlMode.PercentOutput, forwardI);
+        //top motor spin clockwise
+        }
     }
 
 }

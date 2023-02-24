@@ -10,8 +10,8 @@ public class scoring extends SubsystemBase{
     public scoring(){
         m_ArmRotator.setInverted(true);
         m_ArmRotator.setSensorPhase(true);
-        m_ArmRotator.configPeakOutputForward(0.2);
-        m_ArmRotator.configPeakOutputReverse(-0.2);
+        m_ArmRotator.configPeakOutputForward(0.4);
+        m_ArmRotator.configPeakOutputReverse(-0.4);
     }
 
     public void rotateArmFwd(){

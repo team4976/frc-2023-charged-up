@@ -30,7 +30,7 @@ public class setArcadeDrive extends CommandBase {
 public void execute() {
     _robotDrive.setArcadeDrive(
         _forward.getAsDouble() - _reverse.getAsDouble(), 
-        _rotation.getAsDouble()
+        _rotation.getAsDouble()*.5 //AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
     );
 }
 }

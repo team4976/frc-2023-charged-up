@@ -34,13 +34,13 @@ public final class robotConstants {
 
     // MainIntake
 
-    public static final TalonFX m_IntakeFalcoBottomRoller = new TalonFX(43);
+    public static final TalonFX m_IntakeTop = new TalonFX(43);
 
     public static final TalonFX m_IntakeTalonMain = new TalonFX(44);
 
     // CubeIntake
 
-    public static final TalonFX m_IntakeFalconTopRoller = new TalonFX(33);
+    public static final TalonFX m_IntakeBottom= new TalonFX(33);
 
 
     // Arm
@@ -52,8 +52,8 @@ public final class robotConstants {
     public static final TalonSRX m_ArmRotator = new TalonSRX(50);
 
     //motor output
-    public static final double forwardI = -0.3;//intake
-    public static final double backwardI = 0.3;
+    public static final double forwardI = -.4;//intake
+    public static final double backwardI = 0.4;
 
     public static final double forwardS = 0.2;//scoring
     public static final double backwardS = -0.2;
@@ -69,15 +69,15 @@ public final class robotConstants {
 
     //Public position values
     //public static double position = 0.0;
-    public static double positionHigh = 10000.0;
-    public static double positionHome = 4000;
+    public static double positionHigh = 12000.0;
+    public static double positionHome = 100;
 
     //intake positions
-    public static double cubePosition = 1000;
-    public static double conePosition = 1500;
+    public static double conePosition = 5957;
+    public static double cubePosition = 3301;
 
     public static double cubeRetractedPosition = 0;
-    public static double coneRetractedPosition = 500;
+    public static double coneRetractedPosition = 2071;
 
 
 

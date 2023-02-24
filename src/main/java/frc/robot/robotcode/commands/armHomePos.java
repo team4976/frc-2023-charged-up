@@ -16,6 +16,8 @@ public class armHomePos extends CommandBase {
     @Override
     public void initialize() {
         super.initialize();
+        Scoring.releasePiece();
+        Scoring.RetractFourBar();
         Scoring.setArmPos(robotConstants.positionHome);
     }
 
