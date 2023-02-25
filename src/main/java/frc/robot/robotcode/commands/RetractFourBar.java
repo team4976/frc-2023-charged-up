@@ -15,8 +15,14 @@ public class retractFourBar extends CommandBase{
     
     @Override
     public void initialize() {
+        System.out.println("begin auto retract fourbar");
         Scoring.RetractFourBar();
         super.initialize();
+    }
+    @Override
+    public void end(boolean interrupted) {
+        System.out.println("end auto retract fourbar");
+        
     }
 
     @Override

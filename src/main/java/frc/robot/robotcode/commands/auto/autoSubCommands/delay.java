@@ -1,4 +1,4 @@
-package frc.robot.robotcode.commands.auto;
+package frc.robot.robotcode.commands.auto.autoSubCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -9,7 +9,7 @@ public class delay extends CommandBase {
     double duration;
 
     public delay (double duration){
-    this.duration=duration;
+    this.duration=duration;//duration in millis
     }
 
     @Override

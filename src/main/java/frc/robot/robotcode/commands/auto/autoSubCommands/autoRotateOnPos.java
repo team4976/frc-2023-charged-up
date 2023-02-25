@@ -1,4 +1,4 @@
-package frc.robot.robotcode.commands.auto;
+package frc.robot.robotcode.commands.auto.autoSubCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
@@ -17,12 +17,15 @@ public class autoRotateOnPos extends CommandBase {
 
     @Override
     public void initialize () {
+        System.out.println("begin auto rotate");
         _robotDrive.rotateOnPosition(rotation);
         super.initialize();
     }
 
     @Override
     public void end (boolean interrupted) {
+        System.out.println("end auto drive");
+
         _robotDrive.setArcadeDrive(0, 0);
         super.end(interrupted);
     }

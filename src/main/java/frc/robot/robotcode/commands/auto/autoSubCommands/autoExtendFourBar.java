@@ -1,33 +1,27 @@
-package frc.robot.robotcode.commands;
+package frc.robot.robotcode.commands.auto.autoSubCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class extendFourBar extends CommandBase{
+public class autoExtendFourBar extends CommandBase{
     
     private scoring Scoring;
+    double duration;
 
-    public extendFourBar(scoring score) {
+    public autoExtendFourBar(scoring score, double duration) {
         this.Scoring = score;
         addRequirements(score);
     }
     
     @Override
     public void initialize() {
-        System.out.println("begin auto extend fourbar");
-
         Scoring.ExtendFourBar();
         super.initialize();
-    }
-    @Override
-    public void end (boolean interrupted){
-        System.out.println("end auto extend fourbar");
     }
 
     @Override
     public boolean isFinished() {
-        return true;
+        return new delay(duration).isFinished();
     }
 
 

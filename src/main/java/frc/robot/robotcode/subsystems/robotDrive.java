@@ -10,10 +10,13 @@ public class robotDrive extends SubsystemBase {
 
 
     public robotDrive(){
+        m_DriveTalonLeft.setSensorPhase(true);
+        m_DriveTalonRight.setSensorPhase(true);
         m_DriveVictorLeftFwd.follow(m_DriveTalonLeft);
         m_DriveVictorLeftBack.follow(m_DriveTalonLeft);
         m_DriveVictorRightFwd.follow(m_DriveTalonRight);
         m_DriveVictorRightBack.follow(m_DriveTalonRight);
+       
         m_DriveTalonRight.setInverted(true);
         m_DriveVictorRightBack.setInverted(true);
         m_DriveVictorRightFwd.setInverted(true);
@@ -34,13 +37,16 @@ public class robotDrive extends SubsystemBase {
 
     public void driveToPosition (double position){
         m_DriveTalonRight.setSelectedSensorPosition(0);
-        m_DriveTalonRight.configMotionCruiseVelocity(2800);//same from last year - MUST be tested
-        m_DriveTalonRight.configMotionAcceleration(2800);
-        m_DriveTalonRight.set(ControlMode.MotionMagic, position);
         m_DriveTalonLeft.setSelectedSensorPosition(0);
+        
+        m_DriveTalonRight.configMotionCruiseVelocity(2800);//same from last year - MUST be tested
         m_DriveTalonLeft.configMotionCruiseVelocity(2800);
+        
+        m_DriveTalonRight.configMotionAcceleration(2800);
         m_DriveTalonLeft.configMotionAcceleration(2800);
-        m_DriveTalonLeft.set(ControlMode.MotionMagic, position);
+        
+        m_DriveTalonRight.set(ControlMode.MotionMagic, -position);
+        m_DriveTalonLeft.set(ControlMode.MotionMagic, -position);
     }
 
     public void rotateOnPosition(double rotation) {

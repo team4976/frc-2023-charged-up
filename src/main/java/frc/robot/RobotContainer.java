@@ -33,7 +33,9 @@ import frc.robot.robotcode.commands.rotateArmBwd;
 import frc.robot.robotcode.commands.rotateArmFwd;
 import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.commands.setArcadeDrive;
-import frc.robot.robotcode.commands.auto.testAuto;
+import frc.robot.robotcode.commands.auto.autoSubCommands.autoDrivePos;
+import frc.robot.robotcode.commands.auto.autoCommands.Get1MidAuto;
+import frc.robot.robotcode.commands.auto.autoCommands.testAuto;
 import frc.robot.robotcode.subsystems.scoring;
 import frc.robot.robotcode.subsystems.hand_off;
 import frc.robot.robotcode.subsystems.intake;
@@ -145,6 +147,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand () {
-    return new testAuto(_robotDrive);
+    return new Get1MidAuto(_robotDrive, _score, _limelight);
   }
 }

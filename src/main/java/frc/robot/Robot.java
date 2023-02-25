@@ -39,6 +39,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    robotConstants.m_DriveTalonLeft.setSelectedSensorPosition(0);
+    robotConstants.m_DriveTalonRight.setSelectedSensorPosition(0);
     robotConstants.m_ArmRotator.setSelectedSensorPosition(0);
     robotConstants.m_IntakeTalonMain.setSelectedSensorPosition(0);
     robotConstants.instance.init();
@@ -72,8 +74,10 @@ public class Robot extends TimedRobot {
     // System.out.println();
     // System.out.println();
     // System.out.println();
+    System.out.println("***************\n");
+    System.out.println(robotConstants.m_DriveTalonRight.getSelectedSensorPosition() + "\n");
     System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition());
-    System.out.println(robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
+    System.out.println("\n***************");
   }
 
   /**
@@ -88,6 +92,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    robotConstants.m_DriveTalonLeft.setSelectedSensorPosition(0);
+    robotConstants.m_DriveTalonRight.setSelectedSensorPosition(0);
     // m_autoSelected = m_chooser.getSelected();
 
     // // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
