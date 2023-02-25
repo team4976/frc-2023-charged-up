@@ -64,12 +64,12 @@ public final class robotConstants {
     public static final double stop = 0;
 
     //public booleans
-    public static boolean peiceSelection = true;//differentiation between coneIn and cubeIn
+    public static boolean peiceSelection = false;//differentiation between false coneIn and true cubeIn
     public static boolean heightSelection = false; // false = low true = high
 
     //Public position values
     //public static double position = 0.0;
-    public static double positionHigh = 12000.0;
+    public static double positionHigh = 12500.0;
     public static double positionHome = 100;
 
     //intake positions

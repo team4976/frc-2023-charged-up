@@ -35,7 +35,7 @@ public class intake extends SubsystemBase{
         m_IntakeTalonMain.configMotionCruiseVelocity(2000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
-        //m_IntakeTop.set(ControlMode.PercentOutput, forwardI);
+        m_IntakeTop.set(ControlMode.PercentOutput, .1);
         //top motor spin clockwise
         m_IntakeBottom.set(ControlMode.PercentOutput, forwardI);
         //botom motor spin counter clockwise

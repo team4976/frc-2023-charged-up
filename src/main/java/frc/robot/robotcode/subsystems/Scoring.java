@@ -4,6 +4,7 @@ import static frc.robot.robotConstants.*;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.robotConstants;
 
 public class scoring extends SubsystemBase{
 
@@ -26,10 +27,12 @@ public class scoring extends SubsystemBase{
     }
 
     public void ExtendFourBar(){
+        robotConstants.heightSelection = true;
         s_FourBarArm.set(true);
     }
 
     public void RetractFourBar(){
+        robotConstants.heightSelection = false;
         s_FourBarArm.set(false);
     }
 

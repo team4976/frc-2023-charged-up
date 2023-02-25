@@ -14,7 +14,7 @@ import static frc.robot.RobotContainer._robotDrive;;
 public class LimeLight extends SubsystemBase{
     //NEED CHANGE THE VALUE
     public static PIDController controller = new PIDController(0.1, 0.000, 0.0);
-    public static PIDController controller2 = new PIDController(0.05, 0.02, 0.0);
+    public static PIDController controller2 = new PIDController(0.1, 0.002, 0.0);
                                                                 //.05//0.01/0.0
 
 
@@ -86,23 +86,23 @@ NetworkTableEntry tx = table.getEntry("tx");
                     double x = tx.getDouble(0.0);
                     double horizontalAdjust = controller2.calculate(x,0);
          
-                    _robotDrive.setArcadeDrive(0, -horizontalAdjust*.1);
+                    _robotDrive.setArcadeDrive(0, -horizontalAdjust);
                     System.out.println("Cube");
                 }
                 else if(robotConstants.heightSelection){
-                    table.getEntry("pipeline").setValue(0);
-                    double x = tx.getDouble(0.0);
-                    double horizontalAdjust = controller2.calculate(x,0);
-         
-                    _robotDrive.setArcadeDrive(0, -horizontalAdjust*.1);
-                    System.out.println("High cone");
-                }
-                else if(robotConstants.heightSelection == false){
                     table.getEntry("pipeline").setValue(1);
                     double x = tx.getDouble(0.0);
                     double horizontalAdjust = controller2.calculate(x,0);
          
-                    _robotDrive.setArcadeDrive(0, -horizontalAdjust*.1);
+                    _robotDrive.setArcadeDrive(0, -horizontalAdjust);
+                    System.out.println("High cone");
+                }
+                else if(robotConstants.heightSelection == false){
+                    table.getEntry("pipeline").setValue(0);
+                    double x = tx.getDouble(0.0);
+                    double horizontalAdjust = controller2.calculate(x,0);
+         
+                    _robotDrive.setArcadeDrive(0, -horizontalAdjust);
                     System.out.println("Low cone");
                 }
                 

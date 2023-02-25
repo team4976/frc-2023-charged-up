@@ -42,6 +42,10 @@ public class Robot extends TimedRobot {
     robotConstants.m_ArmRotator.setSelectedSensorPosition(0);
     robotConstants.m_IntakeTalonMain.setSelectedSensorPosition(0);
     robotConstants.instance.init();
+    // Reast var
+    robotConstants.peiceSelection = false;
+    robotConstants.heightSelection = false;
+    //
     m_robotContainer = new RobotContainer();
     // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     // m_chooser.addOption("My Auto", kCustomAuto);
@@ -62,12 +66,14 @@ public class Robot extends TimedRobot {
     //System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition());
 
     // test 
-    System.out.println(navX.getAngle()+"Angle");
-    System.out.println(navX.getPitch()+"Pitch");
-    System.out.println(navX.getRoll()+"Roll");
-    System.out.println();
-    System.out.println();
-    System.out.println();
+    // System.out.println(navX.getAngle()+"Angle");
+    // System.out.println(navX.getPitch()+"Pitch");
+    // System.out.println(navX.getRoll()+"Roll");
+    // System.out.println();
+    // System.out.println();
+    // System.out.println();
+    System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition());
+    System.out.println(robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
   }
 
   /**
