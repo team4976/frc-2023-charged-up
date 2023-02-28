@@ -7,7 +7,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -80,6 +80,8 @@ public final class robotConstants {
     public static double cubeRetractedPosition = 2071;
     public static double coneRetractedPosition = 0; // cone is at 0
 
+    // Digitalinput button 
+    public static DigitalInput cubeInIntake = new DigitalInput(0);
 
 
 

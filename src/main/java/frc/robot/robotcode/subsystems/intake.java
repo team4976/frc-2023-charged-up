@@ -28,17 +28,26 @@ public class intake extends SubsystemBase{
     public void retract(){
     }
 
-
-
+    public boolean cubeAtIntake(){
+        return robotConstants.cubeInIntake.get() == true;
+    }
 
     public void intakeCube(double position){
         m_IntakeTalonMain.configMotionCruiseVelocity(2000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
+        if(cubeAtIntake()){
         m_IntakeTop.set(ControlMode.PercentOutput, .1);
         //top motor spin clockwise
         m_IntakeBottom.set(ControlMode.PercentOutput, forwardI);
         //botom motor spin counter clockwise
+        }
+        else{
+            m_IntakeTop.set(ControlMode.PercentOutput, 0);
+        //top motor spin clockwise
+        m_IntakeBottom.set(ControlMode.PercentOutput, 0);
+        //botom motor spin counter clockwise
+        }
     }
 
     public void intakeCone(double position){

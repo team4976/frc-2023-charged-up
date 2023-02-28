@@ -14,13 +14,12 @@ public class intakeextend extends CommandBase{
         _intake = intake;
         addRequirements(_intake);
     }
-    
     @Override
     public void execute() {
 
         if(robotConstants.peiceSelection == true){
-            _intake.intakeCube(robotConstants.cubePosition);
-            super.initialize();
+                _intake.intakeCube(robotConstants.cubePosition);
+                super.initialize();
         }
 
         else{
@@ -31,7 +30,7 @@ public class intakeextend extends CommandBase{
     }
 
     @Override
-    public boolean isFinished() {
-        return true;
+    public boolean isFinished(){
+        return false;
     }
 }

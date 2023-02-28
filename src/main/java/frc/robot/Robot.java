@@ -8,6 +8,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 
@@ -30,7 +31,9 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  //test
   AHRS navX = new AHRS(SPI.Port.kMXP);
+  //
   public RobotContainer m_robotContainer;
 
   /**
@@ -39,8 +42,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    robotConstants.m_DriveTalonLeft.setSelectedSensorPosition(0);
-    robotConstants.m_DriveTalonRight.setSelectedSensorPosition(0);
     robotConstants.m_ArmRotator.setSelectedSensorPosition(0);
     robotConstants.m_IntakeTalonMain.setSelectedSensorPosition(0);
     robotConstants.instance.init();
@@ -74,10 +75,8 @@ public class Robot extends TimedRobot {
     // System.out.println();
     // System.out.println();
     // System.out.println();
-    System.out.println("***************\n");
-    System.out.println(robotConstants.m_DriveTalonRight.getSelectedSensorPosition() + "\n");
-    System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition());
-    System.out.println("\n***************");
+    // System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition());
+    // System.out.println(robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
   }
 
   /**
@@ -92,8 +91,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    robotConstants.m_DriveTalonLeft.setSelectedSensorPosition(0);
-    robotConstants.m_DriveTalonRight.setSelectedSensorPosition(0);
     // m_autoSelected = m_chooser.getSelected();
 
     // // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);

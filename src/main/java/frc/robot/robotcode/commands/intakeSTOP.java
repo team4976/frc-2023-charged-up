@@ -4,20 +4,20 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.intake;
 
-public class intakeCube extends CommandBase {
+public class intakeSTOP extends CommandBase {
     
     private intake intake;
 
-    public intakeCube(intake intake) {
+    public intakeSTOP(intake intake) {
         this.intake = intake;
         addRequirements(intake);
     }
-    
+
     @Override
-    public void initialize() {
-        intake.intakeCube(robotConstants.cubePosition);
+    public void execute() {
+        intake.intakeStop();
         super.initialize();
-    }
+        }
 
     @Override
     public boolean isFinished() {

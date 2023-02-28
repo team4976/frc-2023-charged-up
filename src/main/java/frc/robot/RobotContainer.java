@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.limelight.commands.aim;
 import frc.robot.limelight.commands.setheightFalse;
 import frc.robot.limelight.commands.setheightTrue;
@@ -21,7 +22,7 @@ import frc.robot.robotcode.commands.extendFourBar;
 import frc.robot.robotcode.commands.grabPiece;
 import frc.robot.robotcode.commands.handoff_ToScore;
 import frc.robot.robotcode.commands.intakeCone;
-import frc.robot.robotcode.commands.intakeCube;
+import frc.robot.robotcode.commands.intakeSTOP;
 import frc.robot.robotcode.commands.intakeextend;
 import frc.robot.robotcode.commands.releasePiece;
 import frc.robot.robotcode.commands.retract;
@@ -113,6 +114,10 @@ public class RobotContainer {
     //limelight
     _primarycontroller.leftBumper().whileTrue(new aim(_limelight, _robotDrive));
 
+    //test
+    Trigger exampleTrigger = new Trigger(robotConstants.cubeInIntake::get);
+    exampleTrigger.whileFalse(new intakeSTOP(_intake));
+    //
     // //testing intake
     // _primarycontroller.pov(0).onTrue(new intakeCube(_intake));
     // _primarycontroller.pov(90).onTrue(new retractCone(_intake));
