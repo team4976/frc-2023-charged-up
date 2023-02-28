@@ -13,6 +13,10 @@ import frc.robot.limelight.commands.aim;
 import frc.robot.limelight.commands.setheightFalse;
 import frc.robot.limelight.commands.setheightTrue;
 import frc.robot.limelight.subsystems.LimeLight;
+import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
+import frc.robot.robotcode.auto.autoCommands.testAuto;
+import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
+import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
 import frc.robot.robotcode.commands.armHighPos;
 import frc.robot.robotcode.commands.armHomePos;
 import frc.robot.robotcode.commands.coneIn;
@@ -34,9 +38,6 @@ import frc.robot.robotcode.commands.rotateArmBwd;
 import frc.robot.robotcode.commands.rotateArmFwd;
 import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.commands.setArcadeDrive;
-import frc.robot.robotcode.commands.auto.autoSubCommands.autoDrivePos;
-import frc.robot.robotcode.commands.auto.autoCommands.Get1MidAuto;
-import frc.robot.robotcode.commands.auto.autoCommands.testAuto;
 import frc.robot.robotcode.subsystems.scoring;
 import frc.robot.robotcode.subsystems.hand_off;
 import frc.robot.robotcode.subsystems.intake;
@@ -110,7 +111,6 @@ public class RobotContainer {
     _primarycontroller.pov(180).whileTrue(new rotateArmFwd(_score));
     _primarycontroller.rightBumper().whileTrue(new engageHighGear(_robotDrive));
     _primarycontroller.x().whileTrue(new scorePiece(_score));
-
     //limelight
     _primarycontroller.leftBumper().whileTrue(new aim(_limelight, _robotDrive));
 
@@ -123,6 +123,9 @@ public class RobotContainer {
     // _primarycontroller.pov(90).onTrue(new retractCone(_intake));
     // _primarycontroller.pov(180).onTrue(new retractCube(_intake));
     // _primarycontroller.pov(270).onTrue(new intakeCone(_intake));
+    // //testing autoBalance
+    _primarycontroller.pov(90).whileTrue(new navXGryoscope(_robotDrive));
+    
   
 
 
@@ -152,6 +155,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand () {
-    return new Get1MidAuto(_robotDrive, _score, _limelight);
+    return new get1MidAuto(_robotDrive, _score, _limelight);
   }
 }

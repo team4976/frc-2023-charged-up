@@ -1,4 +1,4 @@
-package frc.robot.robotcode.commands.auto.autoSubCommands;
+package frc.robot.robotcode.auto.autoSubCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;

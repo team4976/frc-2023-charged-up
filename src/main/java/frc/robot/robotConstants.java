@@ -9,6 +9,8 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.SPI;
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -52,6 +54,8 @@ public final class robotConstants {
 
     public static final TalonSRX m_ArmRotator = new TalonSRX(50);
 
+    public static final AHRS navX = new AHRS(SPI.Port.kMXP);
+
     //motor output
     public static final double forwardI = -.4;//intake
     public static final double backwardI = 0.4;
@@ -82,6 +86,9 @@ public final class robotConstants {
 
     // Digitalinput button 
     public static DigitalInput cubeInIntake = new DigitalInput(0);
+    //navX angle constants
+    public static int navXDeadBand = 1;
+
 
 
 
