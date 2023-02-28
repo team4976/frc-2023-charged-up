@@ -1,4 +1,4 @@
-package frc.robot.robotcode.commands.auto.autoSubCommands;
+package frc.robot.robotcode.auto.autoSubCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
@@ -28,7 +28,7 @@ public class autoScorePiece extends CommandBase {
     //     return true;
     // }
     public boolean isFinished () {
-        return new delay(500).isFinished(); 
+        return new delay(0.500).isFinished(); 
     }
     
 }

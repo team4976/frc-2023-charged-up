@@ -1,4 +1,4 @@
-package frc.robot.robotcode.commands.auto.autoSubCommands;
+package frc.robot.robotcode.auto.autoSubCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -19,7 +19,7 @@ public class delay extends CommandBase {
 
     @Override
     public boolean isFinished () {
-        return System.currentTimeMillis() - startTime >= duration;
+        return System.currentTimeMillis() - startTime >= (duration/1000);
     }
     
 }
