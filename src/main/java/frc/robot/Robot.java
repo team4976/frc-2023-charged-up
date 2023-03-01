@@ -67,8 +67,7 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
     robotConstants.m_ArmRotator.getSelectedSensorPosition();
-    //System.out.println("\n ************" + robotConstants.navX.getRoll());
-    //System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition());
+    System.out.println(robotConstants.navX.getYaw());
 
     // test 
     // System.out.println(navX.getAngle()+"Angle");
@@ -121,7 +120,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+    robotConstants.navX.zeroYaw();
+  }
 
   /** This function is called periodically during operator control. */
   @Override

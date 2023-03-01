@@ -87,7 +87,7 @@ public final class robotConstants {
     // Digitalinput button 
     public static DigitalInput cubeInIntake = new DigitalInput(0);
     //navX angle constants
-    public static int navXDeadBand = 1;
+    public static int navXDeadBand = 5;
 
 
 
