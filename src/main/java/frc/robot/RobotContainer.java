@@ -101,15 +101,16 @@ public class RobotContainer {
 
     // ONLY FOR TESTING
     // ONLY FOR TESTING
+    
     CommandXboxController _primarycontroller = new CommandXboxController(0);
     CommandXboxController _secondarycontroller = new CommandXboxController(1);
 
     _primarycontroller.y().whileTrue(new reverseIntake(_intake));
     _primarycontroller.b().whileTrue(new retract(_intake));
-    _primarycontroller.a().whileTrue(new intakeextend(_intake));
+    _primarycontroller.a().onTrue(new intakeextend(_intake));
     _primarycontroller.pov(0).whileTrue(new rotateArmBwd(_score));
     _primarycontroller.pov(180).whileTrue(new rotateArmFwd(_score));
-    _primarycontroller.rightBumper().whileTrue(new engageHighGear(_robotDrive));
+    _primarycontroller.rightBumper().whileTrue(new engageHighGear());
     _primarycontroller.x().whileTrue(new scorePiece(_score));
     //limelight
     _primarycontroller.leftBumper().whileTrue(new aim(_limelight, _robotDrive));
@@ -136,7 +137,7 @@ public class RobotContainer {
     // _secondarycontroller.pov(180).whileTrue(new setheightFalse(_limelight));
 
 
-    _secondarycontroller.x().whileTrue(new handoff_ToScore(_handoff));
+    _secondarycontroller.x().whileTrue(new handoff_ToScore(_handoff,_score));
     _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
     _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
     _secondarycontroller.b().onTrue(new cubeIn(_intake));

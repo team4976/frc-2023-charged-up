@@ -17,8 +17,8 @@ public class intake extends SubsystemBase{
     public intake(){
         m_IntakeTalonMain.setInverted(false);
         m_IntakeTalonMain.setSensorPhase(true);
-        m_IntakeTalonMain.configPeakOutputForward(0.2);
-        m_IntakeTalonMain.configPeakOutputReverse(-0.2);
+        m_IntakeTalonMain.configPeakOutputForward(0.4);
+        m_IntakeTalonMain.configPeakOutputReverse(-0.4);
     }
 
 
@@ -51,10 +51,10 @@ public class intake extends SubsystemBase{
     }
 
     public void intakeCone(double position){
-        m_IntakeTalonMain.configMotionCruiseVelocity(2000);
+        m_IntakeTalonMain.configMotionCruiseVelocity(2500);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
-        m_IntakeBottom.set(ControlMode.PercentOutput, backwardI);
+        m_IntakeBottom.set(ControlMode.PercentOutput, .6);
         //botom motor spin counter clockwise
 
         m_IntakeTop.set(ControlMode.PercentOutput, backwardI);
@@ -62,12 +62,12 @@ public class intake extends SubsystemBase{
     }
 
     public void retractCube (double position) {
-        m_IntakeTalonMain.configMotionCruiseVelocity(2000);
+        m_IntakeTalonMain.configMotionCruiseVelocity(2500);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
     }
     public void retractCone (double position) {
-        m_IntakeTalonMain.configMotionCruiseVelocity(2000);
+        m_IntakeTalonMain.configMotionCruiseVelocity(2500);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
 
@@ -83,7 +83,7 @@ public class intake extends SubsystemBase{
         m_IntakeTop.set(ControlMode.PercentOutput, forwardI);
         }
         else {
-        m_IntakeTalonMain.configMotionCruiseVelocity(2000);
+        m_IntakeTalonMain.configMotionCruiseVelocity(2500);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
         m_IntakeBottom.set(ControlMode.PercentOutput, forwardI);

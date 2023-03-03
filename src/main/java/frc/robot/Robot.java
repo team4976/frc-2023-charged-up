@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -49,7 +50,8 @@ public class Robot extends TimedRobot {
     // Reast var
     robotConstants.peiceSelection = false;
     robotConstants.heightSelection = false;
-    //
+    //Camera
+    CameraServer.startAutomaticCapture();
     m_robotContainer = new RobotContainer();
     // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     // m_chooser.addOption("My Auto", kCustomAuto);
@@ -67,6 +69,7 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
     robotConstants.m_ArmRotator.getSelectedSensorPosition();
+    System.out.println("TOP Motor  "+robotConstants.m_IntakeTop.getStatorCurrent() + "*******" + robotConstants.m_IntakeBottom.getStatorCurrent());
     //System.out.println("\n ************" + robotConstants.navX.getRoll());
     //System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition());
 
