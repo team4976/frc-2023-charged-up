@@ -93,5 +93,8 @@ public class intake extends SubsystemBase{
         //top motor spin clockwise
         }
     }
+    // public void currentDraw () {
+    //     System.out.println(m_IntakeBottom.getStatorCurrent() + m_IntakeBottom.getStatorCurrent());
+    // }
 
 }

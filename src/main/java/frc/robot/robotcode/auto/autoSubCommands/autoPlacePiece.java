@@ -4,12 +4,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class autoScorePiece extends CommandBase {
+public class autoPlacePiece extends CommandBase {
 
     private static scoring _scoring;
 
 
-    public autoScorePiece (scoring scoring) {
+    public autoPlacePiece (scoring scoring) {
         _scoring = scoring;
         addRequirements(_scoring);
     }

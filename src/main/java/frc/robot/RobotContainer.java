@@ -16,6 +16,7 @@ import frc.robot.limelight.subsystems.LimeLight;
 import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
 import frc.robot.robotcode.auto.autoCommands.testAuto;
 import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
+import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
 import frc.robot.robotcode.commands.armHighPos;
 import frc.robot.robotcode.commands.armHomePos;
@@ -155,6 +156,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand () {
-    return new get1MidAuto(_robotDrive, _score, _limelight);
+    return new testAuto(_robotDrive, _score, _limelight);
   }
 }

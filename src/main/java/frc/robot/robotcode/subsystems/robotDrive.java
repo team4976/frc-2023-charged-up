@@ -20,7 +20,11 @@ public class robotDrive extends SubsystemBase {
         m_DriveTalonRight.setInverted(true);
         m_DriveVictorRightBack.setInverted(true);
         m_DriveVictorRightFwd.setInverted(true);
+        m_DriveTalonLeft.configPeakOutputForward(1);
+        m_DriveTalonRight.configPeakOutputForward(1);
 
+        m_DriveTalonLeft.configPeakOutputReverse(-1);
+        m_DriveTalonRight.configPeakOutputReverse(-1);
     }
 
     public void setHighGear () {
@@ -31,8 +35,13 @@ public class robotDrive extends SubsystemBase {
     }
 
     public void setArcadeDrive(double foward, double rotation){
-    m_DriveTalonLeft.set(ControlMode.PercentOutput, foward - rotation);
-    m_DriveTalonRight.set(ControlMode.PercentOutput, foward + rotation);
+        m_DriveTalonLeft.configPeakOutputForward(1);
+        m_DriveTalonRight.configPeakOutputForward(1);
+
+        m_DriveTalonLeft.configPeakOutputReverse(-1);
+        m_DriveTalonRight.configPeakOutputReverse(-1);
+        m_DriveTalonLeft.set(ControlMode.PercentOutput, foward - rotation);
+        m_DriveTalonRight.set(ControlMode.PercentOutput, foward + rotation);
     }
 
     public void driveToPosition (double position){
@@ -44,6 +53,12 @@ public class robotDrive extends SubsystemBase {
         
         m_DriveTalonRight.configMotionAcceleration(2800);
         m_DriveTalonLeft.configMotionAcceleration(2800);
+
+        m_DriveTalonLeft.configPeakOutputForward(0.5);
+        m_DriveTalonRight.configPeakOutputForward(0.5);
+
+        m_DriveTalonLeft.configPeakOutputReverse(-0.5);
+        m_DriveTalonRight.configPeakOutputReverse(-0.5);
         
         m_DriveTalonRight.set(ControlMode.MotionMagic, -position);
         m_DriveTalonLeft.set(ControlMode.MotionMagic, -position);

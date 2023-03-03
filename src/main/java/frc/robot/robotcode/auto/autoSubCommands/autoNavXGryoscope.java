@@ -9,8 +9,10 @@ import java.lang.Math;
 
 public class autoNavXGryoscope extends CommandBase {
     robotDrive _robotDrive;
+    double multiplier=0.0005;
+    float yAngle=0;
+    public static float startAngle=0;
     double duration;
-    double multiplier=0.01;
 
     public autoNavXGryoscope (robotDrive _robotDrive, double duration) {
         this._robotDrive=_robotDrive;
@@ -20,12 +22,20 @@ public class autoNavXGryoscope extends CommandBase {
 
 
     public void autoBalance () {
-        float yAngle = robotConstants.navX.getRoll();
-        
+        getCurrentYAngle();
         if (Math.abs(yAngle)>robotConstants.navXDeadBand){
-            _robotDrive.setArcadeDrive((multiplier*yAngle), 0);
+            _robotDrive.setArcadeDrive(Math.min(0.005, multiplier*yAngle), 0);
+            // System.out.println(multiplier*yAngle);
         }
 
+    }
+
+    // public static void zeroYAngle () {
+    //     startAngle = robotConstants.navX.getRoll();
+    // }
+
+    public void getCurrentYAngle () {
+        yAngle = robotConstants.navX.getYaw();
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.lang.Math;
 
 public class navXGryoscope extends CommandBase {
     robotDrive _robotDrive;
-    double multiplier=0.05;
+    double multiplier=0.005, output=0;;
     float yAngle=0;
     public static float startAngle=0;
 
@@ -22,7 +22,7 @@ public class navXGryoscope extends CommandBase {
     public void autoBalance () {
         getCurrentYAngle();
         if (Math.abs(yAngle)>robotConstants.navXDeadBand){
-            _robotDrive.setArcadeDrive((multiplier*yAngle), 0);
+            _robotDrive.setArcadeDrive(output, 0);
             // System.out.println(multiplier*yAngle);
         }
 

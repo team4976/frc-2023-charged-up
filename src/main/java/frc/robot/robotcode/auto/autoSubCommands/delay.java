@@ -19,7 +19,7 @@ public class delay extends CommandBase {
 
     @Override
     public boolean isFinished () {
-        return System.currentTimeMillis() - startTime >= (duration/1000);
+        return System.currentTimeMillis() - startTime >= (duration*1000);
     }
     
 }
