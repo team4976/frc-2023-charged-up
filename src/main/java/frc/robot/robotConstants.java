@@ -75,13 +75,13 @@ public final class robotConstants {
     //Public position values
     //public static double position = 0.0;
     public static double positionHigh = 12500.0;
-    public static double positionHome = 100;
+    public static double positionHome = 50;
 
     //intake positions
     public static double conePosition = 5957;
-    public static double cubePosition = 3301;
+    public static double cubePosition = 3801;
 
-    public static double cubeRetractedPosition = 2071;
+    public static double cubeRetractedPosition = 2213; 
     public static double coneRetractedPosition = 0; // cone is at 0
 
     // Digitalinput button 

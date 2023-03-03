@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -49,7 +50,8 @@ public class Robot extends TimedRobot {
     // Reast var
     robotConstants.peiceSelection = false;
     robotConstants.heightSelection = false;
-    //
+    //Camera
+    CameraServer.startAutomaticCapture();
     m_robotContainer = new RobotContainer();
     // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     // m_chooser.addOption("My Auto", kCustomAuto);

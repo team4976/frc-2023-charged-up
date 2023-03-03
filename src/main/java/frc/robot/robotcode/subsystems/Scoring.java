@@ -48,7 +48,6 @@ public class scoring extends SubsystemBase{
 
 
     public void setArmPos(double position) {
-        System.out.println("GGGGGGGGGGGGGGGGGGGGGGGGG");
         m_ArmRotator.configMotionCruiseVelocity(6000);
         m_ArmRotator.configMotionAcceleration(2000);
         m_ArmRotator.set(ControlMode.MotionMagic, position);
