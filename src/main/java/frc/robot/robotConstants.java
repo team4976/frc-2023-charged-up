@@ -78,7 +78,7 @@ public final class robotConstants {
     public static double positionHome = 50;
 
     //intake positions
-    public static double conePosition = 5957;
+    public static double conePosition = 5750;
     public static double cubePosition = 3801;
 
     public static double cubeRetractedPosition = 2213; 

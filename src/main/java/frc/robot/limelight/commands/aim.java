@@ -19,13 +19,15 @@ public class aim extends CommandBase{
     }
 
     @Override
-    public boolean isFinished(){
-        return false;
+    public void execute(){
+        _limeLight.limeLightON();
+        
+        _limeLight.aim(_robotDrive);
     }
 
-    @Override
-    public void execute(){
-        _limeLight.aim(_robotDrive);
+    @Override 
+    public void end(boolean interupted){
+         _limeLight.limelightOFF();
     }
     
 }

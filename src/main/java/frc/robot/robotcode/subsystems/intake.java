@@ -86,12 +86,14 @@ public class intake extends SubsystemBase{
         m_IntakeTalonMain.configMotionCruiseVelocity(2500);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
+        }
+    }
+    public void coneReverseIntake(){
         m_IntakeBottom.set(ControlMode.PercentOutput, forwardI);
         //botom motor spin counter clockwise
 
         m_IntakeTop.set(ControlMode.PercentOutput, forwardI);
         //top motor spin clockwise
-        }
     }
     // public void currentDraw () {
     //     System.out.println(m_IntakeBottom.getStatorCurrent() + m_IntakeBottom.getStatorCurrent());
