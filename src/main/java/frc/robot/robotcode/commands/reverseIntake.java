@@ -21,6 +21,19 @@ public class reverseIntake extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        return true;
+        if (robotConstants.peiceSelection == false){
+        return (Math.abs(robotConstants.conePosition - robotConstants.m_IntakeTalonMain.getSelectedSensorPosition()) < 100);
+        }
+        else{
+        return false;
+        }
+    }
+
+    @Override
+    public void end(boolean interrupted){
+        if(robotConstants.peiceSelection == false){
+            intake.coneReverseIntake();
+        }        
+        // Should be better reverse cone
     }
 }

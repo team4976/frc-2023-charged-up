@@ -112,4 +112,11 @@ NetworkTableEntry tx = table.getEntry("tx");
                  System.out.println("Not target");
              }
     }
+
+    public void limeLightON(){
+        table.getEntry("ledMode").setValue(3);
+    }
+    public void limelightOFF(){
+        table.getEntry("ledMode").setValue(1);
+    }
 }

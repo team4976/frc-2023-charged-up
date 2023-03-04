@@ -106,7 +106,7 @@ public class RobotContainer {
     CommandXboxController _primarycontroller = new CommandXboxController(0);
     CommandXboxController _secondarycontroller = new CommandXboxController(1);
 
-    _primarycontroller.y().whileTrue(new reverseIntake(_intake));
+    _primarycontroller.y().onTrue((new reverseIntake(_intake)));
     _primarycontroller.b().whileTrue(new retract(_intake));
     _primarycontroller.a().onTrue(new intakeextend(_intake));
     _primarycontroller.pov(0).whileTrue(new rotateArmBwd(_score));

@@ -30,15 +30,15 @@ public class intakeextend extends CommandBase{
 
     @Override
     public boolean isFinished(){
-        if(Math.abs(robotConstants.conePosition-robotConstants.m_IntakeTalonMain.getSelectedSensorPosition()) < 100){
-        return (robotConstants.m_IntakeTop.getStatorCurrent() > 1200);
-        }
+        // if(Math.abs(robotConstants.conePosition-robotConstants.m_IntakeTalonMain.getSelectedSensorPosition()) < 100){
+        // return (robotConstants.m_IntakeTop.getStatorCurrent() > 1200);
+        // }
         return false;
     }
 
     @Override
-    public void end(boolean interupted){
-        _intake.intakeStop();
-        _intake.retractCone(robotConstants.coneRetractedPosition);
+    public void end(boolean interrupted){
+        // _intake.intakeStop();
+        // _intake.retractCone(robotConstants.coneRetractedPosition);
     }
 }
