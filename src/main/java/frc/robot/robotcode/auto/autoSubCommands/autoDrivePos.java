@@ -38,7 +38,8 @@ public class autoDrivePos extends CommandBase {
     }
     @Override
     public boolean isFinished() {
-        return Math.abs(position - robotConstants.m_DriveTalonLeft.getSelectedSensorPosition()) < 500 && Math.abs(position - robotConstants.m_DriveTalonRight.getSelectedSensorPosition()) < 500;
+        return Math.abs(position - robotConstants.m_DriveTalonLeft.getSelectedSensorPosition()) < 500; 
+        // && Math.abs(position - robotConstants.m_DriveTalonRight.getSelectedSensorPosition()) < 500;
 
         // double leftError = Math.abs(position - robotConstants.m_DriveTalonLeft.getSelectedSensorPosition());
         // double rightError = Math.abs(position - robotConstants.m_DriveTalonRight.getSelectedSensorPosition());

@@ -68,7 +68,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
-    robotConstants.m_ArmRotator.getSelectedSensorPosition();
+    // System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition());
     // System.out.println(robotConstants.navX.getYaw());
     System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "*****" + robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
     // System.out.println(robotConstants.navX.getYaw() + " *****" + robotConstants.navX.getPitch() + " *****" + robotConstants.navX.getRoll());
