@@ -10,9 +10,11 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import frc.robot.robotConstants;
 import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 import frc.robot.robotcode.subsystems.robotDrive;
+import frc.robot.shuffleboard.shuffleBoard;
 import pabeles.concurrency.ConcurrencyOps.Reset;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -67,24 +69,21 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    shuffleBoard.instance.tick();
     CommandScheduler.getInstance().run();
     // System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition());
     // System.out.println(robotConstants.navX.getYaw());
-    System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "*****" + robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
+    // System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "*****" + robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
+    // System.out.println(robotConstants.m_IntakeTalonMain.getSupplyCurrent());
+
+    // if (robotConstants.m_IntakeBottom.getStatorCurrent()>10){
+    //   robotConstants._primaryControllerNotCommand.setRumble(RumbleType.kBothRumble, 1);
+    // }
+    // else {
+    //   robotConstants._primaryControllerNotCommand.setRumble(RumbleType.kBothRumble, 0);
+    // }
     // System.out.println(robotConstants.navX.getYaw() + " *****" + robotConstants.navX.getPitch() + " *****" + robotConstants.navX.getRoll());
 
-
-    // test 
-    // System.out.println(navX.getAngle()+"Angle");
-    // System.out.println(navX.getPitch()+"Pitch");
-    // System.out.println(navX.getRoll()+"Roll");
-    // System.out.println();
-    // System.out.println();
-    // System.out.println();
-    // System.out.println("***************\n");
-    // System.out.println(robotConstants.m_DriveTalonRight.getSelectedSensorPosition() + "\n");
-    // System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition());
-    // System.out.println("\n***************");
   }
 
   /**
@@ -99,6 +98,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    robotConstants.m_DriveTalonLeft.setSensorPhase(false);
+    robotConstants.m_DriveTalonRight.setSensorPhase(false);
     // m_autoSelected = m_chooser.getSelected();
 
     // // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
@@ -127,6 +128,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     robotConstants.navX.zeroYaw();
+    robotConstants.m_DriveTalonLeft.setSensorPhase(false);
+    robotConstants.m_DriveTalonRight.setSensorPhase(false);
   }
 
   /** This function is called periodically during operator control. */

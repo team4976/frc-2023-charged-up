@@ -14,7 +14,7 @@ import frc.robot.limelight.commands.setheightFalse;
 import frc.robot.limelight.commands.setheightTrue;
 import frc.robot.limelight.subsystems.LimeLight;
 import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
-import frc.robot.robotcode.auto.autoCommands.testAuto;
+import frc.robot.robotcode.auto.autoCommands.get1HighBalanceAuto;
 import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
 import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
@@ -26,6 +26,7 @@ import frc.robot.robotcode.commands.engageHighGear;
 import frc.robot.robotcode.commands.extendFourBar;
 import frc.robot.robotcode.commands.grabPiece;
 import frc.robot.robotcode.commands.handoff_ToScore;
+import frc.robot.robotcode.commands.holdPosition;
 import frc.robot.robotcode.commands.intakeCone;
 import frc.robot.robotcode.commands.intakeSTOP;
 import frc.robot.robotcode.commands.intakeextend;
@@ -107,7 +108,7 @@ public class RobotContainer {
     CommandXboxController _secondarycontroller = new CommandXboxController(1);
 
     _primarycontroller.y().onTrue((new reverseIntake(_intake)));
-    _primarycontroller.b().whileTrue(new retract(_intake));
+    _primarycontroller.b().onTrue(new retract(_intake));
     _primarycontroller.a().onTrue(new intakeextend(_intake));
     _primarycontroller.pov(0).whileTrue(new rotateArmBwd(_score));
     _primarycontroller.pov(180).whileTrue(new rotateArmFwd(_score));
@@ -126,7 +127,7 @@ public class RobotContainer {
     // _primarycontroller.pov(180).onTrue(new retractCube(_intake));
     // _primarycontroller.pov(270).onTrue(new intakeCone(_intake));
     // //testing autoBalance
-    _primarycontroller.pov(90).whileTrue(new navXGryoscope(_robotDrive));
+    _primarycontroller.pov(90).whileTrue(new holdPosition(_robotDrive));
     
   
 
@@ -157,6 +158,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand () {
-    return new testAuto(_robotDrive, _score, _limelight);
+    return new get1HighBalanceAuto(_robotDrive, _score, _limelight);
   }
 }

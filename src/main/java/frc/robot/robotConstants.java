@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.SPI;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -20,6 +21,9 @@ public final class robotConstants {
   public static robotConstants instance = new robotConstants();
   public CommandXboxController _primaryController;
   public CommandXboxController _secondaryController;
+
+  // public static XboxController _primaryControllerNotCommand;
+  // public XboxController _secondaryControllerNotCommand;
 
 
     // DriveTrain
@@ -98,6 +102,9 @@ public final class robotConstants {
     public void init () {
       _primaryController = new CommandXboxController(0);
       _secondaryController = new CommandXboxController(1);
+
+      // XboxController _primaryControllerNotCommand = new XboxController(0);
+      //  XboxController _secondaryControllerNotCommand = new XboxController(1);
 
       /*
       buttonsMap.put("Intake", _primaryController.a());

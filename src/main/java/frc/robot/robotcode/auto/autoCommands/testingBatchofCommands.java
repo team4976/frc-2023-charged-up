@@ -26,8 +26,18 @@ public class testingBatchofCommands extends SequentialCommandGroup {
     public testingBatchofCommands (robotDrive _robotDrive, scoring _score,  LimeLight _limelight)  {
         
         addCommands(
-            new autoScoreHigh(_score),
-            new autoDrivePos(_robotDrive, 22000)//in sensor position!!
+            new autoGrab(_score),
+            new delay(0.50),
+            new autoArmHighPos(_score),
+            new delay(0.50),
+            new extendFourBar(_score),
+            new delay(1.50),
+            new autoRelease(_score),
+            new delay(0.500),
+            new retractFourBar(_score),
+            // new delay(0.500),
+            new autoArmHomePos(_score),
+            new autoDrivePos(_robotDrive, 30000)//23000!
         );
 
     }

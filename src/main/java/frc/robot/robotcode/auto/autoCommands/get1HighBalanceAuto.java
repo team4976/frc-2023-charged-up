@@ -21,9 +21,9 @@ import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class testAuto extends SequentialCommandGroup {
+public class get1HighBalanceAuto extends SequentialCommandGroup {
 
-    public testAuto (robotDrive _robotDrive, scoring _score,  LimeLight _limelight)  {
+    public get1HighBalanceAuto (robotDrive _robotDrive, scoring _score,  LimeLight _limelight)  {
         
         addCommands(
             new autoGrab(_score),
@@ -37,7 +37,7 @@ public class testAuto extends SequentialCommandGroup {
             new retractFourBar(_score),
             // new delay(0.500),
             new autoArmHomePos(_score),
-            new autoDrivePos(_robotDrive, 23000)//23000!
+            new autoDrivePos(_robotDrive, 24000)//24000 was tested
             // new autoDrivePos(_robotDrive, -12000)
 
             //new autoNavXGryoscope(_robotDrive, 5)
