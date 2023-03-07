@@ -13,17 +13,19 @@ public class retract extends CommandBase{
         this.intake = intake;
         addRequirements(intake);
     }
+    @Override
+    public void initialize(){
+        intake.intakeStop();
+    }
     
     @Override
-    public void initialize() {
-        super.initialize();
+    public void execute() {
         if(robotConstants.peiceSelection){
             intake.retractCube(robotConstants.cubeRetractedPosition);
         }
         else {
             intake.retractCone(robotConstants.coneRetractedPosition);
         } 
-        intake.intakeStop();
     }
     @Override
     public boolean isFinished() {

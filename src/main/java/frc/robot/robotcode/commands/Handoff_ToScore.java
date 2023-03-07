@@ -5,6 +5,8 @@ import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.hand_off;
 import frc.robot.robotcode.subsystems.scoring;
 
+import static frc.robot.RobotContainer._intake;
+
 public class handoff_ToScore extends CommandBase {
     
     private hand_off _hand_off;
@@ -19,7 +21,7 @@ public class handoff_ToScore extends CommandBase {
     @Override
     public void execute() {
         if(robotConstants.peiceSelection){
-            _hand_off.Handoff_Cube();
+        _hand_off.Handoff_Cube();
         }
         else{
         _hand_off.Handoff_ToScore();
@@ -34,5 +36,6 @@ public class handoff_ToScore extends CommandBase {
     @Override
     public void end(boolean interrupted){
         _scoring.grabPiece();
+        _intake.intakeStop();
     }
 }

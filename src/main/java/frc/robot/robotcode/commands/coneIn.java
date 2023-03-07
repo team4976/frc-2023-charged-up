@@ -6,11 +6,7 @@ import frc.robot.robotcode.subsystems.intake;
 
 public class coneIn extends CommandBase{
 
-    private intake _intake;
-
-    public coneIn(intake intake) {
-        _intake = intake;
-        addRequirements(_intake);
+    public coneIn() {
     }
     
     @Override
@@ -20,6 +16,6 @@ public class coneIn extends CommandBase{
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 }

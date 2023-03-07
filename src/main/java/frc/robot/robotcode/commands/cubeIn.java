@@ -6,11 +6,8 @@ import frc.robot.robotcode.subsystems.intake;
 
 public class cubeIn extends CommandBase{
 
-    private intake _intake;
 
-    public cubeIn(intake intake) {
-        _intake = intake;
-        addRequirements(_intake);
+    public cubeIn() {
     }
     
     @Override
@@ -20,6 +17,6 @@ public class cubeIn extends CommandBase{
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 }

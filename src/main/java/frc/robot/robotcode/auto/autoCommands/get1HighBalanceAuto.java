@@ -37,7 +37,7 @@ public class get1HighBalanceAuto extends SequentialCommandGroup {
             new retractFourBar(_score),
             // new delay(0.500),
             new autoArmHomePos(_score),
-            new autoDrivePos(_robotDrive, 24000)//24000 was tested
+            new autoDrivePos(_robotDrive, 24750)//24000 was tested
             // new autoDrivePos(_robotDrive, -12000)
 
             //new autoNavXGryoscope(_robotDrive, 5)

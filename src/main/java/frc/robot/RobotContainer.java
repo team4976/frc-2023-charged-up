@@ -142,8 +142,8 @@ public class RobotContainer {
     _secondarycontroller.x().whileTrue(new handoff_ToScore(_handoff,_score));
     _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
     _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
-    _secondarycontroller.b().onTrue(new cubeIn(_intake));
-    _secondarycontroller.a().onTrue(new coneIn( _intake));
+    _secondarycontroller.b().onTrue(new cubeIn());
+    _secondarycontroller.a().onTrue(new coneIn());
     //_secondarycontroller.rightBumper().whileTrue(new armHome(_score));
     _secondarycontroller.y().whileTrue(new retract(_intake));
 
