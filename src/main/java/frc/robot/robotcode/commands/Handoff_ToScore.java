@@ -21,10 +21,14 @@ public class handoff_ToScore extends CommandBase {
     @Override
     public void execute() {
         if(robotConstants.peiceSelection){
+<<<<<<< HEAD
         _intake.retractCube(robotConstants.cubeRetractedPosition);
         if(Math.abs(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition() - robotConstants.cubeRetractedPosition) < 100){
         _hand_off.Handoff_Cube();
         }
+=======
+        _hand_off.Handoff_Cube();
+>>>>>>> 559d6d586b759439516be2ede02a6cffabd947f4
         }
         else{
         _hand_off.Handoff_Cone();
