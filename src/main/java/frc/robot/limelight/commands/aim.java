@@ -4,9 +4,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.limelight.subsystems.LimeLight;
 import frc.robot.robotcode.subsystems.robotDrive;
 
-import static frc.robot.RobotContainer._limelight;
-import static frc.robot.RobotContainer._robotDrive;
-
 public class aim extends CommandBase{
 
     LimeLight _limeLight;
@@ -19,9 +16,12 @@ public class aim extends CommandBase{
     }
 
     @Override
-    public void execute(){
+    public void initialize(){
         _limeLight.limeLightON();
-        
+    }
+
+    @Override
+    public void execute(){
         _limeLight.aim(_robotDrive);
     }
 

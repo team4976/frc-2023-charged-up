@@ -5,7 +5,7 @@ package frc.robot.robotcode.commands;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.robotcode.auto.autoSubCommands.delay;
+// import frc.robot.robotcode.auto.autoSubCommands.delay;
 import frc.robot.robotcode.subsystems.intake;
 import frc.robot.robotConstants;
 

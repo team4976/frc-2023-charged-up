@@ -6,8 +6,8 @@ import static frc.robot.robotConstants.*;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.robotConstants;
-import frc.robot.robotcode.auto.autoSubCommands.delay;
+// import frc.robot.robotConstants;
+// import frc.robot.robotcode.auto.autoSubCommands.delay;
 
 public class hand_off extends SubsystemBase{
     
@@ -29,6 +29,11 @@ public class hand_off extends SubsystemBase{
     public void Handoff_Cube(){
         m_IntakeBottom.set(ControlMode.PercentOutput, -.4);
         m_IntakeTop.set(ControlMode.PercentOutput, .4);
+    }
+
+    public void Handoff_Cone(){
+        m_IntakeBottom.set(ControlMode.PercentOutput, -.075);
+        m_IntakeTop.set(ControlMode.PercentOutput, -.075);
     }
 
     public void Handoff_ToIntake(){

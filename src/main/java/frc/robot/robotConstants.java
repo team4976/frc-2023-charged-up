@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.SPI;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.XboxController;
+// import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -72,6 +72,8 @@ public final class robotConstants {
 
     public static final double stop = 0;
 
+    public static final double rotationSpeed = .75;
+
     //public booleans
     public static boolean peiceSelection = false;//differentiation between false coneIn and true cubeIn
     public static boolean heightSelection = false; // false = low true = high
@@ -85,8 +87,12 @@ public final class robotConstants {
     public static double conePosition = 5750;
     public static double cubePosition = 3801;
 
-    public static double cubeRetractedPosition = 2213; 
+    public static double cubeRetractedPosition = 2313; //2213
     public static double coneRetractedPosition = 0; // cone is at 0
+
+    //VAR
+    public static double goalPosition = 0;
+    public static double buttonIntakePOS = 200;
 
     // Digitalinput button 
     public static DigitalInput cubeInIntake = new DigitalInput(0);

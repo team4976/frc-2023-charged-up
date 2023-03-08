@@ -1,7 +1,7 @@
 package frc.robot.robotcode.subsystems;
 import static frc.robot.robotConstants.backwardI;
 import static frc.robot.robotConstants.forwardI;
-import static frc.robot.robotConstants.m_ArmRotator;
+// import static frc.robot.robotConstants.m_ArmRotator;
 import static frc.robot.robotConstants.m_IntakeTop;
 import static frc.robot.robotConstants.m_IntakeBottom;
 import static frc.robot.robotConstants.m_IntakeTalonMain;
@@ -17,10 +17,16 @@ public class intake extends SubsystemBase{
     public intake(){
         m_IntakeTalonMain.setInverted(false);
         m_IntakeTalonMain.setSensorPhase(true);
-        m_IntakeTalonMain.configPeakOutputForward(0.4);
-        m_IntakeTalonMain.configPeakOutputReverse(-0.4);
+        m_IntakeTalonMain.configPeakOutputForward(0.75);
+        m_IntakeTalonMain.configPeakOutputReverse(-0.6);
     }
 
+    public void holdIntakePosition(){
+        m_IntakeTalonMain.configMotionCruiseVelocity(2000);
+        m_IntakeTalonMain.configMotionAcceleration(2000);
+        m_IntakeTalonMain.set(ControlMode.MotionMagic, m_IntakeTalonMain.getSelectedSensorPosition());
+        robotConstants.peiceSelection = false; // cone
+    }
 
     public void intakeextend(){
     }
@@ -33,7 +39,7 @@ public class intake extends SubsystemBase{
     }
 
     public void intakeCube(double position){
-        m_IntakeTalonMain.configMotionCruiseVelocity(2000);
+        m_IntakeTalonMain.configMotionCruiseVelocity(3000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
         if(cubeAtIntake()){
@@ -51,23 +57,23 @@ public class intake extends SubsystemBase{
     }
 
     public void intakeCone(double position){
-        m_IntakeTalonMain.configMotionCruiseVelocity(2500);
+        m_IntakeTalonMain.configMotionCruiseVelocity(3000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
-        m_IntakeBottom.set(ControlMode.PercentOutput, .6);
+        m_IntakeBottom.set(ControlMode.PercentOutput, .8);
         //botom motor spin counter clockwise
 
-        m_IntakeTop.set(ControlMode.PercentOutput, backwardI);
+        m_IntakeTop.set(ControlMode.PercentOutput, .8);
         //top motor spin clockwise
     }
 
     public void retractCube (double position) {
-        m_IntakeTalonMain.configMotionCruiseVelocity(2500);
+        m_IntakeTalonMain.configMotionCruiseVelocity(3000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
     }
     public void retractCone (double position) {
-        m_IntakeTalonMain.configMotionCruiseVelocity(2500);
+        m_IntakeTalonMain.configMotionCruiseVelocity(3000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
 
@@ -83,7 +89,7 @@ public class intake extends SubsystemBase{
         m_IntakeTop.set(ControlMode.PercentOutput, forwardI);
         }
         else {
-        m_IntakeTalonMain.configMotionCruiseVelocity(2500);
+        m_IntakeTalonMain.configMotionCruiseVelocity(3000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
         }

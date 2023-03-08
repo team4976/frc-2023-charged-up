@@ -7,15 +7,15 @@ package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.SPI;
+// import edu.wpi.first.wpilibj.DigitalInput;
+// import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
-import frc.robot.robotConstants;
-import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
-import frc.robot.robotcode.subsystems.robotDrive;
+// import edu.wpi.first.wpilibj.GenericHID.RumbleType;
+// import frc.robot.robotConstants;
+// import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
+// import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.shuffleboard.shuffleBoard;
-import pabeles.concurrency.ConcurrencyOps.Reset;
+// import pabeles.concurrency.ConcurrencyOps.Reset;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -52,9 +52,14 @@ public class Robot extends TimedRobot {
     // Reast var
     robotConstants.peiceSelection = false;
     robotConstants.heightSelection = false;
+
+    robotConstants.goalPosition = 0;
+    robotConstants.buttonIntakePOS = 200;
     //Camera
     CameraServer.startAutomaticCapture();
     m_robotContainer = new RobotContainer();
+
+    
     // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     // m_chooser.addOption("My Auto", kCustomAuto);
     // SmartDashboard.putData("Auto choices", m_chooser);
@@ -71,10 +76,46 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     shuffleBoard.instance.tick();
     CommandScheduler.getInstance().run();
-    // System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition());
-    // System.out.println(robotConstants.navX.getYaw());
-    // System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "*****" + robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
-    // System.out.println(robotConstants.m_IntakeTalonMain.getSupplyCurrent());
+
+    // (CRTL /) to uncomment
+    // Drive
+
+    // System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "*****" + robotConstants.m_DriveTalonRight.getSelectedSensorPosition() + " Drive Train Left/Right Encoder");
+    // System.out.println(robotConstants.m_DriveTalonLeft.getSupplyCurrent() + " Drive LEFT Current");
+    // System.out.println(robotConstants.m_DriveTalonRight.getSupplyCurrent() + " Drive Right Current");
+    // System.out.println();
+    // System.out.println();
+
+    //
+    // Arm
+
+    // System.out.println(robotConstants.m_ArmRotator.getSelectedSensorPosition() + " Arm Encoder" + robotConstants.m_ArmRotator.getSupplyCurrent() + " Arm Current");
+    // System.out.println();
+    // System.out.println();
+    
+    //
+    // Intake
+
+    // System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition() + " Intake Encoder " + robotConstants.m_IntakeTalonMain.getSupplyCurrent() + " Intake Current");
+    // System.out.println();
+    // System.out.println();
+
+    //
+    // NavX
+
+    // System.out.println(robotConstants.navX.getYaw() + " *** " + robotConstants.navX.getPitch() + " *** " + robotConstants.navX.getRoll() + " YAW :: PITCH :: ROLL");
+    // System.out.println();
+    // System.out.println();
+
+    //
+    // NavX TEST
+
+    // System.out.println(robotConstants.navX.getVelocityX() + " *** " + robotConstants.navX.getVelocityY() + " *** " + robotConstants.navX.getVelocityZ() + " X :: Y :: Z");
+    // System.out.println();
+    // System.out.println();
+
+    // 
+    // Rumble
 
     // if (robotConstants.m_IntakeBottom.getStatorCurrent()>10){
     //   robotConstants._primaryControllerNotCommand.setRumble(RumbleType.kBothRumble, 1);
@@ -82,7 +123,8 @@ public class Robot extends TimedRobot {
     // else {
     //   robotConstants._primaryControllerNotCommand.setRumble(RumbleType.kBothRumble, 0);
     // }
-    // System.out.println(robotConstants.navX.getYaw() + " *****" + robotConstants.navX.getPitch() + " *****" + robotConstants.navX.getRoll());
+
+    //
 
   }
 

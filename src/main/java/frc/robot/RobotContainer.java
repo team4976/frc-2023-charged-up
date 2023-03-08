@@ -10,30 +10,31 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.limelight.commands.aim;
-import frc.robot.limelight.commands.setheightFalse;
-import frc.robot.limelight.commands.setheightTrue;
+// import frc.robot.limelight.commands.setheightFalse;
+// import frc.robot.limelight.commands.setheightTrue;
 import frc.robot.limelight.subsystems.LimeLight;
-import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
+// import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
 import frc.robot.robotcode.auto.autoCommands.get1HighBalanceAuto;
-import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
-import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
-import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
+// import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
+// import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
+// import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
 import frc.robot.robotcode.commands.armHighPos;
 import frc.robot.robotcode.commands.armHomePos;
+import frc.robot.robotcode.commands.buttonIntakeSTOP;
 import frc.robot.robotcode.commands.coneIn;
 import frc.robot.robotcode.commands.cubeIn;
 import frc.robot.robotcode.commands.engageHighGear;
 import frc.robot.robotcode.commands.extendFourBar;
-import frc.robot.robotcode.commands.grabPiece;
+// import frc.robot.robotcode.commands.grabPiece;
 import frc.robot.robotcode.commands.handoff_ToScore;
 import frc.robot.robotcode.commands.holdPosition;
-import frc.robot.robotcode.commands.intakeCone;
+// import frc.robot.robotcode.commands.intakeCone;
 import frc.robot.robotcode.commands.intakeSTOP;
 import frc.robot.robotcode.commands.intakeextend;
-import frc.robot.robotcode.commands.releasePiece;
+// import frc.robot.robotcode.commands.releasePiece;
 import frc.robot.robotcode.commands.retract;
-import frc.robot.robotcode.commands.retractCone;
-import frc.robot.robotcode.commands.retractCube;
+// import frc.robot.robotcode.commands.retractCone;
+// import frc.robot.robotcode.commands.retractCube;
 import frc.robot.robotcode.commands.retractFourBar;
 import frc.robot.robotcode.commands.reverseIntake;
 import frc.robot.robotcode.commands.rotateArmBwd;
@@ -119,7 +120,7 @@ public class RobotContainer {
 
     //test
     Trigger exampleTrigger = new Trigger(robotConstants.cubeInIntake::get);
-    exampleTrigger.whileFalse(new intakeSTOP(_intake));
+    exampleTrigger.whileFalse(new buttonIntakeSTOP(_intake));
     //
     // //testing intake
     // _primarycontroller.pov(0).onTrue(new intakeCube(_intake));
@@ -142,8 +143,8 @@ public class RobotContainer {
     _secondarycontroller.x().whileTrue(new handoff_ToScore(_handoff,_score));
     _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
     _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
-    _secondarycontroller.b().onTrue(new cubeIn(_intake));
-    _secondarycontroller.a().onTrue(new coneIn( _intake));
+    _secondarycontroller.b().onTrue(new cubeIn());
+    _secondarycontroller.a().onTrue(new coneIn());
     //_secondarycontroller.rightBumper().whileTrue(new armHome(_score));
     _secondarycontroller.y().whileTrue(new retract(_intake));
 

@@ -2,15 +2,11 @@ package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
-import frc.robot.robotcode.subsystems.intake;
+// import frc.robot.robotcode.subsystems.intake;
 
 public class coneIn extends CommandBase{
 
-    private intake _intake;
-
-    public coneIn(intake intake) {
-        _intake = intake;
-        addRequirements(_intake);
+    public coneIn() {
     }
     
     @Override
@@ -20,6 +16,6 @@ public class coneIn extends CommandBase{
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 }
