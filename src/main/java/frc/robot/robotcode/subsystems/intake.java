@@ -25,7 +25,7 @@ public class intake extends SubsystemBase{
         m_IntakeTalonMain.configMotionCruiseVelocity(2000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, m_IntakeTalonMain.getSelectedSensorPosition());
-        robotConstants.peiceSelection = false; // cone
+        //robotConstants.peiceSelection = false; // cone
     }
 
     public void intakeextend(){
@@ -60,7 +60,7 @@ public class intake extends SubsystemBase{
         m_IntakeTalonMain.configMotionCruiseVelocity(3000);
         m_IntakeTalonMain.configMotionAcceleration(2000);
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
-        m_IntakeBottom.set(ControlMode.PercentOutput, .8);
+        m_IntakeBottom.set(ControlMode.PercentOutput, .4);
         //botom motor spin counter clockwise
 
         m_IntakeTop.set(ControlMode.PercentOutput, .8);

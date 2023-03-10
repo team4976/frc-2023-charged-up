@@ -42,8 +42,10 @@ import frc.robot.robotcode.commands.rotateArmFwd;
 import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.commands.setArcadeDrive;
 import frc.robot.robotcode.subsystems.scoring;
+import frc.robot.robotcode.subsystems.StatusLight;
 import frc.robot.robotcode.subsystems.hand_off;
 import frc.robot.robotcode.subsystems.intake;
+//import frc.robot.robotcode.subsystems.led;
 import frc.robot.robotcode.subsystems.robotDrive;
 
 
@@ -62,6 +64,9 @@ public class RobotContainer {
   public static final scoring _score = new scoring();
   public static final hand_off _handoff = new hand_off();
   public static final LimeLight _limelight = new LimeLight();
+
+  //LED
+  public static final StatusLight _statusLight = new StatusLight();
   // ONLY FOR TESTING
   // ONLY FOR TESTING
 
@@ -70,6 +75,8 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    
+    _statusLight.register();
 
 
     // Configure the button bindings

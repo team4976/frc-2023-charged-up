@@ -3,6 +3,7 @@ package frc.robot;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ctre.phoenix.led.RainbowAnimation;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -84,7 +85,7 @@ public final class robotConstants {
     public static double positionHome = 50;
 
     //intake positions
-    public static double conePosition = 5750;
+    public static double conePosition = 5825;
     public static double cubePosition = 3801;
 
     public static double cubeRetractedPosition = 2313; //2213
@@ -96,6 +97,11 @@ public final class robotConstants {
 
     // Digitalinput button 
     public static DigitalInput cubeInIntake = new DigitalInput(0);
+
+    //Color array
+    public static int[] RainBow = {10,20};
+    public static int ColorHold = 0;
+
     //navX angle constants
     public static int navXDeadBand = 5;
 

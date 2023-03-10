@@ -5,6 +5,8 @@ import frc.robot.robotConstants;
 // import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.intake;
 
+import static frc.robot.RobotContainer._statusLight;
+
 public class buttonIntakeSTOP extends CommandBase {
     
     private intake intake;
@@ -16,13 +18,23 @@ public class buttonIntakeSTOP extends CommandBase {
 
     @Override
     public void initialize(){
+
+        if(robotConstants.peiceSelection){
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         intake.retractCone(robotConstants.coneRetractedPosition);
+        _statusLight.setRGB(0, 255, 0);
+        //62°, 85%, 93%
     }
+    else{
+        intake.retractCone(robotConstants.coneRetractedPosition);
+        _statusLight.setRGB(0, 255, 0);
+        intake.intakeStop();
+    }
+}
 
     // @Override
     // public void execute() {

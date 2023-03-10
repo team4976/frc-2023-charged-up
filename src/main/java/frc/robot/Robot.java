@@ -20,6 +20,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+
+import static frc.robot.RobotContainer._statusLight;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -58,6 +60,7 @@ public class Robot extends TimedRobot {
     //Camera
     CameraServer.startAutomaticCapture();
     m_robotContainer = new RobotContainer();
+
 
     
     // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
@@ -172,6 +175,9 @@ public class Robot extends TimedRobot {
     robotConstants.navX.zeroYaw();
     robotConstants.m_DriveTalonLeft.setSensorPhase(false);
     robotConstants.m_DriveTalonRight.setSensorPhase(false);
+
+    //LED
+    _statusLight.setTEAM();
   }
 
   /** This function is called periodically during operator control. */
