@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -115,7 +116,7 @@ public class RobotContainer {
     CommandXboxController _primarycontroller = new CommandXboxController(0);
     CommandXboxController _secondarycontroller = new CommandXboxController(1);
 
-    _primarycontroller.y().onTrue((new reverseIntake(_intake)));
+    _primarycontroller.y().whileTrue((new reverseIntake(_intake)));
     _primarycontroller.b().onTrue(new retract(_intake));
     _primarycontroller.a().onTrue(new intakeextend(_intake));
     _primarycontroller.pov(0).whileTrue(new rotateArmBwd(_score));

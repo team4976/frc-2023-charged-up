@@ -21,11 +21,17 @@ public class buttonIntakeSTOP extends CommandBase {
 
         if(robotConstants.peiceSelection){
         try {
-            Thread.sleep(200);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         intake.retractCone(robotConstants.coneRetractedPosition);
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        intake.intakeStop();
         _statusLight.setRGB(0, 255, 0);
         //62°, 85%, 93%
     }

@@ -7,11 +7,13 @@ import com.fasterxml.jackson.core.sym.Name;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import pabeles.concurrency.ConcurrencyOps.Reset;
 
 import static frc.robot.robotConstants.*;
 
 public class shuffleBoard {
     public static shuffleBoard instance = new shuffleBoard();
+
     ShuffleboardTab tab = Shuffleboard.getTab("Encoder");
 
     BaseMotorEncoder DriveTalonLeft = new BaseMotorEncoder("m_DriveTalonLeft_Encoder", m_DriveTalonLeft);
@@ -27,9 +29,9 @@ public class shuffleBoard {
     BaseMotorEncoder IntakeBottom = new BaseMotorEncoder("m_IntakeBottom", m_IntakeBottom);
     BaseMotorEncoder ArmRotator = new BaseMotorEncoder("m_ArmRotator_Encoder", m_ArmRotator);
 
-    ShuffleboardTab addTabs(String name) {
-        return Shuffleboard.getTab(name);
-    }
+    //TEST
+    BaseMotorEncoder re = new BaseMotorEncoder();
+
 
     public void tick() {
         Shuffleboard.update();

@@ -7,6 +7,9 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.robotConstants;
+import frc.robot.robotcode.commands.resetEncoder;
 
 public class BaseMotorEncoder {
 
@@ -33,6 +36,10 @@ public class BaseMotorEncoder {
         initShuffle();
     }
 
+    public BaseMotorEncoder(){
+        ResetEncoder();
+    }
+
     public void initShuffle() {
         ShuffleboardTab tab = Shuffleboard.getTab("Encoder");
 
@@ -44,6 +51,11 @@ public class BaseMotorEncoder {
             tab.addDouble(name + "_Voltage", this::getVoltage);
         }
 
+    }
+
+    //Test 
+    public void ResetEncoder(){
+        SmartDashboard.putData("Reast Encoder", new resetEncoder());
     }
 
     public double getVoltage() {
