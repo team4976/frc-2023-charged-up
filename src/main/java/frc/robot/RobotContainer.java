@@ -14,8 +14,10 @@ import frc.robot.limelight.commands.aim;
 // import frc.robot.limelight.commands.setheightFalse;
 // import frc.robot.limelight.commands.setheightTrue;
 import frc.robot.limelight.subsystems.LimeLight;
+import frc.robot.robotcode.auto.autoCommands.autoTurn;
 // import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
 import frc.robot.robotcode.auto.autoCommands.get1HighBalanceAuto;
+import frc.robot.robotcode.auto.autoCommands.testAuto;
 // import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 // import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
@@ -127,8 +129,7 @@ public class RobotContainer {
     _primarycontroller.leftBumper().whileTrue(new aim(_limelight, _robotDrive));
 
     //test
-    Trigger exampleTrigger = new Trigger(robotConstants.cubeInIntake::get);
-    exampleTrigger.whileFalse(new buttonIntakeSTOP(_intake));
+       
     //
     // //testing intake
     // _primarycontroller.pov(0).onTrue(new intakeCube(_intake));
@@ -167,6 +168,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand () {
-    return new get1HighBalanceAuto(_robotDrive, _score, _limelight);
+    return new testAuto(_robotDrive, _score, _limelight, _handoff, _intake);//get1HighBalanceAuto(_robotDrive, _score, _limelight);
   }
 }

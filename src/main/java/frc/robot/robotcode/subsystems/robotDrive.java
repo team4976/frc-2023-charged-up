@@ -48,17 +48,17 @@ public class robotDrive extends SubsystemBase {
         m_DriveTalonRight.setSelectedSensorPosition(0);
         m_DriveTalonLeft.setSelectedSensorPosition(0);
         
-        m_DriveTalonRight.configMotionCruiseVelocity(2800);//same from last year - MUST be tested
-        m_DriveTalonLeft.configMotionCruiseVelocity(2800);
+        m_DriveTalonRight.configMotionCruiseVelocity(6000);//same from last year - MUST be tested
+        m_DriveTalonLeft.configMotionCruiseVelocity(6000);
         
         m_DriveTalonRight.configMotionAcceleration(2800);
         m_DriveTalonLeft.configMotionAcceleration(2800);
 
-        m_DriveTalonLeft.configPeakOutputForward(0.5);
-        m_DriveTalonRight.configPeakOutputForward(0.5);
+        m_DriveTalonLeft.configPeakOutputForward(1);
+        m_DriveTalonRight.configPeakOutputForward(1);
 
-        m_DriveTalonLeft.configPeakOutputReverse(-0.5);
-        m_DriveTalonRight.configPeakOutputReverse(-0.5);
+        m_DriveTalonLeft.configPeakOutputReverse(-1);
+        m_DriveTalonRight.configPeakOutputReverse(-1);
         
         m_DriveTalonRight.set(ControlMode.MotionMagic, -position);
         m_DriveTalonLeft.set(ControlMode.MotionMagic, -position);
@@ -84,4 +84,45 @@ public class robotDrive extends SubsystemBase {
         m_DriveTalonRight.set(ControlMode.MotionMagic, 0);
         m_DriveTalonLeft.set(ControlMode.MotionMagic, 0);
     }
+
+public void dirveAndRotateLEFT(double position, double rotation){
+    m_DriveTalonRight.setSelectedSensorPosition(0);
+    m_DriveTalonLeft.setSelectedSensorPosition(0);
+    
+    m_DriveTalonRight.configMotionCruiseVelocity(4000*(position/rotation));//same from last year - MUST be tested
+    m_DriveTalonLeft.configMotionCruiseVelocity(4000);
+    
+    m_DriveTalonRight.configMotionAcceleration(2800);
+    m_DriveTalonLeft.configMotionAcceleration(2800);
+
+    m_DriveTalonLeft.configPeakOutputForward(1);
+    m_DriveTalonRight.configPeakOutputForward(1);
+
+    m_DriveTalonLeft.configPeakOutputReverse(-1);
+    m_DriveTalonRight.configPeakOutputReverse(-1);
+    
+    m_DriveTalonRight.set(ControlMode.MotionMagic, -position);
+    m_DriveTalonLeft.set(ControlMode.MotionMagic, -rotation);
+}
+
+public void dirveAndRotateRight(double position, double rotation){
+    m_DriveTalonRight.setSelectedSensorPosition(0);
+    m_DriveTalonLeft.setSelectedSensorPosition(0);
+    
+    m_DriveTalonRight.configMotionCruiseVelocity(4000);//same from last year - MUST be tested
+    m_DriveTalonLeft.configMotionCruiseVelocity(4000*(position/rotation));
+    
+    m_DriveTalonRight.configMotionAcceleration(2800);
+    m_DriveTalonLeft.configMotionAcceleration(2800);
+
+    m_DriveTalonLeft.configPeakOutputForward(1);
+    m_DriveTalonRight.configPeakOutputForward(1);
+
+    m_DriveTalonLeft.configPeakOutputReverse(-1);
+    m_DriveTalonRight.configPeakOutputReverse(-1);
+    
+    m_DriveTalonRight.set(ControlMode.MotionMagic, -rotation);
+    m_DriveTalonLeft.set(ControlMode.MotionMagic, -position);
+}
+
 }

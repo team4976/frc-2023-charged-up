@@ -19,7 +19,7 @@ public class autoArmHighPos extends CommandBase {
 
         super.initialize();
         // System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        Scoring.setArmPos(robotConstants.positionHigh);
+        Scoring.autoSetArmPos(robotConstants.positionHigh);
     }
     public void end () {
         System.out.println("end auto arm high");
@@ -28,6 +28,6 @@ public class autoArmHighPos extends CommandBase {
     @Override
     public boolean isFinished() {
         // System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-        return robotConstants.m_ArmRotator.getSelectedSensorPosition() > (robotConstants.positionHigh-100);
+        return robotConstants.m_ArmRotator.getSelectedSensorPosition() > 4500; //(robotConstants.positionHigh-100);
     }
 }

@@ -28,6 +28,6 @@ public class autoArmHomePos extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        return robotConstants.m_ArmRotator.getSelectedSensorPosition() < (robotConstants.positionHome+100);
+        return true;//robotConstants.m_ArmRotator.getSelectedSensorPosition() < (robotConstants.positionHome+100);
     }
 }

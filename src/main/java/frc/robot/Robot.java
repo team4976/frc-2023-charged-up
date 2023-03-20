@@ -10,6 +10,8 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 // import edu.wpi.first.wpilibj.DigitalInput;
 // import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.robotcode.commands.buttonIntakeSTOP;
+import frc.robot.robotcode.commands.resetEncoder;
 // import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 // import frc.robot.robotConstants;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
@@ -21,8 +23,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 import static frc.robot.RobotContainer._statusLight;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+
+import static frc.robot.RobotContainer._intake;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -40,6 +50,35 @@ public class Robot extends TimedRobot {
   public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
   // public robotDrive _robotDrive = new robotDrive ();//TESTING
   public RobotContainer m_robotContainer;
+  public File encoderOutFile;
+  public PrintStream encoderOutStream;
+
+  public Robot(){
+  try {
+    encoderOutFile = new File("/home/lvuser/Encoder_Value-"+System.currentTimeMillis()+".log");
+    System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+    System.out.println("Created file handle");
+    if (encoderOutFile.createNewFile()) {
+    System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+    System.out.println("Created file");
+    } else {
+      System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+      System.out.println("Failed to create file");
+    }
+  } catch (IOException e) {
+    System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+    System.out.println("Failed to make file handle and file");
+    e.printStackTrace();
+  }
+  try {
+    encoderOutStream = new PrintStream(encoderOutFile);
+  } 
+  catch (FileNotFoundException e) {
+    System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+    System.out.println("Failed To Print");
+    e.printStackTrace();
+   }
+  }
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -61,8 +100,6 @@ public class Robot extends TimedRobot {
     //Camera
     CameraServer.startAutomaticCapture();
     m_robotContainer = new RobotContainer();
-
-    
     // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     // m_chooser.addOption("My Auto", kCustomAuto);
     // SmartDashboard.putData("Auto choices", m_chooser);
@@ -143,6 +180,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    _statusLight.setTEAM();
     robotConstants.m_DriveTalonLeft.setSensorPhase(false);
     robotConstants.m_DriveTalonRight.setSensorPhase(false);
     // m_autoSelected = m_chooser.getSelected();
@@ -158,6 +196,9 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
+    encoderOutStream.println("Motor LEFT "+robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "      Motor  Right " +robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
+  
+
     // switch (m_autoSelected) {
     //   case kCustomAuto:
     //     // Put custom auto code here
@@ -175,6 +216,9 @@ public class Robot extends TimedRobot {
     robotConstants.navX.zeroYaw();
     robotConstants.m_DriveTalonLeft.setSensorPhase(false);
     robotConstants.m_DriveTalonRight.setSensorPhase(false);
+
+    Trigger exampleTrigger = new Trigger(robotConstants.cubeInIntake::get);
+       exampleTrigger.whileFalse(new buttonIntakeSTOP(_intake));
 
     //LED
     _statusLight.setTEAM();
