@@ -11,32 +11,32 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.robotConstants;
 import frc.robot.robotcode.commands.resetEncoder;
 
-public class BaseMotorEncoder {
+public class baseMotorEncoder {
 
     String name;
     public BaseMotorController controller;
     // private boolean type;
     // ShuffleboardTab tab = shuffleBoard.instance.addTabs("Encoder");
 
-    public BaseMotorEncoder(String name, VictorSPX victorSPX) {
+    public baseMotorEncoder(String name, VictorSPX victorSPX) {
         this.name = name;
         controller = victorSPX;
         initShuffle();
     }
 
-    public BaseMotorEncoder(String name, TalonSRX talonSRX) {
+    public baseMotorEncoder(String name, TalonSRX talonSRX) {
         this.name = name;
         controller = talonSRX;
         initShuffle();
     }
 
-    public BaseMotorEncoder(String name, TalonFX talonfx) {
+    public baseMotorEncoder(String name, TalonFX talonfx) {
         this.name = name;
         controller = talonfx;
         initShuffle();
     }
 
-    public BaseMotorEncoder(){
+    public baseMotorEncoder(){
         ResetEncoder();
     }
 

@@ -12,7 +12,7 @@ import static edu.wpi.first.wpilibj.DriverStation.getAlliance;
 
 import java.util.Random;
 
-public class StatusLight extends SubsystemBase implements Sendable  {
+public class statusLight extends SubsystemBase implements Sendable  {
 
     public AddressableLED addressableLED = new AddressableLED(0);//port 0
     public AddressableLEDBuffer buffer = new AddressableLEDBuffer(24*2);
@@ -25,7 +25,7 @@ public class StatusLight extends SubsystemBase implements Sendable  {
 
     Random rand = new Random();
 
-    public StatusLight() {
+    public statusLight() {
         addressableLED.setLength(buffer.getLength());
         addressableLED.start();
     }

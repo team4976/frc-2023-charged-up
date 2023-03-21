@@ -47,7 +47,7 @@ import frc.robot.robotcode.commands.rotateArmFwd;
 import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.commands.setArcadeDrive;
 import frc.robot.robotcode.subsystems.scoring;
-import frc.robot.robotcode.subsystems.StatusLight;
+import frc.robot.robotcode.subsystems.statusLight;
 import frc.robot.robotcode.subsystems.hand_off;
 import frc.robot.robotcode.subsystems.intake;
 //import frc.robot.robotcode.subsystems.led;
@@ -71,7 +71,7 @@ public class RobotContainer {
   public static final LimeLight _limelight = new LimeLight();
 
   //LED
-  public static final StatusLight _statusLight = new StatusLight();
+  public static final statusLight _statusLight = new statusLight();
   // ONLY FOR TESTING
   // ONLY FOR TESTING
 
