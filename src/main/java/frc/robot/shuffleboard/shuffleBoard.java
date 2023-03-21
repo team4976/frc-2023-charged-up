@@ -16,21 +16,21 @@ public class shuffleBoard {
 
     ShuffleboardTab tab = Shuffleboard.getTab("Encoder");
 
-    BaseMotorEncoder DriveTalonLeft = new BaseMotorEncoder("m_DriveTalonLeft_Encoder", m_DriveTalonLeft);
-    BaseMotorEncoder DriveTalonRight = new BaseMotorEncoder("m_DriveTalonRight_Encoder", m_DriveTalonRight);
+    baseMotorEncoder DriveTalonLeft = new baseMotorEncoder("m_DriveTalonLeft_Encoder", m_DriveTalonLeft);
+    baseMotorEncoder DriveTalonRight = new baseMotorEncoder("m_DriveTalonRight_Encoder", m_DriveTalonRight);
 
-    BaseMotorEncoder DriveVictorRightFwd = new BaseMotorEncoder("m_DriveVictorRightFwd", m_DriveVictorRightFwd);
-    BaseMotorEncoder DriveVictorLeftFwd = new BaseMotorEncoder("m_DriveVictorLeftFwd", m_DriveVictorLeftFwd);
-    BaseMotorEncoder DriveVictorRightBack = new BaseMotorEncoder("m_DriveVictorRightBack", m_DriveVictorRightBack);
-    BaseMotorEncoder DriveVictorLeftBack = new BaseMotorEncoder("m_DriveVictorLeftBack", m_DriveVictorLeftBack);
+    baseMotorEncoder DriveVictorRightFwd = new baseMotorEncoder("m_DriveVictorRightFwd", m_DriveVictorRightFwd);
+    baseMotorEncoder DriveVictorLeftFwd = new baseMotorEncoder("m_DriveVictorLeftFwd", m_DriveVictorLeftFwd);
+    baseMotorEncoder DriveVictorRightBack = new baseMotorEncoder("m_DriveVictorRightBack", m_DriveVictorRightBack);
+    baseMotorEncoder DriveVictorLeftBack = new baseMotorEncoder("m_DriveVictorLeftBack", m_DriveVictorLeftBack);
 
-    BaseMotorEncoder IntakeTop = new BaseMotorEncoder("m_IntakeTop", m_IntakeTop);
-    BaseMotorEncoder IntakeTalonMain = new BaseMotorEncoder("m_IntakeTalonMain_Encoder", m_IntakeTalonMain);
-    BaseMotorEncoder IntakeBottom = new BaseMotorEncoder("m_IntakeBottom", m_IntakeBottom);
-    BaseMotorEncoder ArmRotator = new BaseMotorEncoder("m_ArmRotator_Encoder", m_ArmRotator);
+    baseMotorEncoder IntakeTop = new baseMotorEncoder("m_IntakeTop", m_IntakeTop);
+    baseMotorEncoder IntakeTalonMain = new baseMotorEncoder("m_IntakeTalonMain_Encoder", m_IntakeTalonMain);
+    baseMotorEncoder IntakeBottom = new baseMotorEncoder("m_IntakeBottom", m_IntakeBottom);
+    baseMotorEncoder ArmRotator = new baseMotorEncoder("m_ArmRotator_Encoder", m_ArmRotator);
 
     //TEST
-    BaseMotorEncoder re = new BaseMotorEncoder();
+    baseMotorEncoder re = new baseMotorEncoder();
 
 
     public void tick() {
