@@ -8,6 +8,7 @@ public class aim extends CommandBase{
 
     LimeLight _limeLight;
     robotDrive _robotDrive;
+    long startTime;
 
     public aim(LimeLight _limeLight, robotDrive _robotDrive){
      this._limeLight = _limeLight;
@@ -18,6 +19,21 @@ public class aim extends CommandBase{
     @Override
     public void initialize(){
         _limeLight.limeLightON();
+    }
+    @Override
+    public boolean isFinished(){
+        if(LimeLight.isVaildTagret()){
+            if(LimeLight.angleOff() < 2){
+                // to allow the timer start
+            }
+            else{
+                startTime = System.currentTimeMillis(); 
+            }
+        }
+        else{
+            startTime = System.currentTimeMillis();
+        }
+        return System.currentTimeMillis() - startTime > 1000;
     }
 
     @Override

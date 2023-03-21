@@ -10,9 +10,11 @@ import frc.robot.robotcode.auto.autoSubCommands.autoAim;
 // import frc.robot.robotcode.auto.autoSubCommands.autoAim;
 import frc.robot.robotcode.auto.autoSubCommands.autoArmHighPos;
 import frc.robot.robotcode.auto.autoSubCommands.autoArmHomePos;
+import frc.robot.robotcode.auto.autoSubCommands.autoCubeAtIntake;
+import frc.robot.robotcode.auto.autoSubCommands.autoCuberetract;
 import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
-import frc.robot.robotcode.auto.autoSubCommands.autoDrivePosAndRotRotation;
 import frc.robot.robotcode.auto.autoSubCommands.autoGrab;
+import frc.robot.robotcode.auto.autoSubCommands.autoHandOffCube;
 import frc.robot.robotcode.auto.autoSubCommands.autoIntake;
 import frc.robot.robotcode.auto.autoSubCommands.autoIntakeRetract;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
@@ -29,38 +31,29 @@ import frc.robot.robotcode.subsystems.intake;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class testAuto extends SequentialCommandGroup {
+public class autoTestCube extends SequentialCommandGroup {
 
-    public testAuto (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)  {
+    public autoTestCube (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)  {
         
         addCommands(
-            new autoGrab(_score),
-           // new delay(0.10),
-            new autoArmHighPos(_score),
-         //   new delay(0.01),
-            new extendFourBar(_score),
-            //new delay(.2),
-            new autoRelease(_score),
-        //  new delay(0.10),
-            new retractFourBar(_score),
-            // new delay(0.500),
-            new autoArmHomePos(_score),
-            new autoDrivePosAndRotRotation(_robotDrive, 47000, 50000),//24000 was tested //24750
-            new autoIntake(_intake, false),
-            //new autoRotateOnPos(_robotDrive, 750), // unknow
-            new autoDrivePos(_robotDrive, 7000),
-           // new delay(.2),
+            //new autoDrivePos(_robotDrive, 20000),//24000 was tested //24750
+            new autoIntake(_intake, true),
+            new autoDrivePos(_robotDrive, 10000), // unknow
+           // new autoCubeAtIntake(_intake, _robotDrive),
             new autoIntakeRetract(_intake, false),
-            new autoDrivePosAndRotRotation(_robotDrive, -7000, -10000),
-            new autoDrivePos(_robotDrive, -45000),//24000 was tested
+            new autoDrivePos(_robotDrive, -10000),
+           // new autoAim(_limelight, _robotDrive), // LimeLight
+            //new autoDrivePos(_robotDrive, -20000),//24000 was tested
+            new autoCuberetract(_intake),
+            new autoHandOffCube(_hand_off, _intake),
             new autoGrab(_score),
            // new delay(0.10),
             new autoArmHighPos(_score),
             //   new delay(0.01),
             new extendFourBar(_score),
-            //new delay(.2),
+            new delay(.2),
             new autoRelease(_score),
-          //  new delay(0.10),
+            new delay(0.20),
             new retractFourBar(_score),
             // new delay(0.500),
             new autoArmHomePos(_score)

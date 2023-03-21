@@ -1,12 +1,12 @@
 package frc.robot.limelight.subsystems;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.robotConstants;
-import frc.robot.robotcode.subsystems.robotDrive;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.robotConstants;
+import frc.robot.robotcode.subsystems.robotDrive;
 
 public class LimeLight extends SubsystemBase{
     //NEED CHANGE THE VALUE
@@ -19,7 +19,7 @@ static NetworkTable table = NetworkTableInstance.getDefault().getTable("limeligh
 
 static NetworkTableEntry tv = table.getEntry("tv");
 NetworkTableEntry ty = table.getEntry("ty");
-NetworkTableEntry tx = table.getEntry("tx");
+static NetworkTableEntry tx = table.getEntry("tx");
     
     
     // keys
@@ -106,7 +106,9 @@ NetworkTableEntry tx = table.getEntry("tx");
                 
             // }
              else{
-                 System.out.println("LIMELIGHT HAS FAILED PLS INFORM THE TEC");
+                 System.out.println("*\n*\n*\n*\n*\n");
+                 System.out.println("**************************LIMELIGHT HAS FAILED PLS INFORM THE TEC*******************************");
+                 System.out.println("*\n*\n*\n*\n*\n");
              }
     }
 
@@ -115,5 +117,18 @@ NetworkTableEntry tx = table.getEntry("tx");
     }
     public void limelightOFF(){
         table.getEntry("ledMode").setValue(1);
+    }
+
+    public static double angleOff(){
+        return tx.getDouble(0.0);
+    }
+
+    public double limelightDis(){
+     double limeLightArray[] = table.getEntry("botpose").getDoubleArray(new double[6]);
+     double botX = limeLightArray[0];
+     return botX*10;
+    }
+    public void swapLimeLight(int pipeline){
+        table.getEntry("pipeline").setValue(pipeline);
     }
 }

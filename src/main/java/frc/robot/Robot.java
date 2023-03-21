@@ -10,6 +10,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 // import edu.wpi.first.wpilibj.DigitalInput;
 // import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.limelight.subsystems.LimeLight;
 import frc.robot.robotcode.commands.buttonIntakeSTOP;
 import frc.robot.robotcode.commands.resetEncoder;
 // import edu.wpi.first.wpilibj.GenericHID.RumbleType;
@@ -33,6 +34,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import static frc.robot.RobotContainer._intake;
+import static frc.robot.RobotContainer._limelight;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -181,6 +183,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     _statusLight.setTEAM();
+    _limelight.swapLimeLight(3);
     robotConstants.m_DriveTalonLeft.setSensorPhase(false);
     robotConstants.m_DriveTalonRight.setSensorPhase(false);
     // m_autoSelected = m_chooser.getSelected();

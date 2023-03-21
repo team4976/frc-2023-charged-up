@@ -29,41 +29,43 @@ import frc.robot.robotcode.subsystems.intake;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class testAuto extends SequentialCommandGroup {
+public class testAuto2 extends SequentialCommandGroup {
 
-    public testAuto (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)  {
+    public testAuto2 (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)  {
         
         addCommands(
-            new autoGrab(_score),
-           // new delay(0.10),
-            new autoArmHighPos(_score),
-         //   new delay(0.01),
-            new extendFourBar(_score),
-            //new delay(.2),
-            new autoRelease(_score),
-        //  new delay(0.10),
-            new retractFourBar(_score),
-            // new delay(0.500),
-            new autoArmHomePos(_score),
-            new autoDrivePosAndRotRotation(_robotDrive, 47000, 50000),//24000 was tested //24750
-            new autoIntake(_intake, false),
-            //new autoRotateOnPos(_robotDrive, 750), // unknow
-            new autoDrivePos(_robotDrive, 7000),
+        //     new autoGrab(_score),
+        //    // new delay(0.10),
+        //     new autoArmHighPos(_score),
+        //  //   new delay(0.01),
+        //     new extendFourBar(_score),
+        //     //new delay(.2),
+        //     new autoRelease(_score),
+        // //  new delay(0.10),
+        //     new retractFourBar(_score),
+        //     // new delay(0.500),
+         //   new autoArmHomePos(_score),
+            new autoDrivePosAndRotRotation(_robotDrive, 20000, 25000),
+           // new autoIntake(_intake, false),
+           // new autoRotateOnPos(_robotDrive, 750), // unknow
+            new autoDrivePos(_robotDrive, 5000),
            // new delay(.2),
-            new autoIntakeRetract(_intake, false),
-            new autoDrivePosAndRotRotation(_robotDrive, -7000, -10000),
-            new autoDrivePos(_robotDrive, -45000),//24000 was tested
-            new autoGrab(_score),
-           // new delay(0.10),
-            new autoArmHighPos(_score),
-            //   new delay(0.01),
-            new extendFourBar(_score),
-            //new delay(.2),
-            new autoRelease(_score),
-          //  new delay(0.10),
-            new retractFourBar(_score),
-            // new delay(0.500),
-            new autoArmHomePos(_score)
+           // new autoIntakeRetract(_intake, false),
+            new autoDrivePosAndRotRotation(_robotDrive, -5000, -10000),
+           // new autoDrivePos(_robotDrive, -2000),
+           // new autoAim(_limelight, _robotDrive), // LimeLight
+            new autoDrivePos(_robotDrive, -15000)//24000 was tested
+        //     new autoGrab(_score),
+        //    // new delay(0.10),
+        //     new autoArmHighPos(_score),
+        //     //   new delay(0.01),
+        //     new extendFourBar(_score),
+        //     //new delay(.2),
+        //     new autoRelease(_score),
+        //   //  new delay(0.10),
+        //     new retractFourBar(_score),
+        //     // new delay(0.500),
+        //     new autoArmHomePos(_score)
 
 
             //new autoNavXGryoscope(_robotDrive, 5)
