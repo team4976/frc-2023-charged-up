@@ -5,7 +5,7 @@ import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.robotDrive;
 
 
-public class autoDrivePosAndRotRotation extends CommandBase {
+public class autoDrivePosAndRotation extends CommandBase {
     robotDrive _robotDrive;
     robotConstants _robotConstants;
     double positionR;
@@ -14,7 +14,7 @@ public class autoDrivePosAndRotRotation extends CommandBase {
     double positionL;
 
     double value;
-    public autoDrivePosAndRotRotation(robotDrive _robotDrive, double positionL, double positionR){
+    public autoDrivePosAndRotation(robotDrive _robotDrive, double positionL, double positionR){
         this._robotDrive=_robotDrive;
         addRequirements(_robotDrive);
         this.positionL=positionL;
@@ -24,10 +24,12 @@ public class autoDrivePosAndRotRotation extends CommandBase {
     @Override
     public void initialize() {
         super.initialize();
-        _robotDrive.dirveAndRotate(positionL, positionR);
+        _robotDrive.driveAndRotate(positionL, positionR);
     }
     @Override
     public void end(boolean interrupted) {
+        robotConstants.m_DriveTalonRight.setSelectedSensorPosition(0);
+        robotConstants.m_DriveTalonLeft.setSelectedSensorPosition(0);
         _robotDrive.setArcadeDrive(0, 0);
     }
     @Override

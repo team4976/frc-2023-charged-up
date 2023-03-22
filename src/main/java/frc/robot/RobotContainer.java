@@ -14,12 +14,11 @@ import frc.robot.limelight.commands.aim;
 // import frc.robot.limelight.commands.setheightFalse;
 // import frc.robot.limelight.commands.setheightTrue;
 import frc.robot.limelight.subsystems.LimeLight;
-import frc.robot.robotcode.auto.autoCommands.autoTestCube;
-import frc.robot.robotcode.auto.autoCommands.autoTurn;
 // import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
-import frc.robot.robotcode.auto.autoCommands.get1HighBalanceAuto;
-import frc.robot.robotcode.auto.autoCommands.testAuto;
-import frc.robot.robotcode.auto.autoCommands.testAuto2;
+import frc.robot.robotcode.auto.autoCommands.midGet1HighBalanceAuto;
+import frc.robot.robotcode.auto.testAutos.autoGetCube;
+import frc.robot.robotcode.auto.testAutos.testAuto;
+import frc.robot.robotcode.auto.testAutos.testGetConeAndCube;
 // import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 // import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
@@ -170,6 +169,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand () {
-    return new autoTestCube(_robotDrive, _score, _limelight, _handoff, _intake);//get1HighBalanceAuto(_robotDrive, _score, _limelight);
+    return new testGetConeAndCube(_robotDrive, _score, _limelight, _handoff, _intake);//get1HighBalanceAuto(_robotDrive, _score, _limelight);
   }
 }
