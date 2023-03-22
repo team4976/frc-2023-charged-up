@@ -43,19 +43,21 @@ public class testGetConeAndCube extends SequentialCommandGroup {
             new autoRelease(_score),
             new retractFourBar(_score),
             new autoArmHomePos(_score),
-            new autoDrivePosAndRotation(_robotDrive, 50000, 52000),//24000 was tested //24750
+            new autoDrivePosAndRotation(_robotDrive, 50000, 54000),//24000 was tested //24750
             new autoIntake(_intake, true),
             new autoDrivePos(_robotDrive, 7000),
             new autoIntakeRetract(_intake, true),
-            new autoDrivePosAndRotation(_robotDrive, -8000, -9500),
-            new autoDrivePos(_robotDrive, -45000),//24000 was tested
+            new autoDrivePosAndRotation(_robotDrive, -8000, -12600),
+            new autoDrivePos(_robotDrive, -49000),//24000 was tested
             new autoCuberetract(_intake),
             new autoHandOffCube(_hand_off, _intake),
+            new delay(0.3),
             new autoGrab(_score),
+            new delay(0.3),
             new autoIntakeRetract(_intake, false),
             new autoArmHighPos(_score),
             new extendFourBar(_score),
-            new delay(.2),
+            new delay(0.5),
             new autoRelease(_score),
             new delay(.2),
             new retractFourBar(_score),

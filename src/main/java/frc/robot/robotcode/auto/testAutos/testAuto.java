@@ -40,11 +40,11 @@ public class testAuto extends SequentialCommandGroup {
             new autoRelease(_score),
             new retractFourBar(_score),
             new autoArmHomePos(_score),
-            new autoDrivePosAndRotation(_robotDrive, 47000, 50000),//24000 was tested //24750
+            new autoDrivePosAndRotation(_robotDrive, 47000, 54000),//24000 was tested //24750
             new autoIntake(_intake, false),
             new autoDrivePos(_robotDrive, 7000),
             new autoIntakeRetract(_intake, false),
-            new autoDrivePosAndRotation(_robotDrive, -7000, -10000),
+            new autoDrivePosAndRotation(_robotDrive, -7000, -14000),
             new autoDrivePos(_robotDrive, -45000),//24000 was tested
             new autoGrab(_score),
             new autoArmHighPos(_score),
