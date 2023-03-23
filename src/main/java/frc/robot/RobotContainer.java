@@ -16,9 +16,11 @@ import frc.robot.limelight.commands.aim;
 import frc.robot.limelight.subsystems.LimeLight;
 // import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
 import frc.robot.robotcode.auto.autoCommands.midGet1HighBalanceAuto;
+import frc.robot.robotcode.auto.autoCommands.testGetConeAndCube;
+import frc.robot.robotcode.auto.testAutos.LeftGetHighConeAndGetMidCone;
+import frc.robot.robotcode.auto.testAutos.RightGetHighConeAndGetMidCone;
 import frc.robot.robotcode.auto.testAutos.autoGetCube;
 import frc.robot.robotcode.auto.testAutos.testAuto;
-import frc.robot.robotcode.auto.testAutos.testGetConeAndCube;
 // import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 // import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
@@ -150,7 +152,7 @@ public class RobotContainer {
     // _secondarycontroller.pov(180).whileTrue(new setheightFalse(_limelight));
 
 
-    _secondarycontroller.x().whileTrue(new handoff_ToScore(_handoff,_score));
+    _secondarycontroller.x().whileTrue(new handoff_ToScore(_handoff,_score,_intake));
     _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
     _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
     _secondarycontroller.b().onTrue(new cubeIn());
@@ -169,6 +171,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand () {
-    return new testGetConeAndCube(_robotDrive, _score, _limelight, _handoff, _intake);//get1HighBalanceAuto(_robotDrive, _score, _limelight);
+    return new testGetConeAndCube(_robotDrive, _score, _limelight, _handoff, _intake);//get1HighBalanceAuto(_robotDrive, _score, _limelight); //LeftGetHighConeAndGetMidCone(_robotDrive, _score, _limelight, _handoff, _intake);
   }
 }

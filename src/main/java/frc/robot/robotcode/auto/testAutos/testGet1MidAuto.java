@@ -1,4 +1,4 @@
-package frc.robot.robotcode.auto.autoCommands;
+package frc.robot.robotcode.auto.testAutos;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.limelight.subsystems.LimeLight;
@@ -15,9 +15,9 @@ import frc.robot.robotcode.commands.retractFourBar;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class get1MidAuto extends SequentialCommandGroup {
+public class testGet1MidAuto extends SequentialCommandGroup {
 
-    public get1MidAuto (robotDrive _robotDrive, scoring _score,  LimeLight _limelight) {
+    public testGet1MidAuto (robotDrive _robotDrive, scoring _score,  LimeLight _limelight) {
         addCommands(
             new autoDrivePos(_robotDrive, 3.000),
             new delay(1.000),

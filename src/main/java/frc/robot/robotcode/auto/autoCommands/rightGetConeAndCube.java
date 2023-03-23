@@ -1,4 +1,4 @@
-package frc.robot.robotcode.auto.testAutos;
+package frc.robot.robotcode.auto.autoCommands;
 
 // import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 // import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
@@ -32,9 +32,9 @@ import frc.robot.robotcode.subsystems.intake;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class testGetConeAndCube extends SequentialCommandGroup {
+public class rightGetConeAndCube extends SequentialCommandGroup {
 
-    public testGetConeAndCube (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)  {
+    public rightGetConeAndCube (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)  {
         
         addCommands(
             new autoGrab(_score),

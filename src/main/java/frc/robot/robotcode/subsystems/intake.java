@@ -7,6 +7,8 @@ import static frc.robot.robotConstants.m_IntakeBottom;
 import static frc.robot.robotConstants.m_IntakeTalonMain;
 import static frc.robot.robotConstants.stop;
 
+import javax.swing.text.Position;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -104,5 +106,9 @@ public class intake extends SubsystemBase{
     // public void currentDraw () {
     //     System.out.println(m_IntakeBottom.getStatorCurrent() + m_IntakeBottom.getStatorCurrent());
     // }
+
+    public void setIntake(double position){
+        m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
+    }
 
 }

@@ -55,31 +55,33 @@ public class Robot extends TimedRobot {
   public File encoderOutFile;
   public PrintStream encoderOutStream;
 
+  public Trigger exampleTrigger;
+
   public Robot(){
-  try {
-    encoderOutFile = new File("/home/lvuser/Encoder_Value-"+System.currentTimeMillis()+".log");
-    System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
-    System.out.println("Created file handle");
-    if (encoderOutFile.createNewFile()) {
-    System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
-    System.out.println("Created file");
-    } else {
-      System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
-      System.out.println("Failed to create file");
-    }
-  } catch (IOException e) {
-    System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
-    System.out.println("Failed to make file handle and file");
-    e.printStackTrace();
-  }
-  try {
-    encoderOutStream = new PrintStream(encoderOutFile);
-  } 
-  catch (FileNotFoundException e) {
-    System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
-    System.out.println("Failed To Print");
-    e.printStackTrace();
-   }
+  // try {
+  //   encoderOutFile = new File("/home/lvuser/Encoder_Value-"+System.currentTimeMillis()+".log");
+  //   System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //   System.out.println("Created file handle");
+  //   if (encoderOutFile.createNewFile()) {
+  //   System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //   System.out.println("Created file");
+  //   } else {
+  //     System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //     System.out.println("Failed to create file");
+  //   }
+  // } catch (IOException e) {
+  //   System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //   System.out.println("Failed to make file handle and file");
+  //   e.printStackTrace();
+  // }
+  // try {
+  //   encoderOutStream = new PrintStream(encoderOutFile);
+  // } 
+  // catch (FileNotFoundException e) {
+  //   System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //   System.out.println("Failed To Print");
+  //   e.printStackTrace();
+  //  }
   }
 
   /**
@@ -199,7 +201,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    encoderOutStream.println("Motor LEFT "+robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "      Motor  Right " +robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
+    // encoderOutStream.println("Motor LEFT "+robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "      Motor  Right " +robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
   
 
     // switch (m_autoSelected) {
@@ -220,8 +222,8 @@ public class Robot extends TimedRobot {
     robotConstants.m_DriveTalonLeft.setSensorPhase(false);
     robotConstants.m_DriveTalonRight.setSensorPhase(false);
 
-    Trigger exampleTrigger = new Trigger(robotConstants.cubeInIntake::get);
-       exampleTrigger.whileFalse(new buttonIntakeSTOP(_intake));
+    exampleTrigger = new Trigger(robotConstants.cubeInIntake::get);
+    exampleTrigger.whileFalse(new buttonIntakeSTOP(_intake));
 
     //LED
     _statusLight.setTEAM();

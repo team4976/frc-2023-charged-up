@@ -1,4 +1,4 @@
-package frc.robot.robotcode.auto.testAutos;
+package frc.robot.robotcode.auto.autoCommands;
 
 // import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 // import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
@@ -21,9 +21,9 @@ import frc.robot.robotcode.commands.retractFourBar;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class get1HighLeaveAndBalanceAuto extends SequentialCommandGroup {
+public class testGet1HighLeaveAndBalanceAuto extends SequentialCommandGroup {
 
-    public get1HighLeaveAndBalanceAuto (robotDrive _robotDrive, scoring _score,  LimeLight _limelight)  {
+    public testGet1HighLeaveAndBalanceAuto (robotDrive _robotDrive, scoring _score,  LimeLight _limelight)  {
         
         addCommands(
             new autoGrab(_score),

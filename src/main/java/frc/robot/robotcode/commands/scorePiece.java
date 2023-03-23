@@ -15,6 +15,11 @@ public class scorePiece extends CommandBase {
 
     public void initialize () {
         robotConstants.s_ArmPincer.set(false);
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void end (boolean interupted) {

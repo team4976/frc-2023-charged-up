@@ -20,14 +20,14 @@ public class retract extends CommandBase{
     
     @Override
     public void execute() {
-        if(robotConstants.peiceSelection){
-            robotConstants.goalPosition = robotConstants.cubeRetractedPosition;
-            intake.retractCube(robotConstants.cubeRetractedPosition);
-        }
-        else {
+        // if(robotConstants.peiceSelection){
+        //     robotConstants.goalPosition = robotConstants.cubeRetractedPosition;
+        //     intake.retractCube(robotConstants.cubeRetractedPosition);
+        // }
+        // else {
             robotConstants.goalPosition = robotConstants.coneRetractedPosition;
             intake.retractCone(robotConstants.coneRetractedPosition);
-        } 
+        // } 
     }
 
     @Override
