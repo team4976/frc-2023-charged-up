@@ -16,9 +16,7 @@ import frc.robot.limelight.commands.aim;
 import frc.robot.limelight.subsystems.LimeLight;
 // import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
 import frc.robot.robotcode.auto.autoCommands.midGet1HighBalanceAuto;
-import frc.robot.robotcode.auto.autoCommands.testGetConeAndCube;
-import frc.robot.robotcode.auto.testAutos.LeftGetHighConeAndGetMidCone;
-import frc.robot.robotcode.auto.testAutos.RightGetHighConeAndGetMidCone;
+import frc.robot.robotcode.auto.autoCommands.rightGetConeAndCube;
 import frc.robot.robotcode.auto.testAutos.autoGetCube;
 import frc.robot.robotcode.auto.testAutos.testAuto;
 // import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
@@ -171,6 +169,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand () {
-    return new testGetConeAndCube(_robotDrive, _score, _limelight, _handoff, _intake);//get1HighBalanceAuto(_robotDrive, _score, _limelight); //LeftGetHighConeAndGetMidCone(_robotDrive, _score, _limelight, _handoff, _intake);
+    return new rightGetConeAndCube(_robotDrive, _score, _limelight, _handoff, _intake);//get1HighBalanceAuto(_robotDrive, _score, _limelight); //LeftGetHighConeAndGetMidCone(_robotDrive, _score, _limelight, _handoff, _intake);
   }
 }
