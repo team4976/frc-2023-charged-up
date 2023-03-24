@@ -37,8 +37,9 @@ public class leftGetHighConeAndGetMidCone extends SequentialCommandGroup {
              new autoGrab(_score),
              new autoArmHighPos(_score),
              new extendFourBar(_score),
-             new delay(.1),
+             //new delay(.1),
              new autoRelease(_score),
+             new delay(.1),
              new retractFourBar(_score),
              new autoArmHomePos(_score),
              new autoDrivePos(_robotDrive, 47000),//24000 was tested //24750

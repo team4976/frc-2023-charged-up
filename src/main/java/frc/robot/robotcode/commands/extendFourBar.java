@@ -16,14 +16,15 @@ public class extendFourBar extends CommandBase{
     
     @Override
     public void initialize() {
-        System.out.println("begin auto extend fourbar");
-
+        // System.out.println("begin auto extend fourbar");
+        Scoring.setArmPos(robotConstants.positionHigh-250);
         Scoring.ExtendFourBar();
+        
         super.initialize();
     }
     @Override
     public void end (boolean interrupted){
-        System.out.println("end auto extend fourbar");
+        // System.out.println("end auto extend fourbar");
     }
 
     @Override

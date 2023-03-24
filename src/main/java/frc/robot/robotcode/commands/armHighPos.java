@@ -24,7 +24,7 @@ public class armHighPos extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        return (Math.abs(robotConstants.m_ArmRotator.getSelectedSensorPosition() - robotConstants.positionHigh)<100);
+        return (Math.abs(robotConstants.m_ArmRotator.getSelectedSensorPosition()) > 3000);
     }
 
     @Override

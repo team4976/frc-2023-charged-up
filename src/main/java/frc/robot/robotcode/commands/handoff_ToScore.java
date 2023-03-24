@@ -24,7 +24,7 @@ public class handoff_ToScore extends CommandBase {
     @Override
     public void initialize() {
         if(robotConstants.peiceSelection == false){
-        _intake.setIntake(1500);
+        _intake.setIntake(1000);
         }
     }
     
@@ -36,10 +36,13 @@ public class handoff_ToScore extends CommandBase {
         _hand_off.Handoff_Cube();
         }
         }
+
         else{
-        if(Math.abs(1500-robotConstants.m_IntakeTalonMain.getSelectedSensorPosition())<200){
+        
+
+        if(Math.abs(1000-robotConstants.m_IntakeTalonMain.getSelectedSensorPosition())<200){
+            _hand_off.Handoff_Cone();
         _intake.retractCone(robotConstants.coneRetractedPosition);
-        _hand_off.Handoff_Cone();
         }
         }
     }
@@ -51,6 +54,9 @@ public class handoff_ToScore extends CommandBase {
 
     @Override
     public void end(boolean interrupted){
+        if(robotConstants.peiceSelection == false){
+        _intake.retractCone(robotConstants.coneRetractedPosition);
+        }
         _scoring.grabPiece();
         _intake.intakeStop();
     }
