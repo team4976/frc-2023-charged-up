@@ -41,7 +41,7 @@ public void execute() {
         _forward.getAsDouble() - _reverse.getAsDouble(), 
         _rotation.getAsDouble() // rotation speed
     );
-    System.out.println(_forward.getAsDouble());
+    // System.out.println(_forward.getAsDouble());
     }
 }
 }

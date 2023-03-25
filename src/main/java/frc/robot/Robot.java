@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 // import edu.wpi.first.wpilibj.DigitalInput;
 // import edu.wpi.first.wpilibj.SPI;
@@ -103,6 +104,13 @@ public class Robot extends TimedRobot {
     robotConstants.buttonIntakePOS = 200;
     //Camera
     CameraServer.startAutomaticCapture();
+    //
+      String test[] = {"midGet1HighBalanceAuto","leftGetHighConeAndGetMidCone","rightGetHighConeAndGetMidCone","testLeftGetConeAndCube","rightGetConeAndCube","testGet1HighLeaveAndBalanceAuto"};
+  
+      SmartDashboard.putStringArray("Auto List", test);
+
+      SmartDashboard.putData("Reast Encoder", new resetEncoder());
+      //
     m_robotContainer = new RobotContainer();
     // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     // m_chooser.addOption("My Auto", kCustomAuto);
@@ -188,10 +196,12 @@ public class Robot extends TimedRobot {
     _limelight.swapLimeLight(3);
     robotConstants.m_DriveTalonLeft.setSensorPhase(false);
     robotConstants.m_DriveTalonRight.setSensorPhase(false);
-    // m_autoSelected = m_chooser.getSelected();
 
-    // // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+
+    // m_autoSelected = m_chooser.getSelected();
+    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     // System.out.println("Auto selected: " + m_autoSelected);
+
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     if (m_autonomousCommand != null)
@@ -212,7 +222,7 @@ public class Robot extends TimedRobot {
     //   default:
     //     // Put default auto code here
     //     break;
-    // }
+   // }
   }
 
   /** This function is called once when teleop is enabled. */

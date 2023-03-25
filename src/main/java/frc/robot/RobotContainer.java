@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -14,9 +17,12 @@ import frc.robot.limelight.commands.aim;
 // import frc.robot.limelight.commands.setheightFalse;
 // import frc.robot.limelight.commands.setheightTrue;
 import frc.robot.limelight.subsystems.LimeLight;
+import frc.robot.robotcode.auto.autoCommands.leftGetHighConeAndGetMidCone;
 // import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
 import frc.robot.robotcode.auto.autoCommands.midGet1HighBalanceAuto;
 import frc.robot.robotcode.auto.autoCommands.rightGetConeAndCube;
+import frc.robot.robotcode.auto.autoCommands.rightGetHighConeAndGetMidCone;
+import frc.robot.robotcode.auto.autoCommands.testGet1HighLeaveAndBalanceAuto;
 import frc.robot.robotcode.auto.autoCommands.testLeftGetConeAndCube;
 import frc.robot.robotcode.auto.testAutos.autoGetCube;
 import frc.robot.robotcode.auto.testAutos.testAuto;
@@ -33,6 +39,7 @@ import frc.robot.robotcode.commands.extendFourBar;
 // import frc.robot.robotcode.commands.grabPiece;
 import frc.robot.robotcode.commands.handoff_ToScore;
 import frc.robot.robotcode.commands.holdPosition;
+import frc.robot.robotcode.commands.intakeAtStation;
 // import frc.robot.robotcode.commands.intakeCone;
 import frc.robot.robotcode.commands.intakeSTOP;
 import frc.robot.robotcode.commands.intakeextend;
@@ -52,6 +59,8 @@ import frc.robot.robotcode.subsystems.hand_off;
 import frc.robot.robotcode.subsystems.intake;
 //import frc.robot.robotcode.subsystems.led;
 import frc.robot.robotcode.subsystems.robotDrive;
+
+
 
 
 /**
@@ -152,16 +161,16 @@ public class RobotContainer {
 
 
     _secondarycontroller.x().whileTrue(new handoff_ToScore(_handoff,_score,_intake));
+    _secondarycontroller.y().whileTrue(new intakeAtStation(_intake));
     _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
     _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
     _secondarycontroller.b().onTrue(new cubeIn());
     _secondarycontroller.a().onTrue(new coneIn());
     //_secondarycontroller.rightBumper().whileTrue(new armHome(_score));
-    _secondarycontroller.y().whileTrue(new retract(_intake));
+    //_secondarycontroller.y().whileTrue(new retract(_intake));
 
     _secondarycontroller.pov(0).onTrue(new armHighPos(_score));
     _secondarycontroller.pov(180).onTrue(new armHomePos(_score));
-
   }
 
   /**
@@ -170,6 +179,22 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand () {
-    return new testLeftGetConeAndCube(_robotDrive, _score, _limelight, _handoff, _intake);//get1HighBalanceAuto(_robotDrive, _score, _limelight); //LeftGetHighConeAndGetMidCone(_robotDrive, _score, _limelight, _handoff, _intake);
+    String autoName = SmartDashboard.getString("Auto Selector", "midGet1HighBalanceAuto");
+
+    switch(autoName){
+      case "midGet1HighBalanceAuto":
+      return new midGet1HighBalanceAuto(_robotDrive, _score, _limelight);
+      case "leftGetHighConeAndGetMidCone":
+      return new leftGetHighConeAndGetMidCone(_robotDrive, _score, _limelight, _handoff, _intake);
+      case "rightGetHighConeAndGetMidCone":
+      return new rightGetHighConeAndGetMidCone(_robotDrive, _score, _limelight, _handoff, _intake);
+      case "testLeftGetConeAndCube":
+      return new testLeftGetConeAndCube(_robotDrive, _score, _limelight, _handoff, _intake);
+      case "rightGetConeAndCube":
+      return new rightGetConeAndCube(_robotDrive, _score, _limelight, _handoff, _intake);
+      case "testGet1HighLeaveAndBalanceAuto":
+      return new testGet1HighLeaveAndBalanceAuto(_robotDrive, _score, _limelight, _intake);
+    }
+    return null;
   }
 }

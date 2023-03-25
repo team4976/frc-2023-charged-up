@@ -35,7 +35,8 @@ import frc.robot.robotcode.subsystems.scoring;
 public class rightGetConeAndCube extends SequentialCommandGroup {
 
     public rightGetConeAndCube (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)  {
-        
+        System.out.println("rightGetConeAndCube");
+     
         addCommands(
             new autoGrab(_score),
             new autoArmHighPos(_score),

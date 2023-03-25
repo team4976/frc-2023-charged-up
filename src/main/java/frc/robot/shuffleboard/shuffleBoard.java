@@ -29,10 +29,6 @@ public class shuffleBoard {
     baseMotorEncoder IntakeBottom = new baseMotorEncoder("m_IntakeBottom", m_IntakeBottom);
     baseMotorEncoder ArmRotator = new baseMotorEncoder("m_ArmRotator_Encoder", m_ArmRotator);
 
-    //TEST
-    baseMotorEncoder re = new baseMotorEncoder();
-
-
     public void tick() {
         Shuffleboard.update();
     }

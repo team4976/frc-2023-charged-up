@@ -32,7 +32,7 @@ import frc.robot.robotcode.subsystems.scoring;
 public class leftGetHighConeAndGetMidCone extends SequentialCommandGroup {
 
     public leftGetHighConeAndGetMidCone (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)  {
-        
+            System.out.println("leftGetHighConeAndGetMidCone");
         addCommands(
              new autoGrab(_score),
              new autoArmHighPos(_score),

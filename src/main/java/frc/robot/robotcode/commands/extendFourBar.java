@@ -29,7 +29,7 @@ public class extendFourBar extends CommandBase{
 
     @Override
     public boolean isFinished() {
-        return Math.abs(robotConstants.positionHigh - robotConstants.m_ArmRotator.getSelectedSensorPosition()) < 100;
+        return Math.abs(robotConstants.positionHigh - robotConstants.m_ArmRotator.getSelectedSensorPosition()) < 250;//TEST //100;
     }
 
 
