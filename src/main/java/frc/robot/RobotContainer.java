@@ -134,7 +134,7 @@ public class RobotContainer {
     _primarycontroller.a().onTrue(new intakeextend(_intake));
     _primarycontroller.pov(0).whileTrue(new rotateArmBwd(_score));
     _primarycontroller.pov(180).whileTrue(new rotateArmFwd(_score));
-    _primarycontroller.rightBumper().whileTrue(new engageHighGear());
+     _primarycontroller.rightBumper().whileTrue(new engageHighGear());
     _primarycontroller.x().whileTrue(new scorePiece(_score));
     //limelight
     _primarycontroller.leftBumper().whileTrue(new aim(_limelight, _robotDrive));

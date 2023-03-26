@@ -46,11 +46,11 @@ public class testLeftGetConeAndCube extends SequentialCommandGroup {
             new delay(.1),
             new retractFourBar(_score),
             new autoArmHomePos(_score),
-            new autoDrivePosAndRotation(_robotDrive, 54000, 50000),//24000 was tested //24750
+            new autoDrivePosAndRotation(_robotDrive, 54000-1500, 50000),//24000 was tested //24750
             new autoIntake(_intake, true),
             new autoDrivePos(_robotDrive, 7000),
             new autoIntakeRetract(_intake, true),
-            new autoDrivePosAndRotation(_robotDrive, -12600, -8000),
+            new autoDrivePosAndRotation(_robotDrive, -12600+1500, -8000),
             new autoDrivePos(_robotDrive, -49000),//24000 was tested
             new autoCuberetract(_intake),
             new autoHandOffCube(_hand_off, _intake),
