@@ -6,18 +6,38 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.SPI;
+// import edu.wpi.first.wpilibj.DigitalInput;
+// import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
-import frc.robot.robotConstants;
-import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
-import frc.robot.robotcode.subsystems.robotDrive;
-import pabeles.concurrency.ConcurrencyOps.Reset;
+import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.limelight.subsystems.LimeLight;
+import frc.robot.robotcode.commands.buttonIntakeSTOP;
+import frc.robot.robotcode.commands.resetEncoder;
+// import edu.wpi.first.wpilibj.GenericHID.RumbleType;
+// import frc.robot.robotConstants;
+// import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
+// import frc.robot.robotcode.subsystems.robotDrive;
+import frc.robot.shuffleboard.shuffleBoard;
+// import pabeles.concurrency.ConcurrencyOps.Reset;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+import static frc.robot.RobotContainer._statusLight;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.function.BooleanSupplier;
+
+import static frc.robot.RobotContainer._intake;
+import static frc.robot.RobotContainer._limelight;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -35,6 +55,37 @@ public class Robot extends TimedRobot {
   public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
   // public robotDrive _robotDrive = new robotDrive ();//TESTING
   public RobotContainer m_robotContainer;
+  public File encoderOutFile;
+  public PrintStream encoderOutStream;
+
+  public Trigger exampleTrigger;
+
+  public Robot(){
+  // try {
+  //   encoderOutFile = new File("/home/lvuser/Encoder_Value-"+System.currentTimeMillis()+".log");
+  //   System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //   System.out.println("Created file handle");
+  //   if (encoderOutFile.createNewFile()) {
+  //   System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //   System.out.println("Created file");
+  //   } else {
+  //     System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //     System.out.println("Failed to create file");
+  //   }
+  // } catch (IOException e) {
+  //   System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //   System.out.println("Failed to make file handle and file");
+  //   e.printStackTrace();
+  // }
+  // try {
+  //   encoderOutStream = new PrintStream(encoderOutFile);
+  // } 
+  // catch (FileNotFoundException e) {
+  //   System.out.println("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+  //   System.out.println("Failed To Print");
+  //   e.printStackTrace();
+  //  }
+  }
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -50,8 +101,18 @@ public class Robot extends TimedRobot {
     // Reast var
     robotConstants.peiceSelection = false;
     robotConstants.heightSelection = false;
+
+    robotConstants.goalPosition = 0;
+    robotConstants.buttonIntakePOS = 200;
     //Camera
     CameraServer.startAutomaticCapture();
+    //
+      String test[] = {"midGet1HighBalanceAuto","leftGetHighConeAndGetMidCone","rightGetHighConeAndGetMidCone","testLeftGetConeAndCube","rightGetConeAndCube","testGet1HighLeaveAndBalanceAuto"};
+  
+      SmartDashboard.putStringArray("Auto List", test);
+
+      SmartDashboard.putData("Reast Encoder", new resetEncoder());
+      //
     m_robotContainer = new RobotContainer();
     // m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     // m_chooser.addOption("My Auto", kCustomAuto);
@@ -67,24 +128,60 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    double[] test = table.getEntry("botpose").getDoubleArray(new double[6]);
+    System.out.println(test[0]);
+    shuffleBoard.instance.tick();
     CommandScheduler.getInstance().run();
-    robotConstants.m_ArmRotator.getSelectedSensorPosition();
-    // System.out.println(robotConstants.navX.getYaw());
-    System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "*****" + robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
-    // System.out.println(robotConstants.navX.getYaw() + " *****" + robotConstants.navX.getPitch() + " *****" + robotConstants.navX.getRoll());
 
+    // (CRTL /) to uncomment
+    // Drive
 
-    // test 
-    // System.out.println(navX.getAngle()+"Angle");
-    // System.out.println(navX.getPitch()+"Pitch");
-    // System.out.println(navX.getRoll()+"Roll");
+    // System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "*****" + robotConstants.m_DriveTalonRight.getSelectedSensorPosition() + " Drive Train Left/Right Encoder");
+    // System.out.println(robotConstants.m_DriveTalonLeft.getSupplyCurrent() + " Drive LEFT Current");
+    // System.out.println(robotConstants.m_DriveTalonRight.getSupplyCurrent() + " Drive Right Current");
     // System.out.println();
     // System.out.println();
+
+    //
+    // Arm
+
+    // System.out.println(robotConstants.m_ArmRotator.getSelectedSensorPosition() + " Arm Encoder" + robotConstants.m_ArmRotator.getSupplyCurrent() + " Arm Current");
     // System.out.println();
-    // System.out.println("***************\n");
-    // System.out.println(robotConstants.m_DriveTalonRight.getSelectedSensorPosition() + "\n");
-    // System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition());
-    // System.out.println("\n***************");
+    // System.out.println();
+    
+    //
+    // Intake
+
+    // System.out.println(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition() + " Intake Encoder " + robotConstants.m_IntakeTalonMain.getSupplyCurrent() + " Intake Current");
+    // System.out.println();
+    // System.out.println();
+
+    //
+    // NavX
+
+    // System.out.println(robotConstants.navX.getYaw() + " *** " + robotConstants.navX.getPitch() + " *** " + robotConstants.navX.getRoll() + " YAW :: PITCH :: ROLL");
+    // System.out.println();
+    // System.out.println();
+
+    //
+    // NavX TEST
+
+    // System.out.println(robotConstants.navX.getVelocityX() + " *** " + robotConstants.navX.getVelocityY() + " *** " + robotConstants.navX.getVelocityZ() + " X :: Y :: Z");
+    // System.out.println();
+    // System.out.println();
+
+    // 
+    // Rumble
+
+    // if (robotConstants.m_IntakeBottom.getStatorCurrent()>10){
+    //   robotConstants._primaryControllerNotCommand.setRumble(RumbleType.kBothRumble, 1);
+    // }
+    // else {
+    //   robotConstants._primaryControllerNotCommand.setRumble(RumbleType.kBothRumble, 0);
+    // }
+
+    //
+
   }
 
   /**
@@ -99,10 +196,16 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    // m_autoSelected = m_chooser.getSelected();
+    _statusLight.setTEAM();
+    _limelight.swapLimeLight(3);
+    robotConstants.m_DriveTalonLeft.setSensorPhase(false);
+    robotConstants.m_DriveTalonRight.setSensorPhase(false);
 
-    // // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+
+    // m_autoSelected = m_chooser.getSelected();
+    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     // System.out.println("Auto selected: " + m_autoSelected);
+
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     if (m_autonomousCommand != null)
@@ -112,6 +215,9 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
+    // encoderOutStream.println("Motor LEFT "+robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "      Motor  Right " +robotConstants.m_DriveTalonRight.getSelectedSensorPosition());
+  
+
     // switch (m_autoSelected) {
     //   case kCustomAuto:
     //     // Put custom auto code here
@@ -120,13 +226,21 @@ public class Robot extends TimedRobot {
     //   default:
     //     // Put default auto code here
     //     break;
-    // }
+   // }
   }
 
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
     robotConstants.navX.zeroYaw();
+    robotConstants.m_DriveTalonLeft.setSensorPhase(false);
+    robotConstants.m_DriveTalonRight.setSensorPhase(false);
+
+    exampleTrigger = new Trigger(robotConstants.cubeInIntake::get);
+    exampleTrigger.whileFalse(new buttonIntakeSTOP(_intake));
+
+    //LED
+    _statusLight.setTEAM();
   }
 
   /** This function is called periodically during operator control. */
@@ -135,7 +249,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when the robot is disabled. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    CommandScheduler.getInstance().cancelAll();
+  }
 
   /** This function is called periodically when disabled. */
   @Override

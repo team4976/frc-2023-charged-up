@@ -2,8 +2,10 @@
 
 package frc.robot.robotcode.commands;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.robotcode.auto.autoSubCommands.delay;
+// import frc.robot.robotcode.auto.autoSubCommands.delay;
 import frc.robot.robotcode.subsystems.intake;
 import frc.robot.robotConstants;
 
@@ -30,15 +32,13 @@ public class intakeextend extends CommandBase{
 
     @Override
     public boolean isFinished(){
-        if(Math.abs(robotConstants.conePosition-robotConstants.m_IntakeTalonMain.getSelectedSensorPosition()) < 100){
-        return (robotConstants.m_IntakeTop.getStatorCurrent() > 1200);
-        }
-        return false;
+        return (robotConstants.cubeInIntake.get() == false);
     }
 
     @Override
-    public void end(boolean interupted){
-        _intake.intakeStop();
-        _intake.retractCone(robotConstants.coneRetractedPosition);
+    public void end(boolean interrupted){
+        robotConstants.m_IntakeTalonMain.set(ControlMode.PercentOutput, 0);
+        // _intake.intakeStop();
+        // _intake.retractCone(robotConstants.coneRetractedPosition);
     }
 }

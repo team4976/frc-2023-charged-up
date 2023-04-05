@@ -21,17 +21,22 @@ public class rotateArmFwd extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        return false;
+        return (robotConstants.m_ArmRotator.getSelectedSensorPosition() > 13000);
     }
+
     @Override
     public void execute(){
-        Scoring.rotateArmFwd();
-        System.out.println(robotConstants.m_ArmRotator.getSelectedSensorPosition());
+        if(robotConstants.m_ArmRotator.getSelectedSensorPosition() < 13000){
+            Scoring.rotateArmFwd();
+        }
+        else{
+            Scoring.setArmPos(13000);
+        }
     }
      
    @Override
    public void end(boolean interrupt){
-   Scoring.stopRotating();
+   Scoring.setArmPos(Math.min(robotConstants.m_ArmRotator.getSelectedSensorPosition(), 13000));
    } 
    
 }

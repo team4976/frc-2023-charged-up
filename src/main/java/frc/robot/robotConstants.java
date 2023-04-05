@@ -3,6 +3,7 @@ package frc.robot;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ctre.phoenix.led.RainbowAnimation;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -12,6 +13,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.SPI;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Solenoid;
+// import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -20,6 +22,9 @@ public final class robotConstants {
   public static robotConstants instance = new robotConstants();
   public CommandXboxController _primaryController;
   public CommandXboxController _secondaryController;
+
+  // public static XboxController _primaryControllerNotCommand;
+  // public XboxController _secondaryControllerNotCommand;
 
 
     // DriveTrain
@@ -68,6 +73,8 @@ public final class robotConstants {
 
     public static final double stop = 0;
 
+    public static final double rotationSpeed = .75;
+
     //public booleans
     public static boolean peiceSelection = false;//differentiation between false coneIn and true cubeIn
     public static boolean heightSelection = false; // false = low true = high
@@ -78,16 +85,26 @@ public final class robotConstants {
     public static double positionHome = 50;
 
     //intake positions
-    public static double conePosition = 5957;
+    public static double conePosition = 5650;
     public static double cubePosition = 3801;
 
-    public static double cubeRetractedPosition = 2213; 
+    public static double cubeRetractedPosition = 2850; //2213
     public static double coneRetractedPosition = 0; // cone is at 0
+
+    //VAR
+    public static double goalPosition = 0;
+    public static double buttonIntakePOS = 200;
 
     // Digitalinput button 
     public static DigitalInput cubeInIntake = new DigitalInput(0);
+
+    //Color array
+    public static int[] RainBow = {10,20};
+    public static int ColorHold = 0;
+
     //navX angle constants
     public static int navXDeadBand = 5;
+    public static int navXDeadBandTEST = 20;
 
 
 
@@ -98,6 +115,9 @@ public final class robotConstants {
     public void init () {
       _primaryController = new CommandXboxController(0);
       _secondaryController = new CommandXboxController(1);
+
+      // XboxController _primaryControllerNotCommand = new XboxController(0);
+      //  XboxController _secondaryControllerNotCommand = new XboxController(1);
 
       /*
       buttonsMap.put("Intake", _primaryController.a());

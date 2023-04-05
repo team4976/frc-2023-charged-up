@@ -11,7 +11,7 @@ public class scoring extends SubsystemBase{
     public scoring(){
         m_ArmRotator.setInverted(true);
         m_ArmRotator.setSensorPhase(true);
-        m_ArmRotator.configPeakOutputForward(0.8);
+        m_ArmRotator.configPeakOutputForward(1);
         m_ArmRotator.configPeakOutputReverse(-0.4);
     }
 
@@ -48,6 +48,12 @@ public class scoring extends SubsystemBase{
 
 
     public void setArmPos(double position) {
+        m_ArmRotator.configMotionCruiseVelocity(8000);
+        m_ArmRotator.configMotionAcceleration(2000);
+        m_ArmRotator.set(ControlMode.MotionMagic, position);
+    }
+
+    public void autoSetArmPos(double position) {
         m_ArmRotator.configMotionCruiseVelocity(6000);
         m_ArmRotator.configMotionAcceleration(2000);
         m_ArmRotator.set(ControlMode.MotionMagic, position);

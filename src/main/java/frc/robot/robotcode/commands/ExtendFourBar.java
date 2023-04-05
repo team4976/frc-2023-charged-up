@@ -2,6 +2,7 @@ package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
+// import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.scoring;
 
 public class extendFourBar extends CommandBase{
@@ -15,19 +16,20 @@ public class extendFourBar extends CommandBase{
     
     @Override
     public void initialize() {
-        System.out.println("begin auto extend fourbar");
-
+        // System.out.println("begin auto extend fourbar");
+        Scoring.setArmPos(robotConstants.positionHigh-250);
         Scoring.ExtendFourBar();
+        
         super.initialize();
     }
     @Override
     public void end (boolean interrupted){
-        System.out.println("end auto extend fourbar");
+        // System.out.println("end auto extend fourbar");
     }
 
     @Override
     public boolean isFinished() {
-        return true;
+        return Math.abs(robotConstants.positionHigh - robotConstants.m_ArmRotator.getSelectedSensorPosition()) < 250;//TEST //100;
     }
 
 

@@ -2,24 +2,25 @@ package frc.robot.robotcode.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
-import frc.robot.robotcode.subsystems.intake;
+
+
+import static frc.robot.RobotContainer._statusLight;
+// import frc.robot.robotcode.subsystems.intake;
 
 public class cubeIn extends CommandBase{
 
-    private intake _intake;
 
-    public cubeIn(intake intake) {
-        _intake = intake;
-        addRequirements(_intake);
+    public cubeIn() {
     }
     
     @Override
     public void initialize() {
         robotConstants.peiceSelection = true;
+        _statusLight.setRGB(100, 0, 100);
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 }

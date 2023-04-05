@@ -25,12 +25,11 @@ public class rotateArmBwd extends CommandBase {
     
     @Override
     public void execute(){
-        _scoring.rotateArmBwd();
-        System.out.println(robotConstants.m_ArmRotator.getSelectedSensorPosition());
+            _scoring.rotateArmBwd();
     }
      
    @Override
    public void end(boolean interrupt){
-   _scoring.stopRotating();
+   _scoring.setArmPos(robotConstants.m_ArmRotator.getSelectedSensorPosition());
    } 
 }

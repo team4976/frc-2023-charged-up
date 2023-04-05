@@ -4,13 +4,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.limelight.subsystems.LimeLight;
 import frc.robot.robotcode.subsystems.robotDrive;
 
-import static frc.robot.RobotContainer._limelight;
-import static frc.robot.RobotContainer._robotDrive;
-
 public class aim extends CommandBase{
 
     LimeLight _limeLight;
     robotDrive _robotDrive;
+    long startTime;
 
     public aim(LimeLight _limeLight, robotDrive _robotDrive){
      this._limeLight = _limeLight;
@@ -19,13 +17,33 @@ public class aim extends CommandBase{
     }
 
     @Override
+    public void initialize(){
+        _limeLight.limeLightON();
+    }
+    @Override
     public boolean isFinished(){
-        return false;
+        if(LimeLight.isVaildTagret()){
+            if(LimeLight.angleOff() < 2){
+                // to allow the timer start
+            }
+            else{
+                startTime = System.currentTimeMillis(); 
+            }
+        }
+        else{
+            startTime = System.currentTimeMillis();
+        }
+        return System.currentTimeMillis() - startTime > 1000;
     }
 
     @Override
     public void execute(){
         _limeLight.aim(_robotDrive);
+    }
+
+    @Override 
+    public void end(boolean interupted){
+         _limeLight.limelightOFF();
     }
     
 }
