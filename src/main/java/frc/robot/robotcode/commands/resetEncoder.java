@@ -13,5 +13,11 @@ public class resetEncoder extends CommandBase {
 
         robotConstants.m_IntakeTalonMain.setSelectedSensorPosition(0);
     }
+
+    //temp 
+    @Override
+    public void execute() {
+        System.out.println("***************A****************A********************A****************************");
+    }
     
 }

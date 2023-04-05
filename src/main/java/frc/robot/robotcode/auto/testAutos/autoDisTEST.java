@@ -11,6 +11,8 @@ import frc.robot.robotcode.auto.autoSubCommands.autoArmHighPos;
 import frc.robot.robotcode.auto.autoSubCommands.autoArmHomePos;
 import frc.robot.robotcode.auto.autoSubCommands.autoDriveDis;
 import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
+import frc.robot.robotcode.auto.autoSubCommands.autoDrivePosAndRotation;
+import frc.robot.robotcode.auto.autoSubCommands.autoDrivePosHighgear;
 import frc.robot.robotcode.auto.autoSubCommands.autoGrab;
 import frc.robot.robotcode.auto.autoSubCommands.autoIntake;
 import frc.robot.robotcode.auto.autoSubCommands.autoIntakeRetract;
@@ -33,7 +35,9 @@ public class autoDisTEST extends SequentialCommandGroup {
     public autoDisTEST (robotDrive _robotDrive, LimeLight limeLight)  {
         
         addCommands(
-            new autoDriveDis(_robotDrive,limeLight )
+            new autoDrivePos(_robotDrive, 60000),
+            new delay(5),
+            new autoDrivePosAndRotation(_robotDrive, 10000, 22000)
            //new autoDrivePosTurn(_robotDrive, 20000, 40000, false)
             //new autoNavXGryoscope(_robotDrive, 5)
         );

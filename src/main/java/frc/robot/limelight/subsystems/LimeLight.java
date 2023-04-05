@@ -20,6 +20,7 @@ static NetworkTable table = NetworkTableInstance.getDefault().getTable("limeligh
 static NetworkTableEntry tv = table.getEntry("tv");
 NetworkTableEntry ty = table.getEntry("ty");
 static NetworkTableEntry tx = table.getEntry("tx");
+//double limeLightArray[] = table.getEntry("botpose").getDoubleArray(new double[6]);
     
     
     // keys
@@ -123,11 +124,6 @@ static NetworkTableEntry tx = table.getEntry("tx");
         return tx.getDouble(0.0);
     }
 
-    public double limelightDis(){
-     double limeLightArray[] = table.getEntry("botpose").getDoubleArray(new double[6]);
-     double botX = limeLightArray[0];
-     return botX*10;
-    }
     public void swapLimeLight(int pipeline){
         table.getEntry("pipeline").setValue(pipeline);
     }

@@ -34,7 +34,7 @@ public class rightGetHighConeAndGetMidCone extends SequentialCommandGroup {
         System.out.println("rightGetHighConeAndGetMidCone");
 
         addCommands(
-            new autoGrab(_score),
+             new autoGrab(_score),
              new autoArmHighPos(_score),
              new extendFourBar(_score),
             // new delay(.1),

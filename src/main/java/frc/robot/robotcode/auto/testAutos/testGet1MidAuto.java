@@ -22,7 +22,7 @@ public class testGet1MidAuto extends SequentialCommandGroup {
             new autoDrivePos(_robotDrive, 3.000),
             new delay(1.000),
             //new autoRotateOnPos(_robotDrive, 3000),
-            new autoAim(_limelight, _robotDrive),//duration in millis
+           // new autoAim(_limelight, _robotDrive),//duration in millis
             new delay(3.000),
             new autoGrab(_score),
             new delay(0.800),

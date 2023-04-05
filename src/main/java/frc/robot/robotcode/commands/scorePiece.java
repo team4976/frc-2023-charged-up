@@ -23,7 +23,12 @@ public class scorePiece extends CommandBase {
     }
 
     public void end (boolean interupted) {
-        super.end(interupted);
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         robotConstants.s_ArmPincer.set(true);
     }
     

@@ -111,4 +111,15 @@ public class intake extends SubsystemBase{
         m_IntakeTalonMain.set(ControlMode.MotionMagic, position);
     }
 
+    //TEST
+    public void setIntakeToBoth(){
+        m_IntakeBottom.follow(m_IntakeTop);
+        m_IntakeTop.set(ControlMode.PercentOutput, 1);
+    }
+
+    public void setIntakeToNONE(){
+        m_IntakeBottom.follow(m_IntakeBottom);
+        m_IntakeTop.set(ControlMode.PercentOutput, 1);
+    }
+
 }

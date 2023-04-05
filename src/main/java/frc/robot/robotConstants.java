@@ -104,6 +104,7 @@ public final class robotConstants {
 
     //navX angle constants
     public static int navXDeadBand = 5;
+    public static int navXDeadBandTEST = 20;
 
 
 

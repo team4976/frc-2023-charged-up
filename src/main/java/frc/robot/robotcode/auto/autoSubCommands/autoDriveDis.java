@@ -23,7 +23,7 @@ public class autoDriveDis extends CommandBase {
     @Override
     public void initialize() {
         super.initialize();
-         dis = LimeLight.limelightDis()*1000;
+         //dis = LimeLight.limelightDisY()*1000;
         _robotDrive.driveToPosition(dis);
     }
     @Override

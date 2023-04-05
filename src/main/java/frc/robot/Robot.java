@@ -11,6 +11,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 // import edu.wpi.first.wpilibj.DigitalInput;
 // import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.limelight.subsystems.LimeLight;
 import frc.robot.robotcode.commands.buttonIntakeSTOP;
 import frc.robot.robotcode.commands.resetEncoder;
@@ -33,6 +34,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.function.BooleanSupplier;
 
 import static frc.robot.RobotContainer._intake;
 import static frc.robot.RobotContainer._limelight;
@@ -126,6 +128,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    double[] test = table.getEntry("botpose").getDoubleArray(new double[6]);
+    System.out.println(test[0]);
     shuffleBoard.instance.tick();
     CommandScheduler.getInstance().run();
 
@@ -245,7 +249,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when the robot is disabled. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    CommandScheduler.getInstance().cancelAll();
+  }
 
   /** This function is called periodically when disabled. */
   @Override

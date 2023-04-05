@@ -1,5 +1,6 @@
 package frc.robot.robotcode.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
 // import frc.robot.robotConstants;
@@ -49,12 +50,13 @@ public class buttonIntakeSTOP extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        return ((robotConstants.m_IntakeTalonMain.getSelectedSensorPosition() - robotConstants.coneRetractedPosition < 100));
+        return ((Math.abs(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition() - robotConstants.coneRetractedPosition) < 100));
     }
 
     @Override
     public void end (boolean interrupted) {
         //robotConstants.buttonIntakePOS = 200;
         intake.intakeStop();
+        System.out.println("*************************************************88");
     }
 }

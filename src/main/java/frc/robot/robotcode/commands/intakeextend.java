@@ -32,7 +32,7 @@ public class intakeextend extends CommandBase{
 
     @Override
     public boolean isFinished(){
-        return (robotConstants.m_IntakeTalonMain.getStatorCurrent() > 20);
+        return (robotConstants.cubeInIntake.get() == false);
     }
 
     @Override

@@ -3,8 +3,13 @@ package frc.robot.robotcode.subsystems;
 import static frc.robot.robotConstants.*;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.robotConstants;
 
 public class robotDrive extends SubsystemBase {
 
@@ -16,7 +21,7 @@ public class robotDrive extends SubsystemBase {
         m_DriveVictorLeftBack.follow(m_DriveTalonLeft);
         m_DriveVictorRightFwd.follow(m_DriveTalonRight);
         m_DriveVictorRightBack.follow(m_DriveTalonRight);
-       
+        
         m_DriveTalonRight.setInverted(true);
         m_DriveVictorRightBack.setInverted(true);
         m_DriveVictorRightFwd.setInverted(true);
@@ -25,6 +30,10 @@ public class robotDrive extends SubsystemBase {
 
         m_DriveTalonLeft.configPeakOutputReverse(-1);
         m_DriveTalonRight.configPeakOutputReverse(-1);
+
+        m_DriveVictorLeftBack.setNeutralMode(NeutralMode.Coast);
+        m_DriveVictorRightBack.setNeutralMode(NeutralMode.Coast);
+
     }
 
     public void setHighGear () {
@@ -51,8 +60,8 @@ public class robotDrive extends SubsystemBase {
         m_DriveTalonRight.configMotionCruiseVelocity(6000);//same from last year - MUST be tested
         m_DriveTalonLeft.configMotionCruiseVelocity(6000);
         
-        m_DriveTalonRight.configMotionAcceleration(2800);
-        m_DriveTalonLeft.configMotionAcceleration(2800);
+        m_DriveTalonRight.configMotionAcceleration(2800*1.40);//2800
+        m_DriveTalonLeft.configMotionAcceleration(2800*1.40);//2800
 
         m_DriveTalonLeft.configPeakOutputForward(1);
         m_DriveTalonRight.configPeakOutputForward(1);
@@ -63,6 +72,7 @@ public class robotDrive extends SubsystemBase {
         m_DriveTalonRight.set(ControlMode.MotionMagic, -position);
         m_DriveTalonLeft.set(ControlMode.MotionMagic, -position);
     }
+
     public void precisionDrive (double position){
         m_DriveTalonRight.setSelectedSensorPosition(0);
         m_DriveTalonLeft.setSelectedSensorPosition(0);

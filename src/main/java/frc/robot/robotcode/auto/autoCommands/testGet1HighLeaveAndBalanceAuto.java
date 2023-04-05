@@ -43,9 +43,8 @@ public class testGet1HighLeaveAndBalanceAuto extends SequentialCommandGroup {
             new retractFourBar(_score),
              // new delay(0.500),
             new autoArmHomePos(_score),
-            new autoDriveSlowPos(_robotDrive, 47000),//54000 was tested
+            new autoDriveSlowPos(_robotDrive, 54000),//54000 was tested
             new autoIntake(_intake, false),
-            new autoDriveSlowPos(_robotDrive, 7000),
             new autoIntakeRetract(_intake, false),
             new autoDriveSlowPos(_robotDrive, -32500),//24000 was tested
             new autoHoldPosition(_robotDrive)

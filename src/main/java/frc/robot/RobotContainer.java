@@ -7,10 +7,12 @@ package frc.robot;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.limelight.commands.aim;
@@ -24,13 +26,18 @@ import frc.robot.robotcode.auto.autoCommands.rightGetConeAndCube;
 import frc.robot.robotcode.auto.autoCommands.rightGetHighConeAndGetMidCone;
 import frc.robot.robotcode.auto.autoCommands.testGet1HighLeaveAndBalanceAuto;
 import frc.robot.robotcode.auto.autoCommands.testLeftGetConeAndCube;
+import frc.robot.robotcode.auto.autoSubCommands.autoDriveDis;
+import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
+import frc.robot.robotcode.auto.testAutos.autoDisTEST;
 import frc.robot.robotcode.auto.testAutos.autoGetCube;
 import frc.robot.robotcode.auto.testAutos.testAuto;
 // import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 // import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
 import frc.robot.robotcode.commands.armHighPos;
+import frc.robot.robotcode.commands.armHighPosAndScore;
 import frc.robot.robotcode.commands.armHomePos;
+import frc.robot.robotcode.commands.armPos;
 import frc.robot.robotcode.commands.buttonIntakeSTOP;
 import frc.robot.robotcode.commands.coneIn;
 import frc.robot.robotcode.commands.cubeIn;
@@ -38,11 +45,14 @@ import frc.robot.robotcode.commands.engageHighGear;
 import frc.robot.robotcode.commands.extendFourBar;
 // import frc.robot.robotcode.commands.grabPiece;
 import frc.robot.robotcode.commands.handoff_ToScore;
+import frc.robot.robotcode.commands.handoff_ToScoreBouns;
 import frc.robot.robotcode.commands.holdPosition;
 import frc.robot.robotcode.commands.intakeAtStation;
 // import frc.robot.robotcode.commands.intakeCone;
 import frc.robot.robotcode.commands.intakeSTOP;
+import frc.robot.robotcode.commands.intakeSetToBoth;
 import frc.robot.robotcode.commands.intakeextend;
+import frc.robot.robotcode.commands.resetEncoder;
 // import frc.robot.robotcode.commands.releasePiece;
 import frc.robot.robotcode.commands.retract;
 // import frc.robot.robotcode.commands.retractCone;
@@ -52,6 +62,7 @@ import frc.robot.robotcode.commands.reverseIntake;
 import frc.robot.robotcode.commands.rotateArmBwd;
 import frc.robot.robotcode.commands.rotateArmFwd;
 import frc.robot.robotcode.commands.scorePiece;
+import frc.robot.robotcode.commands.scorePieceCos;
 import frc.robot.robotcode.commands.setArcadeDrive;
 import frc.robot.robotcode.subsystems.scoring;
 import frc.robot.robotcode.subsystems.statusLight;
@@ -60,6 +71,8 @@ import frc.robot.robotcode.subsystems.intake;
 //import frc.robot.robotcode.subsystems.led;
 import frc.robot.robotcode.subsystems.robotDrive;
 
+
+import java.util.function.BooleanSupplier;
 
 
 
@@ -73,6 +86,7 @@ public class RobotContainer {
   public static final robotDrive _robotDrive = new robotDrive();
 
   // ONLY FOR TESTING
+  public static XboxController _primaryControllerForHandoff = new XboxController(1);
   // ONLY FOR TESTING
   public static final intake _intake = new intake();
   public static final scoring _score = new scoring();
@@ -134,7 +148,7 @@ public class RobotContainer {
     _primarycontroller.a().onTrue(new intakeextend(_intake));
     _primarycontroller.pov(0).whileTrue(new rotateArmBwd(_score));
     _primarycontroller.pov(180).whileTrue(new rotateArmFwd(_score));
-     _primarycontroller.rightBumper().whileTrue(new engageHighGear());
+    _primarycontroller.rightBumper().whileTrue(new engageHighGear());
     _primarycontroller.x().whileTrue(new scorePiece(_score));
     //limelight
     _primarycontroller.leftBumper().whileTrue(new aim(_limelight, _robotDrive));
@@ -149,18 +163,12 @@ public class RobotContainer {
     // _primarycontroller.pov(270).onTrue(new intakeCone(_intake));
     // //testing autoBalance
     _primarycontroller.pov(90).whileTrue(new holdPosition(_robotDrive));
-    
-  
-
-
-
-
 
     // _secondarycontroller.pov(0).whileTrue(new setheightTrue(_limelight));
     // _secondarycontroller.pov(180).whileTrue(new setheightFalse(_limelight));
 
 
-    _secondarycontroller.x().whileTrue(new handoff_ToScore(_handoff,_score,_intake));
+    _secondarycontroller.x().onTrue(new handoff_ToScore(_handoff, _score, _intake).andThen(new handoff_ToScoreBouns()));
     _secondarycontroller.y().whileTrue(new intakeAtStation(_intake));
     _secondarycontroller.leftTrigger().onTrue(new extendFourBar(_score));
     _secondarycontroller.rightTrigger().onTrue(new retractFourBar(_score));
@@ -171,6 +179,13 @@ public class RobotContainer {
 
     _secondarycontroller.pov(0).onTrue(new armHighPos(_score));
     _secondarycontroller.pov(180).onTrue(new armHomePos(_score));
+
+
+
+
+    ////TEST/////
+   // _thirdController.a().onTrue(new armHighPosAndScore(_score));
+   // _thirdController.x().onTrue(new scorePieceCos(_score));
   }
 
   /**
@@ -195,6 +210,6 @@ public class RobotContainer {
       case "testGet1HighLeaveAndBalanceAuto":
       return new testGet1HighLeaveAndBalanceAuto(_robotDrive, _score, _limelight, _intake);
     }
-    return null;
+    return null; // new midGet1HighBalanceAuto(_robotDrive, _score, _limelight);
   }
 }
