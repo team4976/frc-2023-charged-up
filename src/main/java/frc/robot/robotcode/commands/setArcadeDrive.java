@@ -36,12 +36,18 @@ public void execute() {
             _rotation.getAsDouble()*robotConstants.rotationSpeed // rotation speed
             );
     }
-    else{
+    else if(Math.abs(_rotation.getAsDouble()) >.05){
     _robotDrive.setArcadeDrive(
         _forward.getAsDouble() - _reverse.getAsDouble(), 
         _rotation.getAsDouble() // rotation speed
     );
+    }
     // System.out.println(_forward.getAsDouble());
+    else{
+        _robotDrive.setArcadeDrive(
+            _forward.getAsDouble() - _reverse.getAsDouble(),
+              0);
+
     }
 }
 }

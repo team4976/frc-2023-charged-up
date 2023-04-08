@@ -24,7 +24,7 @@ public class autoHandOffCube extends CommandBase{
 
     @Override
     public boolean isFinished(){
-        if(System.currentTimeMillis() - startTime > 1000){
+        if(System.currentTimeMillis() - startTime > 750){
             return true;
         }
         return false;

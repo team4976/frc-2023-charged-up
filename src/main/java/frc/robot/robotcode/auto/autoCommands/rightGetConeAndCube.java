@@ -31,6 +31,7 @@ import frc.robot.robotcode.subsystems.intake;
 // import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
+import static frc.robot.robotConstants.ratio;
 
 public class rightGetConeAndCube extends SequentialCommandGroup {
 
@@ -46,12 +47,12 @@ public class rightGetConeAndCube extends SequentialCommandGroup {
             new delay(.1),
             new retractFourBar(_score),
             new autoArmHomePos(_score),
-            new autoDrivePosAndRotation(_robotDrive, 50000, 54000),//24000 was tested //24750
+            new autoDrivePosAndRotation(_robotDrive, 49000*ratio, (54000+6000)*ratio),//24000 was tested //24750
             new autoIntake(_intake, true),
-            new autoDrivePos(_robotDrive, 7000),
+            new autoDrivePos(_robotDrive, 7000*ratio),
             new autoIntakeRetract(_intake, true),
-            new autoDrivePosAndRotation(_robotDrive, -8000, -12600),
-            new autoDrivePos(_robotDrive, -49000),//24000 was tested
+            new autoDrivePosAndRotation(_robotDrive, -8000*ratio, (-12600-7200)*ratio),
+            new autoDrivePos(_robotDrive, -49000*ratio),//24000 was tested
             new autoCuberetract(_intake),
             new autoHandOffCube(_hand_off, _intake),
             new delay(0.15),

@@ -107,7 +107,7 @@ public class Robot extends TimedRobot {
     //Camera
     CameraServer.startAutomaticCapture();
     //
-      String test[] = {"midGet1HighBalanceAuto","leftGetHighConeAndGetMidCone","rightGetHighConeAndGetMidCone","testLeftGetConeAndCube","rightGetConeAndCube","testGet1HighLeaveAndBalanceAuto"};
+      String test[] = {"test","BackUPAutoRight","BackUPAutoLeft","midGet1HighBalanceAuto","RightTwo","LeftTwo","leftGetHighConeAndGetMidCone","rightGetHighConeAndGetMidCone","testLeftGetConeAndCube","rightGetConeAndCube","testGet1HighLeaveAndBalanceAuto"};
   
       SmartDashboard.putStringArray("Auto List", test);
 
@@ -129,9 +129,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     double[] test = table.getEntry("botpose").getDoubleArray(new double[6]);
-    System.out.println(test[0]);
+    // System.out.println(test[0]);
     shuffleBoard.instance.tick();
     CommandScheduler.getInstance().run();
+
+    // System.out.println(table.getEntry("tx").getDouble(0.0));
 
     // (CRTL /) to uncomment
     // Drive
@@ -174,7 +176,7 @@ public class Robot extends TimedRobot {
     // Rumble
 
     // if (robotConstants.m_IntakeBottom.getStatorCurrent()>10){
-    //   robotConstants._primaryControllerNotCommand.setRumble(RumbleType.kBothRumble, 1);
+      // robotConstants._primaryControllerNotCommand.setRumble(RumbleType.kBothRumble, 1);
     // }
     // else {
     //   robotConstants._primaryControllerNotCommand.setRumble(RumbleType.kBothRumble, 0);

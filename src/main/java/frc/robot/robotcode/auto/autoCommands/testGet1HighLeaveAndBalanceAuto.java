@@ -10,9 +10,11 @@ import frc.robot.robotcode.auto.autoSubCommands.autoArmHighPos;
 import frc.robot.robotcode.auto.autoSubCommands.autoArmHomePos;
 import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
 import frc.robot.robotcode.auto.autoSubCommands.autoDriveSlowPos;
+import frc.robot.robotcode.auto.autoSubCommands.autoDriveSlowPosCos;
 import frc.robot.robotcode.auto.autoSubCommands.autoGrab;
 import frc.robot.robotcode.auto.autoSubCommands.autoHoldPosition;
 import frc.robot.robotcode.auto.autoSubCommands.autoIntake;
+import frc.robot.robotcode.auto.autoSubCommands.autoIntakeCos;
 import frc.robot.robotcode.auto.autoSubCommands.autoIntakeRetract;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 import frc.robot.robotcode.auto.autoSubCommands.autoRelease;
@@ -25,6 +27,7 @@ import frc.robot.robotcode.subsystems.intake;
 // import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
+import static frc.robot.robotConstants.ratio;
 
 public class testGet1HighLeaveAndBalanceAuto extends SequentialCommandGroup {
 
@@ -43,11 +46,19 @@ public class testGet1HighLeaveAndBalanceAuto extends SequentialCommandGroup {
             new retractFourBar(_score),
              // new delay(0.500),
             new autoArmHomePos(_score),
-            new autoDriveSlowPos(_robotDrive, 54000),//54000 was tested
+            new autoDriveSlowPos(_robotDrive, 40000*ratio),
             new autoIntake(_intake, false),
-            new autoIntakeRetract(_intake, false),
-            new autoDriveSlowPos(_robotDrive, -32500),//24000 was tested
+            new autoDrivePos(_robotDrive, 17000*ratio),
+            new autoIntakeRetract(_intake, false), 
+            new autoDriveSlowPos(_robotDrive, -38500*ratio),
             new autoHoldPosition(_robotDrive)
+            
+            
+            // new autoDriveSlowPosCos(_robotDrive, 54000*ratio),//54000 was tested
+            // new autoIntakeCos(_intake, false),
+            // new autoIntakeRetract(_intake, false),
+            // new autoDriveSlowPos(_robotDrive, -32500*ratio),//24000 was tested
+            // new autoHoldPosition(_robotDrive)
             // new autoDrivePos(_robotDrive, -12000)
 
             //new autoNavXGryoscope(_robotDrive, 5)

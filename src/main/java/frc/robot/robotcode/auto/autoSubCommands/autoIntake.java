@@ -29,12 +29,14 @@ public class autoIntake extends CommandBase{
 
     @Override
     public boolean isFinished(){
-        if(_peice == true){
-            return (Math.abs(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition()-robotConstants.cubePosition)<100);
-    }
+        return (robotConstants.m_IntakeTalonMain.getSelectedSensorPosition() > 500);
+    //     if(_peice == true){
+    //         return (Math.abs(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition()-robotConstants.cubePosition)<100);
+    // }
 
-    else{
-        return (Math.abs(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition()-robotConstants.conePosition)<100);
-    }
-    }
+    // else{
+    //     return (Math.abs(robotConstants.m_IntakeTalonMain.getSelectedSensorPosition()-robotConstants.conePosition)<100);
+    // }
+    // }
+}
 }

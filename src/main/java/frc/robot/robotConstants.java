@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.SPI;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.XboxController;
 // import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -106,6 +107,9 @@ public final class robotConstants {
     public static int navXDeadBand = 5;
     public static int navXDeadBandTEST = 20;
 
+    //Auto Ratio
+    public static double ratio = 1.224;
+
 
 
 
@@ -116,8 +120,8 @@ public final class robotConstants {
       _primaryController = new CommandXboxController(0);
       _secondaryController = new CommandXboxController(1);
 
-      // XboxController _primaryControllerNotCommand = new XboxController(0);
-      //  XboxController _secondaryControllerNotCommand = new XboxController(1);
+       XboxController _primaryControllerNotCommand = new XboxController(0);
+       XboxController _secondaryControllerNotCommand = new XboxController(1);
 
       /*
       buttonsMap.put("Intake", _primaryController.a());

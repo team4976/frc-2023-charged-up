@@ -4,28 +4,28 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.scoring;
 
-public class autoArmHighPos extends CommandBase {
+public class autoSetArmPos extends CommandBase {
     
     private scoring Scoring;
+    double pos;
+    double next; // 4500
 
-    public autoArmHighPos(scoring score) {
+    public autoSetArmPos(scoring score, double pos, double allowNextCommand) {
         this.Scoring = score;
+        this.pos = pos;
+        this.next = allowNextCommand;
         addRequirements(score);
     }
     
     @Override
     public void initialize() {
-        System.out.println("begin auto arm high");
-
-        super.initialize();
-        Scoring.autoSetArmPos(robotConstants.positionHigh);
+        Scoring.autoSetArmPos(pos);
     }
     public void end () {
-        System.out.println("end auto arm high");
     }
 
     @Override
     public boolean isFinished() {
-        return robotConstants.m_ArmRotator.getSelectedSensorPosition() > 4500; //(robotConstants.positionHigh-100);
+        return robotConstants.m_ArmRotator.getSelectedSensorPosition() > next; //(robotConstants.positionHigh-100);
     }
 }

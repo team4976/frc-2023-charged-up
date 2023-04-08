@@ -12,7 +12,7 @@ public class scoring extends SubsystemBase{
         m_ArmRotator.setInverted(true);
         m_ArmRotator.setSensorPhase(true);
         m_ArmRotator.configPeakOutputForward(1);
-        m_ArmRotator.configPeakOutputReverse(-0.4);
+        m_ArmRotator.configPeakOutputReverse(-1);
     }
 
     public void rotateArmFwd(){
@@ -22,6 +22,11 @@ public class scoring extends SubsystemBase{
     public void rotateArmBwd(){
         m_ArmRotator.set(ControlMode.PercentOutput, backwardS);
     }
+
+    public void SpeedRotateArmBwd(){
+        m_ArmRotator.set(ControlMode.PercentOutput, -.6);
+    }
+
     public void stopRotating () {
         m_ArmRotator.set(ControlMode.PercentOutput, 0);
     }

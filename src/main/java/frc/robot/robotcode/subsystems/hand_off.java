@@ -32,8 +32,8 @@ public class hand_off extends SubsystemBase{
     }
 
     public void Handoff_Cone(){
-        m_IntakeBottom.set(ControlMode.PercentOutput, -.06);
-        m_IntakeTop.set(ControlMode.PercentOutput, -.06);
+        m_IntakeBottom.set(ControlMode.PercentOutput, -.07);//-.06
+        m_IntakeTop.set(ControlMode.PercentOutput, -.07);
     }
 
     public void Handoff_ToIntake(){

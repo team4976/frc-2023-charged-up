@@ -27,6 +27,7 @@ import frc.robot.robotcode.subsystems.intake;
 // import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
+import static frc.robot.robotConstants.ratio;
 
 public class rightGetHighConeAndGetMidCone extends SequentialCommandGroup {
 
@@ -42,15 +43,15 @@ public class rightGetHighConeAndGetMidCone extends SequentialCommandGroup {
              new delay(.1),
              new retractFourBar(_score),
              new autoArmHomePos(_score),
-             new autoDrivePos(_robotDrive, 47000),//24000 was tested //24750
-             new autoRotateOnPos(_robotDrive, 1250), // unknow
+             new autoDrivePos(_robotDrive, 47000*ratio),//24000 was tested //24750
+             new autoRotateOnPos(_robotDrive, 1250*ratio), // unknow
              new autoIntake(_intake, false),
-             new autoDrivePos(_robotDrive, 5000),
+             new autoDrivePos(_robotDrive, 5000*ratio),
              new autoIntakeRetract(_intake, false),
-             new autoDrivePos(_robotDrive, -5000),
-             new autoRotateOnPos(_robotDrive, -1250), // unknow
-             new autoDrivePos(_robotDrive, -2000),
-             new autoDrivePos(_robotDrive, -45000),//24000 was tested
+             new autoDrivePos(_robotDrive, -5000*ratio),
+             new autoRotateOnPos(_robotDrive, -1250*ratio), // unknow
+             new autoDrivePos(_robotDrive, -2000*ratio),
+             new autoDrivePos(_robotDrive, -45000*ratio),//24000 was tested
              new autoGrab(_score),
              new autoArmHighPos(_score),
              new delay(1),

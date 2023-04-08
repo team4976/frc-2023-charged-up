@@ -22,6 +22,7 @@ import frc.robot.robotcode.commands.retractFourBar;
 // import frc.robot.robotcode.commands.scorePiece;
 import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
+import static frc.robot.robotConstants.ratio;
 
 public class midGet1HighBalanceAuto extends SequentialCommandGroup {
 
@@ -39,7 +40,7 @@ public class midGet1HighBalanceAuto extends SequentialCommandGroup {
             new retractFourBar(_score),
              // new delay(0.500),
             new autoArmHomePos(_score),
-            new autoDriveSlowPos(_robotDrive, 24750),
+            new autoDriveSlowPos(_robotDrive, (24750+400)*ratio),
             new autoHoldPosition(_robotDrive)//24000 was tested
             // new autoDrivePos(_robotDrive, -12000)
 

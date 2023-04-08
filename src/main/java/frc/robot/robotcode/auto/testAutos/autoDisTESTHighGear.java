@@ -24,6 +24,7 @@ import frc.robot.robotcode.auto.autoSubCommands.autoIntakeRetract;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 import frc.robot.robotcode.auto.autoSubCommands.autoRelease;
 import frc.robot.robotcode.auto.autoSubCommands.autoRotateOnPos;
+import frc.robot.robotcode.auto.autoSubCommands.autoSetArmPos;
 import frc.robot.robotcode.auto.autoSubCommands.delay;
 // import frc.robot.robotcode.commands.armHighPos;
 // import frc.robot.robotcode.commands.armHomePos;
@@ -36,9 +37,9 @@ import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
 import static frc.robot.robotConstants.ratio;
 
-public class autoDisTEST extends SequentialCommandGroup {
+public class autoDisTESTHighGear extends SequentialCommandGroup {
 
-    public autoDisTEST (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)   {
+    public autoDisTESTHighGear (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)   {
         robotConstants.peiceSelection = true;
         
         addCommands(
@@ -50,11 +51,13 @@ public class autoDisTEST extends SequentialCommandGroup {
             new delay(.1),
             new retractFourBar(_score),
             new autoArmHomePos(_score),
-            new autoDrivePosAndRotation(_robotDrive, 45000*ratio, (50000+1250)*ratio),//49000,54000+1250
-            new autoIntake(_intake, false),
-            new autoDrivePos(_robotDrive, 10000*ratio),
-            new autoIntakeRetract(_intake, false),
-            new autoDrivePosAndRotation(_robotDrive, -1000*ratio, (-6000-5000)*ratio),//-8000
+           // new autoDrivePosAndRotation(_robotDrive, 49000*ratio, (54000)*ratio),//24000 was tested //24750
+            new autoDrivePosHighgear(_robotDrive, 49000*ratio),
+            new autoRotateOnPos(_robotDrive, 5000*ratio),
+            new autoIntake(_intake, true),
+            new autoDrivePos(_robotDrive, 7000*ratio),
+            new autoIntakeRetract(_intake, true),
+            new autoDrivePosAndRotation(_robotDrive, -3000*ratio, (-8000)*ratio),//-8000
             new autoDrivePos(_robotDrive, -29000*ratio),//-49000
             new AutoAim(_limelight, _robotDrive),
             new autoDrivePos(_robotDrive, -23000*ratio),
@@ -63,7 +66,7 @@ public class autoDisTEST extends SequentialCommandGroup {
             new delay(0.15),
             new autoGrab(_score),
             new delay(0.2),//.3
-            new autoArmHighPos(_score),
+            new autoSetArmPos(_score, 13000, 4000),
             new autoIntakeRetract(_intake, false),
             new extendFourBar(_score),
             new delay(0.5),

@@ -19,6 +19,8 @@ import frc.robot.limelight.commands.aim;
 // import frc.robot.limelight.commands.setheightFalse;
 // import frc.robot.limelight.commands.setheightTrue;
 import frc.robot.limelight.subsystems.LimeLight;
+import frc.robot.robotcode.auto.autoCommands.BackUPAutoLeft;
+import frc.robot.robotcode.auto.autoCommands.BackUPAutoRight;
 import frc.robot.robotcode.auto.autoCommands.leftGetHighConeAndGetMidCone;
 // import frc.robot.robotcode.auto.autoCommands.get1MidAuto;
 import frc.robot.robotcode.auto.autoCommands.midGet1HighBalanceAuto;
@@ -29,8 +31,12 @@ import frc.robot.robotcode.auto.autoCommands.testLeftGetConeAndCube;
 import frc.robot.robotcode.auto.autoSubCommands.autoDriveDis;
 import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
 import frc.robot.robotcode.auto.testAutos.autoDisTEST;
+import frc.robot.robotcode.auto.testAutos.autoDisTESTLeft;
 import frc.robot.robotcode.auto.testAutos.autoGetCube;
+import frc.robot.robotcode.auto.testAutos.autoHighAndMidCone;
+import frc.robot.robotcode.auto.testAutos.autoHighAndMidConeLeft;
 import frc.robot.robotcode.auto.testAutos.testAuto;
+import frc.robot.robotcode.commands.SpeedRotateArmBwd;
 // import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
 // import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
@@ -52,6 +58,7 @@ import frc.robot.robotcode.commands.intakeAtStation;
 import frc.robot.robotcode.commands.intakeSTOP;
 import frc.robot.robotcode.commands.intakeSetToBoth;
 import frc.robot.robotcode.commands.intakeextend;
+import frc.robot.robotcode.commands.resetArmEncoder;
 import frc.robot.robotcode.commands.resetEncoder;
 // import frc.robot.robotcode.commands.releasePiece;
 import frc.robot.robotcode.commands.retract;
@@ -180,6 +187,9 @@ public class RobotContainer {
     _secondarycontroller.pov(0).onTrue(new armHighPos(_score));
     _secondarycontroller.pov(180).onTrue(new armHomePos(_score));
 
+    _secondarycontroller.start().whileTrue(new SpeedRotateArmBwd(_score));
+    _secondarycontroller.back().onTrue(new resetArmEncoder());
+
 
 
 
@@ -196,6 +206,8 @@ public class RobotContainer {
   public Command getAutonomousCommand () {
     String autoName = SmartDashboard.getString("Auto Selector", "midGet1HighBalanceAuto");
 
+  //   return new autoDisTEST(_robotDrive, _score, _limelight, _handoff, _intake);
+  // }
     switch(autoName){
       case "midGet1HighBalanceAuto":
       return new midGet1HighBalanceAuto(_robotDrive, _score, _limelight);
@@ -209,6 +221,17 @@ public class RobotContainer {
       return new rightGetConeAndCube(_robotDrive, _score, _limelight, _handoff, _intake);
       case "testGet1HighLeaveAndBalanceAuto":
       return new testGet1HighLeaveAndBalanceAuto(_robotDrive, _score, _limelight, _intake);
+      case "BackUPAutoRight":
+      return new BackUPAutoRight(_robotDrive, _score, _limelight, _handoff, _intake);
+      case "BackUPAutoLeft":
+      return new BackUPAutoLeft(_robotDrive, _score, _limelight, _handoff, _intake);
+      case "RightTwo":
+      return new autoDisTEST(_robotDrive, _score, _limelight, _handoff, _intake);
+      case "LeftTwo":
+      return new autoDisTESTLeft(_robotDrive, _score, _limelight, _handoff, _intake);
+      case "test":
+      return new autoHighAndMidConeLeft(_robotDrive, _score, _limelight, _handoff, _intake);
+
     }
     return null; // new midGet1HighBalanceAuto(_robotDrive, _score, _limelight);
   }
