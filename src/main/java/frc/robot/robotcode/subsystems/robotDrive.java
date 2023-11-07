@@ -82,11 +82,11 @@ public class robotDrive extends SubsystemBase {
         m_DriveTalonRight.configMotionAcceleration(2800*1.40);//2800
         m_DriveTalonLeft.configMotionAcceleration(2800*1.40);//2800
 
-        m_DriveTalonLeft.configPeakOutputForward(1);
-        m_DriveTalonRight.configPeakOutputForward(1);
+        m_DriveTalonLeft.configPeakOutputForward(.75);
+        m_DriveTalonRight.configPeakOutputForward(.75);
 
-        m_DriveTalonLeft.configPeakOutputReverse(-1);
-        m_DriveTalonRight.configPeakOutputReverse(-1);
+        m_DriveTalonLeft.configPeakOutputReverse(-.75);
+        m_DriveTalonRight.configPeakOutputReverse(-.75);
         
         m_DriveTalonRight.set(ControlMode.MotionMagic, -position);
         m_DriveTalonLeft.set(ControlMode.MotionMagic, -position);

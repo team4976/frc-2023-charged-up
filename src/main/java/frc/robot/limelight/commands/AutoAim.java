@@ -20,23 +20,22 @@ public class AutoAim extends CommandBase{
 
     @Override
     public void initialize(){
-        endTime = System.currentTimeMillis();
         startTime = System.currentTimeMillis();
         _limeLight.limeLightON();
     }
     @Override
     public boolean isFinished(){
         // if(LimeLight.isVaildTagret()){
-            if(LimeLight.angleOff() > 3){
+            if(Math.abs(LimeLight.angleOff()) > 3.3){
                 startTime = System.currentTimeMillis(); 
-                System.out.println("TIME RESET");
+                System.out.println("TIME RESET***********************"+LimeLight.angleOff());
             }
         // }
         // else{
             // startTime = System.currentTimeMillis();
         // }
         // if(Math.abs(Math.abs(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition())-Math.abs(robotConstants.m_DriveTalonRight.getSelectedSensorPosition()))< 50000){
-            return (System.currentTimeMillis() - startTime > 500 || System.currentTimeMillis() - endTime > 5000);
+            return ((System.currentTimeMillis() - startTime) > 500);
         // }
        // return false;
     }
@@ -46,11 +45,12 @@ public class AutoAim extends CommandBase{
         // if(Math.abs(Math.abs(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition())-Math.abs(robotConstants.m_DriveTalonRight.getSelectedSensorPosition()))< 50000){
         if(LimeLight.isVaildTagret()){
         _limeLight.aim(_robotDrive);
-        System.out.println("******************************************************");
-        System.out.println(System.currentTimeMillis() - startTime);
+        // System.out.println("******************************************************");
+        // System.out.println(System.currentTimeMillis() - startTime);
         }
         else {
             _robotDrive.setArcadeDrive(0,0);
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         }
     }
     // else{
@@ -60,9 +60,8 @@ public class AutoAim extends CommandBase{
 
     @Override 
     public void end(boolean interupted){
-        robotConstants.peiceSelection = false;
+        System.out.println("******END******");
          _limeLight.limelightOFF();
          _robotDrive.setArcadeDrive(0, 0);
+        }
     }
-    
-}

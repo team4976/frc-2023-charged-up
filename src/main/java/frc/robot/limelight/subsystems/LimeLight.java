@@ -11,14 +11,14 @@ import frc.robot.robotcode.subsystems.robotDrive;
 public class LimeLight extends SubsystemBase{
     //NEED CHANGE THE VALUE
     public static PIDController controller = new PIDController(0.05, 0.000, 0.0);
-    public static PIDController controller2 = new PIDController(0.03, 0.002, 0.0);
+    public static PIDController controller2 = new PIDController(0.05, 0.002, 0.0);
                                                                 //.05//0.01/0.0
 
 
 static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
 
 static NetworkTableEntry tv = table.getEntry("tv");
-NetworkTableEntry ty = table.getEntry("ty");
+static NetworkTableEntry ty = table.getEntry("ty");
 static NetworkTableEntry tx = table.getEntry("tx");
 //double limeLightArray[] = table.getEntry("botpose").getDoubleArray(new double[6]);
     
@@ -143,7 +143,18 @@ static NetworkTableEntry tx = table.getEntry("tx");
     }
 
     public static double angleOff(){
-        return tx.getDouble(0.0);
+        return (tx.getDouble(0.0));
+    }
+
+    public static double angleYOff(){
+        //table.getEntry("pipeline").setValue(7);
+        table.getEntry("pipeline").setValue(3);
+        return ty.getDouble(0.0);
+    }
+
+    public static boolean isVaildPipe7(){
+        table.getEntry("pipeline").setValue(7);
+        return tv.getDouble(0.0) > 0;
     }
 
     public void swapLimeLight(int pipeline){

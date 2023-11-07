@@ -5,14 +5,14 @@ import frc.robot.robotConstants;
 import frc.robot.robotcode.subsystems.robotDrive;
 
 
-public class autoDriveSlowPosCos extends CommandBase {
+public class autoDriveMidPose extends CommandBase {
     robotDrive _robotDrive;
     robotConstants _robotConstants;
     double position;
     int duration;
     long startTime;
     int rotation;
-    public autoDriveSlowPosCos(robotDrive _robotDrive, double position){
+    public autoDriveMidPose(robotDrive _robotDrive, double position){
         this._robotDrive=_robotDrive;
         addRequirements(_robotDrive);
         this.position=position;
@@ -22,7 +22,7 @@ public class autoDriveSlowPosCos extends CommandBase {
         super.initialize();
         // robotConstants.m_DriveTalonLeft.setInverted(true);
         //robotConstants.m_DriveTalonRight.setInverted(true);
-        _robotDrive.precisionDrive(position);// position
+        _robotDrive.MidDriveToPosition(position);// position
         //startTime=System.currentTimeMillis();// wheel to wheel distance ~ 2 feet
         // TODO Auto-generated method stub
     }

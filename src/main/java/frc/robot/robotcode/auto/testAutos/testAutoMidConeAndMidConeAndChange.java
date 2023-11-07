@@ -7,7 +7,6 @@ import frc.robot.robotcode.auto.autoSubCommands.autoArmHomePos;
 import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
 import frc.robot.robotcode.auto.autoSubCommands.autoDrivePosAndRotation;
 import frc.robot.robotcode.auto.autoSubCommands.autoDriveSlowPos;
-import frc.robot.robotcode.auto.autoSubCommands.autoDriveSlowPosCos;
 import frc.robot.robotcode.auto.autoSubCommands.autoGrab;
 import frc.robot.robotcode.auto.autoSubCommands.autoIntake;
 import frc.robot.robotcode.auto.autoSubCommands.autoIntakeCos;

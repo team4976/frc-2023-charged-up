@@ -107,7 +107,7 @@ public class Robot extends TimedRobot {
     //Camera
     CameraServer.startAutomaticCapture();
     //
-      String test[] = {"test","BackUPAutoRight","BackUPAutoLeft","midGet1HighBalanceAuto","RightTwo","LeftTwo","leftGetHighConeAndGetMidCone","rightGetHighConeAndGetMidCone","testLeftGetConeAndCube","rightGetConeAndCube","testGet1HighLeaveAndBalanceAuto"};
+      String test[] = {"Bal_Lev_Cone","Bal_Lev_Cube","high_cone_pickup_cone_level","high_cone_pickup_cube_level","test","BackUPAutoRight","BackUPAutoLeft","midGet1HighBalanceAuto","RightTwo","LeftTwo","leftGetHighConeAndGetMidCone","rightGetHighConeAndGetMidCone","testLeftGetConeAndCube","rightGetConeAndCube","testGet1HighLeaveAndBalanceAuto"};
   
       SmartDashboard.putStringArray("Auto List", test);
 
@@ -139,8 +139,10 @@ public class Robot extends TimedRobot {
     // Drive
 
     // System.out.println(robotConstants.m_DriveTalonLeft.getSelectedSensorPosition() + "*****" + robotConstants.m_DriveTalonRight.getSelectedSensorPosition() + " Drive Train Left/Right Encoder");
-    // System.out.println(robotConstants.m_DriveTalonLeft.getSupplyCurrent() + " Drive LEFT Current");
-    // System.out.println(robotConstants.m_DriveTalonRight.getSupplyCurrent() + " Drive Right Current");
+    // System.out.println(robotConstants.m_DriveTalonLeft.getMotorOutputPercent() + " Drive LEFT spped");
+    // System.out.println(robotConstants.m_DriveTalonRight.getMotorOutputPercent() + " Drive Right speed");
+    // System.out.println(LimeLight.isVaildTagret()+"TAGERT");
+    // System.out.println(LimeLight.angleOff()+"Angle");
     // System.out.println();
     // System.out.println();
 

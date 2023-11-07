@@ -36,9 +36,9 @@ import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
 import static frc.robot.robotConstants.ratio;
 
-public class autoDisTESTLeft extends SequentialCommandGroup {
+public class autoDisTESTRight extends SequentialCommandGroup {
 
-    public autoDisTESTLeft (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)   {
+    public autoDisTESTRight (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)   {
         robotConstants.peiceSelection = true;
         
         addCommands(
@@ -50,17 +50,17 @@ public class autoDisTESTLeft extends SequentialCommandGroup {
             new delay(.1),
             new retractFourBar(_score),
             new autoArmHomePos(_score),
-            new autoDrivePosAndRotation(_robotDrive, (54000)*ratio, 49000*ratio),//24000 was tested //24750
+            new autoDrivePosAndRotation(_robotDrive, 49000*ratio, (54000)*ratio),//24000 was tested //24750
             new autoIntake(_intake, true),
             new autoDrivePos(_robotDrive, 7000*ratio),
             new autoIntakeRetract(_intake, true),
-            new autoDrivePosAndRotation(_robotDrive, (-8000)*ratio, -3000*ratio),//-8000
+            new autoDrivePosAndRotation(_robotDrive, -3000*ratio, (-8000)*ratio),//-8000
             new autoDrivePos(_robotDrive, -38000*ratio),//-49000
             new AutoAim(_limelight, _robotDrive),
             new autoDrivePos(_robotDrive, -17000*ratio),
             new autoCuberetract(_intake),
             new autoHandOffCube(_hand_off, _intake),
-           // new delay(0.15),
+            new delay(0.15),
             new autoGrab(_score),
             new delay(0.2),//.3
             new autoArmHighPos(_score),

@@ -32,10 +32,17 @@ import frc.robot.robotcode.auto.autoSubCommands.autoDriveDis;
 import frc.robot.robotcode.auto.autoSubCommands.navXGryoscope;
 import frc.robot.robotcode.auto.testAutos.autoDisTEST;
 import frc.robot.robotcode.auto.testAutos.autoDisTESTLeft;
+import frc.robot.robotcode.auto.testAutos.autoDisTESTLeftCOS;
+import frc.robot.robotcode.auto.testAutos.autoDisTESTRight;
+import frc.robot.robotcode.auto.testAutos.autoDisTESTRightCOS;
 import frc.robot.robotcode.auto.testAutos.autoGetCube;
 import frc.robot.robotcode.auto.testAutos.autoHighAndMidCone;
-import frc.robot.robotcode.auto.testAutos.autoHighAndMidConeLeft;
+import frc.robot.robotcode.auto.testAutos.autoLevel;
+import frc.robot.robotcode.auto.testAutos.autoLevel_Cone;
+import frc.robot.robotcode.auto.testAutos.autoLevel_Cube;
 import frc.robot.robotcode.auto.testAutos.testAuto;
+import frc.robot.robotcode.auto.testAutos.testMID_high_cone_pickup_cone_level;
+import frc.robot.robotcode.auto.testAutos.testMID_high_cone_pickup_cube_level;
 import frc.robot.robotcode.commands.SpeedRotateArmBwd;
 // import frc.robot.robotcode.auto.autoSubCommands.autoDrivePos;
 // import frc.robot.robotcode.auto.autoSubCommands.autoNavXGryoscope;
@@ -226,11 +233,22 @@ public class RobotContainer {
       case "BackUPAutoLeft":
       return new BackUPAutoLeft(_robotDrive, _score, _limelight, _handoff, _intake);
       case "RightTwo":
-      return new autoDisTEST(_robotDrive, _score, _limelight, _handoff, _intake);
+      return new autoDisTESTRightCOS(_robotDrive, _score, _limelight, _handoff, _intake);
       case "LeftTwo":
-      return new autoDisTESTLeft(_robotDrive, _score, _limelight, _handoff, _intake);
+      return new autoDisTESTLeftCOS(_robotDrive, _score, _limelight, _handoff, _intake);
       case "test":
-      return new autoHighAndMidConeLeft(_robotDrive, _score, _limelight, _handoff, _intake);
+      return new autoLevel(_robotDrive, _score, _limelight, _handoff, _intake);
+
+      case "Bal_Lev_Cone":
+      return new autoLevel_Cone(_robotDrive, _score, _limelight, _handoff, _intake);
+      case "Bal_Lev_Cube":
+      return new autoLevel_Cube(_robotDrive, _score, _limelight, _handoff, _intake);
+
+      case "high_cone_pickup_cone_level":
+      return new testMID_high_cone_pickup_cone_level(_robotDrive, _score, _limelight, _intake);
+      case "high_cone_pickup_cube_level":
+      return new testMID_high_cone_pickup_cube_level(_robotDrive, _score, _limelight, _intake);
+      
 
     }
     return null; // new midGet1HighBalanceAuto(_robotDrive, _score, _limelight);

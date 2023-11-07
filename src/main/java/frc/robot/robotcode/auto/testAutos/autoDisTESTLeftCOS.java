@@ -1,5 +1,6 @@
 package frc.robot.robotcode.auto.testAutos;
 
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 // import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 // import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -36,9 +37,9 @@ import frc.robot.robotcode.subsystems.robotDrive;
 import frc.robot.robotcode.subsystems.scoring;
 import static frc.robot.robotConstants.ratio;
 
-public class autoDisTESTLeft extends SequentialCommandGroup {
+public class autoDisTESTLeftCOS extends SequentialCommandGroup {
 
-    public autoDisTESTLeft (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)   {
+    public autoDisTESTLeftCOS (robotDrive _robotDrive, scoring _score,  LimeLight _limelight, hand_off _hand_off, intake _intake)   {
         robotConstants.peiceSelection = true;
         
         addCommands(
@@ -50,18 +51,17 @@ public class autoDisTESTLeft extends SequentialCommandGroup {
             new delay(.1),
             new retractFourBar(_score),
             new autoArmHomePos(_score),
-            new autoDrivePosAndRotation(_robotDrive, (54000)*ratio, 49000*ratio),//24000 was tested //24750
+            new autoDrivePosAndRotation(_robotDrive, (53500)*ratio, 49000*ratio),//24000 was tested //54000
             new autoIntake(_intake, true),
             new autoDrivePos(_robotDrive, 7000*ratio),
             new autoIntakeRetract(_intake, true),
-            new autoDrivePosAndRotation(_robotDrive, (-8000)*ratio, -3000*ratio),//-8000
+            new autoDrivePosAndRotation(_robotDrive, (-6500)*ratio, -3000*ratio),//-8000
             new autoDrivePos(_robotDrive, -38000*ratio),//-49000
-            new AutoAim(_limelight, _robotDrive),
-            new autoDrivePos(_robotDrive, -17000*ratio),
-            new autoCuberetract(_intake),
-            new autoHandOffCube(_hand_off, _intake),
-           // new delay(0.15),
+            new ParallelCommandGroup(new AutoAim(_limelight, _robotDrive),new autoHandOffCube(_hand_off, _intake)),
             new autoGrab(_score),
+            new autoDrivePos(_robotDrive, -17000*ratio),
+           // new autoCuberetract(_intake),
+           // new delay(0.15),
             new delay(0.2),//.3
             new autoArmHighPos(_score),
             new autoIntakeRetract(_intake, false),
